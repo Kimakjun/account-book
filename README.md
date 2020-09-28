@@ -4,10 +4,28 @@
 ## Getting start
 
 
+
 ## day 1
 
 - Project Setting
 
-1. express 기본 세팅.
-2. 데이터 베이스  설계
+- [x] express 기본 세팅.
+- [x] 데이터 베이스  설계(ERD 작성)
+- [x] db 생성 및 sequelize db 객체 생성.
 
+
+## day 2 
+
+- passport strategy
+
+- [ ] server api 작성.
+- [ ] passport, token 이용한 로그인구현
+
+
+## day 3
+
+- [ ] server api 구현.
+- [ ] test(post man) 
+
+
+.......
