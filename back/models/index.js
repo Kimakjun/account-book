@@ -13,6 +13,21 @@ db.Category = require('./category')(sequelize, Sequelize);
 db.Transaction = require('./payment')(sequelize, Sequelize);
 db.Payment = require('./transaction')(sequelize, Sequelize);
 
+db.User.hasMany(db.Transaction);
+db.Transaction.belongsTo(db.User);
+
+db.Category.belongsTo(db.Transaction);
+db.Transaction.hasOne(db.Category);
+
+db.Payment.belongsTo(db.Transaction);
+db.Transaction.hasOne(db.Payment);
+
+db.User.belongsToMany(db.Payment, {through: 'UserPayment'});
+db.Payment.belongsToMany(db.User, {through: 'UserPayment'});
+
+db.User.belongsToMany(db.Category, {through: 'UserCategory'});
+db.Category.belongsToMany(db.User, {through: 'UserCategory'});
+
 
 
 module.exports = db;
