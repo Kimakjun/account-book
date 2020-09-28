@@ -14,9 +14,11 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
-app.use('/', (req, res, next)=> {
-    res.json({success: true, message: {hello: 'hihi'}});
-})
+
+
+// app.use('/', (req, res, next)=> {
+//     res.json({success: true, message: {hello: 'hihi'}});
+// })
 
 app.use((req, res, next) => {
     next(createError(404, 'page not found!'));
