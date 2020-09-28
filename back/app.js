@@ -4,7 +4,11 @@ const createError = require('http-errors');
 const morgan = require('morgan');
 const path = require('path');
 
+const {sequelize} = require('./models');
+sequelize.sync();
+
 const app = express();
+
 
 app.set('port', process.env.PORT || 8001);
 
