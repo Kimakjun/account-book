@@ -2,17 +2,29 @@ const express = require('express');
 const passport = require('passport');
 const {
     register,
+    localLogin,
     kakaoLogin,
-    kakaoCallBack,
-    validateInputs
+    validateInputs,
+    generateToken
 } = require('../controller/auth');
 
 const router = express.Router();
 
-router.post('/register', validateInputs({type: 'register'}), register);
+router.post('/register', 
+    validateInputs({type: 'register'}), 
+    register);
 
-router.get('/kakao', passport.authenticate('kakao'));
-router.get('/kakao/callback', passport.authenticate('kakao', { failureRedirect: '/', }), kakaoCallBack);
+router.post('/login', 
+    validateInputs({type: 'login'}), 
+    localLogin
+    );
+
+router.get('/kakao', 
+    passport.authenticate('kakao'));
+
+router.get('/kakao/callback', 
+    kakaoLogin, 
+    );
 
 
 
