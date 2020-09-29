@@ -3,11 +3,16 @@ const cookieParser = require('cookie-parser');
 const createError = require('http-errors');
 const morgan = require('morgan');
 const path = require('path');
-
+const passport = require('passport');
+const passportConfig = require('./passport');
 const {sequelize} = require('./models');
-sequelize.sync();
+
 
 const app = express();
+sequelize.sync();
+
+const rootRouter = require('./route');
+// passportConfig(passport);
 
 
 app.set('port', process.env.PORT || 8001);
@@ -17,12 +22,9 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser(process.env.COOKIE_SECRET));
+app.use(passport.initialize());
 
-
-
-// app.use('/', (req, res, next)=> {
-//     res.json({success: true, message: {hello: 'hihi'}});
-// })
+app.use('/api/v1/', rootRouter);
 
 app.use((req, res, next) => {
     next(createError(404, 'page not found!'));
