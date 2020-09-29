@@ -6,13 +6,11 @@ const path = require('path');
 const passport = require('passport');
 const passportConfig = require('./passport');
 const {sequelize} = require('./models');
-
+require('dotenv').config();
 
 const app = express();
 sequelize.sync();
-
 const rootRouter = require('./route');
-// passportConfig(passport);
 
 
 app.set('port', process.env.PORT || 8001);
@@ -23,6 +21,8 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(passport.initialize());
+passportConfig(passport);
+
 
 app.use('/api/v1/', rootRouter);
 
