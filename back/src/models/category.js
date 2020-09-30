@@ -7,6 +7,9 @@ module.exports = (sequelize, DataTypes)=> {
         isIncome : {
             type : DataTypes.STRING(100),
             alowNull: false,
+        },
+        isInit: {
+            type: DataTypes.BOOLEAN
         }
     }, {
         timestamps: true,

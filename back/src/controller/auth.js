@@ -1,4 +1,4 @@
-const {User} = require('../models');
+const {User, Category} = require('../models');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const createError = require('http-errors');
@@ -21,11 +21,16 @@ exports.register = async (req, res, next) => {
         const checkUser = await User.findOne({where: {email}});
         if(checkUser) return next(createError(400, 'already Existed'));
         const hash = await bcrypt.hash(password, 12);
-        await User.create({
+        const newUser = await User.create({
             email,
             password: hash,
             nick
         });
+        
+        const initCatecorys = await Category.findAll({where : {isinit: true}});
+        await Promise.all(initCatecorys.map((category)=> newUser.addCategories(category)));
+
+
         res.status(200).json({success: true, message: 'register success'});
 
     }catch(err){
