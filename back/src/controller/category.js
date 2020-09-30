@@ -12,7 +12,7 @@ exports.addCategories = async(req, res, next) => {
     const category = 0;
     const result = await Category.findOrCreate({where: {content, isIncome}});
     await result[category].addUser(req.user.id);
-    res.status(200).json({success: true, message: 'category created', data: result});   
+    res.status(200).json({success: true, message: 'category created'});   
 }
 
 exports.deleteCategories = async(req, res, next) => {
