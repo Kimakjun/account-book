@@ -3,6 +3,10 @@ module.exports = (sequelize, DataTypes)=> {
         content : {
             type: DataTypes.STRING(100),
             allowNull: false,
+        },
+        isIncome : {
+            type : DataTypes.STRING(100),
+            alowNull: false,
         }
     }, {
         timestamps: true,

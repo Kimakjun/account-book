@@ -71,7 +71,7 @@ exports.generateToken = (req, res, next) => {
 
     const token = jwt.sign(payLoad, secretKey);
     res.cookie(TOKEN_NAME, token, TOKEN_CONFIG);
-    res.json({success: true, message: 'create jwt'});
+    res.status(200).json({success: true, message: 'create jwt'});
 
 }
 
