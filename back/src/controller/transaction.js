@@ -52,8 +52,8 @@ exports.deleteTransaction = async(req, res, next) => {
 };
 
 exports.getTransactionByCategory = async(req, res, next) => {
-
-    const {date} = req.params;
+   
+    const {date} = req.params;  
     const min = new Date(date);
     const max = new Date(date);
     max.setMonth(min.getMonth() + 1);

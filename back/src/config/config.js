@@ -9,7 +9,6 @@ module.exports =  {
     "dialect": "mysql",
     "timezone": "+09:00",
 
-
   },
   "test": {
     "username": "root",

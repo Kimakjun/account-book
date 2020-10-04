@@ -10,24 +10,25 @@ const {
     isLoggedIn,
     logout
 } = require('../controller/auth');
+const {asyncErrorHandler} = require('../util/error');
 
 const router = express.Router();
 
 router.post('/register', 
     isNotLoggedIn,
     validateInputs({type: 'register'}), 
-    register);
+    asyncErrorHandler(register));
 
 router.post('/login', 
     isNotLoggedIn,
     validateInputs({type: 'login'}), 
     localLogin,
-    generateToken
+    asyncErrorHandler(generateToken)
     );
 
 router.get('/logout',
     isLoggedIn,
-    logout
+    asyncErrorHandler(logout)
     )
 
 router.get('/kakao', 
@@ -36,7 +37,7 @@ router.get('/kakao',
 
 router.get('/kakao/callback', 
     kakaoLogin, 
-    generateToken
+    asyncErrorHandler(generateToken)
     );
 
 

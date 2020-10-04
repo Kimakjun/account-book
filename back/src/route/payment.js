@@ -4,12 +4,13 @@ const {
     addPayment,
     deletePayment
 } = require('../controller/payment');
+const {asyncErrorHandler} = require('../util/error');
 
 const router = express.Router();
 
-router.get('/', getPayments);
-router.post('/', addPayment);
-router.delete('/:id', deletePayment);
+router.get('/', asyncErrorHandler(getPayments));
+router.post('/', asyncErrorHandler(addPayment));
+router.delete('/:id', asyncErrorHandler(deletePayment));
 
 
 module.exports = router;

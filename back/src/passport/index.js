@@ -1,6 +1,8 @@
 const kakao = require('./kakaoStrategy');
 const local = require('./localStrategy');
 
+
+
 module.exports = (passport) => {
 
     // EX: SESSION 사용할 경우.!

@@ -4,12 +4,14 @@ const {
     addCategories,
     deleteCategories
 } = require('../controller/category');
+const {asyncErrorHandler} = require('../util/error');
+
 
 const router = express.Router();
 
-router.get('/', getCategories);
-router.post('/', addCategories);
-router.delete('/:id', deleteCategories);
+router.get('/', asyncErrorHandler(getCategories));
+router.post('/', asyncErrorHandler(addCategories));
+router.delete('/:id', asyncErrorHandler(deleteCategories));
 
 
 module.exports = router;

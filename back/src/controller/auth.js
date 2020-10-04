@@ -8,15 +8,14 @@ require('dotenv').config();
 
 const TOKEN_NAME = 'token';
 
-const TOKEN_CONFIG = {
-    httpOnly: true,
-    samesite: 'none',
-    secure: false,
+const TOKEN_CONFIG = { 
+    httpOnly: true,  // 브라우저 쿠키접근
+    samesite: 'none', // 제 3 도메인 쿠키 접근
+    secure: false, // https 쿠키 설정
     maxAge : 1000 * 60 * 60 * 24 * 7,
 }
 
 exports.register = async (req, res, next) => {
-    try{
         const {email, password, nick} = req.body;
         const checkUser = await User.findOne({where: {email}});
         if(checkUser) return next(createError(400, 'already Existed'));
@@ -29,14 +28,7 @@ exports.register = async (req, res, next) => {
         
         const initCatecorys = await Category.findAll({where : {isinit: true}});
         await Promise.all(initCatecorys.map((category)=> newUser.addCategories(category)));
-
-
         res.status(200).json({success: true, message: 'register success'});
-
-    }catch(err){
-        console.error(err);
-        next(createError(500, 'server Error'));
-    }
 
 }
 
@@ -93,20 +85,27 @@ exports.validateInputs = ({type}) => {
 
 
 exports.isLoggedIn = async(req, res, next) => {
-   const token = req.cookies[TOKEN_NAME];
-   const secretKey = process.env.JWT_SECRET;
-   if(!token) return res.json({success: false, message: 'login required'});
-   const getPayload = ()=>{
-       return new Promise((resolve, reject) => {
-           jwt.verify(token, secretKey, (err, decoded) => {
-               if(err) return next(createError(500, 'invaild token'));
-               resolve(decoded);
-           })
-       })
+    try{
+        const token = req.cookies[TOKEN_NAME];
+        const secretKey = process.env.JWT_SECRET;
+        if(!token) return res.json({success: false, message: 'login required'});
+        const getPayload = ()=>{
+            return new Promise((resolve, reject) => {
+                jwt.verify(token, secretKey, (err, decoded) => {
+                    if(err) return next(createError(500, 'invaild token'));
+                    resolve(decoded);
+                })
+            })
+        }
+        const payload = await getPayload();
+        req.user = payload;
+        next();
+   }catch(err){
+       console.error(err);
+       next(createError(500, err.message));
    }
-   const payload = await getPayload();
-   req.user = payload;
-   next();
+
+
 }
 
 exports.isNotLoggedIn = async(req, res, next) => {
