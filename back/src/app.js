@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser');
 const createError = require('http-errors');
 const morgan = require('morgan');
 const path = require('path');
+const cors = require('cors');
 const passport = require('passport');
 const passportConfig = require('./passport');
 const {sequelize} = require('./models');
@@ -16,6 +17,7 @@ const rootRouter = require('./route');
 app.set('port', process.env.PORT || 8001);
 
 app.use(morgan('dev'));
+app.use(cors({origin: true, credentials: true}));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
