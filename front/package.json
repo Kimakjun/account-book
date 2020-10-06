@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -w",
+    "build": "webpack --display-modules",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src --fix"
+    "lint": "eslint src --fix",
+    "dev-server": "webpack-dev-server --open"
   },
   "keywords": [],
   "author": "",
@@ -33,7 +34,8 @@
     "sass-loader": "^10.0.2",
     "style-loader": "^1.3.0",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
     "@babel/polyfill": "^7.11.5",
