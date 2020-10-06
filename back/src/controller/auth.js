@@ -68,7 +68,7 @@ exports.generateToken = (req, res, next) => {
 
     const token = jwt.sign(payLoad, secretKey);
     res.cookie(TOKEN_NAME, token, TOKEN_CONFIG);
-    res.status(200).json({success: true, message: 'create jwt'});
+    res.status(200).json({success: true, message: 'create jwt', user: {nick}});
 
 }
 
@@ -113,3 +113,4 @@ exports.isNotLoggedIn = async(req, res, next) => {
     if(token) return res.json({success: false, message: 'logout required'});
     return next();
 }
+
