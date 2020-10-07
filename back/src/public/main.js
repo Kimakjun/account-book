@@ -86,6 +86,33 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "../back/src/util/validator.js":
+/*!*************************************!*\
+  !*** ../back/src/util/validator.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+const Regex = {
+    email : /^[\w]([-_.]?[\w])*@[\w]([-_.]?[\w])*\.[a-zA-Z]{2,3}/i,
+    password: /^[a-zA-Z0-9]{6,15}/,
+    nick: /[a-zA-Z가-힣]{3,30}/,
+}
+
+exports.isEmail=(maybeEmail)=>{
+    return Regex.email.test(maybeEmail);
+}
+
+exports.isPassword=(maybePw)=>{
+    return Regex.password.test(maybePw);
+}
+
+exports.isNick=(maybeNick)=>{
+    return Regex.nick.test(maybeNick);
+}
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -13011,7 +13038,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".loginForm {\n  height: 100vh;\n  padding: 0px 20%;\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  justify-content: center; }\n\n.loginForm > input {\n  border: 0;\n  outline: 0;\n  height: 35px;\n  width: 100%;\n  border-radius: 10px;\n  margin: 15px auto;\n  box-shadow: 0px 0px 3px #000; }\n\n.loginForm > input[type=\"button\"] {\n  background-color: slategray;\n  color: white;\n  font-weight: bold;\n  cursor: pointer;\n  transition: 0.8s; }\n\n.loginForm > input[type=\"button\"]:hover {\n  background-color: thistle; }\n", "",{"version":3,"sources":["webpack://src/public/login.scss"],"names":[],"mappings":"AAAA;EAEI,aAAa;EACb,gBAAgB;EAEhB,aAAa;EACb,sBAAsB;EACtB,qBAAqB;EACrB,uBAAuB,EAAA;;AAG3B;EAEI,SAAS;EACT,UAAU;EAEV,YAAY;EACZ,WAAW;EAEX,mBAAmB;EACnB,iBAAiB;EAEjB,4BAA4B,EAAA;;AAIhC;EAEI,2BAA2B;EAE3B,YAAY;EACZ,iBAAiB;EACjB,eAAe;EAEf,gBAAgB,EAAA;;AAIpB;EACI,yBAAyB,EAAA","sourcesContent":[".loginForm {\r\n\r\n    height: 100vh;\r\n    padding: 0px 20%;\r\n\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n    justify-content: center;\r\n}\r\n\r\n.loginForm > input {\r\n\r\n    border: 0;\r\n    outline: 0;\r\n\r\n    height: 35px;\r\n    width: 100%;\r\n\r\n    border-radius: 10px;\r\n    margin: 15px auto;\r\n\r\n    box-shadow: 0px 0px 3px #000;\r\n\r\n}\r\n\r\n.loginForm > input[type=\"button\"] {\r\n\r\n    background-color: slategray;\r\n\r\n    color: white;\r\n    font-weight: bold;\r\n    cursor: pointer;\r\n\r\n    transition: 0.8s;\r\n    \r\n}\r\n\r\n.loginForm > input[type=\"button\"]:hover {\r\n    background-color: thistle;\r\n}\r\n\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".form {\n  height: 100vh;\n  padding: 0px 20%;\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  justify-content: center; }\n\n.form > input {\n  border: 0;\n  outline: 0;\n  height: 35px;\n  width: 100%;\n  border-radius: 10px;\n  margin: 15px auto;\n  box-shadow: 0px 0px 3px #000; }\n\n.form > input[type=\"button\"] {\n  background-color: slategray;\n  color: white;\n  font-weight: bold;\n  cursor: pointer;\n  transition: 0.8s; }\n\n.form > input[type=\"button\"]:hover {\n  background-color: thistle; }\n", "",{"version":3,"sources":["webpack://src/public/login.scss"],"names":[],"mappings":"AAAA;EAEI,aAAa;EACb,gBAAgB;EAEhB,aAAa;EACb,sBAAsB;EACtB,qBAAqB;EACrB,uBAAuB,EAAA;;AAG3B;EAEI,SAAS;EACT,UAAU;EAEV,YAAY;EACZ,WAAW;EAEX,mBAAmB;EACnB,iBAAiB;EAEjB,4BAA4B,EAAA;;AAIhC;EAEI,2BAA2B;EAE3B,YAAY;EACZ,iBAAiB;EACjB,eAAe;EAEf,gBAAgB,EAAA;;AAIpB;EACI,yBAAyB,EAAA","sourcesContent":[".form {\r\n\r\n    height: 100vh;\r\n    padding: 0px 20%;\r\n\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n    justify-content: center;\r\n}\r\n\r\n.form > input {\r\n\r\n    border: 0;\r\n    outline: 0;\r\n\r\n    height: 35px;\r\n    width: 100%;\r\n\r\n    border-radius: 10px;\r\n    margin: 15px auto;\r\n\r\n    box-shadow: 0px 0px 3px #000;\r\n\r\n}\r\n\r\n.form > input[type=\"button\"] {\r\n\r\n    background-color: slategray;\r\n\r\n    color: white;\r\n    font-weight: bold;\r\n    cursor: pointer;\r\n\r\n    transition: 0.8s;\r\n    \r\n}\r\n\r\n.form > input[type=\"button\"]:hover {\r\n    background-color: thistle;\r\n}\r\n\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -13796,6 +13823,22 @@ var loginTemplate = function loginTemplate() {
 
 /***/ }),
 
+/***/ "./src/template/registerTemplate.js":
+/*!******************************************!*\
+  !*** ./src/template/registerTemplate.js ***!
+  \******************************************/
+/*! exports provided: registerTemplate */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registerTemplate", function() { return registerTemplate; });
+var registerTemplate = function registerTemplate() {
+  return "\n        <div class=\"form registerForm\">\n            <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"email\" />\n            <input type=\"password\" name=\"password\" id=\"password\" placeholder=\"password\"/>\n            <input type=\"text\" name=\"nick\" id=\"nick\" placeholder=\"nick\"/>\n            <input type=\"button\" class=\"registerFormButton\" id=\"registerButton\" value=\"register\">\n            <input type=\"button\" class=\"registerFormButton\" id=\"goToLogin\" value=\"go to login\">\n        </div>\n    ";
+};
+
+/***/ }),
+
 /***/ "./src/util/api.js":
 /*!*************************!*\
   !*** ./src/util/api.js ***!
@@ -13826,7 +13869,7 @@ var getData = function getData() {
   return instance.get(restUrl, data);
 };
 var postData = function postData() {
-  var restUrl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var restUrl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   return instance.post(restUrl, data);
 };
@@ -13968,12 +14011,11 @@ var LoginPage = /*#__PURE__*/function () {
     _classCallCheck(this, LoginPage);
 
     this.root = root;
-    this.loginContainer = Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$new"])('div', 'loginContainer');
+    this.loginContainer = Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$new"])("div", "loginContainer");
     this.inputState = {
-      email: '',
-      password: ''
+      email: "",
+      password: ""
     };
-    console.log(this.inputState);
     this.init();
     this.render();
     this.addEvent();
@@ -13987,15 +14029,15 @@ var LoginPage = /*#__PURE__*/function () {
   }, {
     key: "addEvent",
     value: function addEvent() {
-      Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])('#goToRegister').addEventListener('click', this.goToRegister);
-      Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])('#localLoginButton').addEventListener('click', this.localLogin.bind(this));
-      Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])('#kakaoLoginButton').addEventListener('click', this.kakaoLogin);
-      Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])('.loginForm').addEventListener('input', this.updateInput.bind(this));
+      Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])("#goToRegister").addEventListener("click", this.goToRegister);
+      Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])("#localLoginButton").addEventListener("click", this.localLogin.bind(this));
+      Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])("#kakaoLoginButton").addEventListener("click", this.kakaoLogin);
+      Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])(".loginForm").addEventListener("input", this.updateInput.bind(this));
     }
   }, {
     key: "goToRegister",
     value: function goToRegister() {
-      Object(_util_link__WEBPACK_IMPORTED_MODULE_1__["linkTo"])('register');
+      Object(_util_link__WEBPACK_IMPORTED_MODULE_1__["linkTo"])("register");
     }
   }, {
     key: "localLogin",
@@ -14012,12 +14054,12 @@ var LoginPage = /*#__PURE__*/function () {
                   break;
                 }
 
-                return _context.abrupt("return", alert('invaild input'));
+                return _context.abrupt("return", alert("invaild input"));
 
               case 3:
                 _context.next = 5;
-                return Object(_util_api__WEBPACK_IMPORTED_MODULE_4__["postData"])('/auth/login', this.inputState).then(function (res) {
-                  if (res.data.success) Object(_util_link__WEBPACK_IMPORTED_MODULE_1__["linkTo"])('main');else alert("".concat(res.data.message));
+                return Object(_util_api__WEBPACK_IMPORTED_MODULE_4__["postData"])("/auth/login", this.inputState).then(function (res) {
+                  if (res.data.success) Object(_util_link__WEBPACK_IMPORTED_MODULE_1__["linkTo"])("main");else alert("".concat(res.data.message));
                 })["catch"](function (err) {
                   console.error(err);
                 });
@@ -14040,14 +14082,20 @@ var LoginPage = /*#__PURE__*/function () {
     key: "kakaoLogin",
     value: function () {
       var _kakaoLogin = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+        var data;
         return regeneratorRuntime.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
-                return Object(_util_api__WEBPACK_IMPORTED_MODULE_4__["getData"])('/auth/kakao');
+                console.log("test");
+                _context2.next = 3;
+                return Object(_util_api__WEBPACK_IMPORTED_MODULE_4__["getData"])("/auth/kakao");
 
-              case 2:
+              case 3:
+                data = _context2.sent;
+                console.log(data);
+
+              case 5:
               case "end":
                 return _context2.stop();
             }
@@ -14121,17 +14169,107 @@ var MainPage = function MainPage(_ref) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _util_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/dom */ "./src/util/dom.js");
+/* harmony import */ var _util_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/link */ "./src/util/link.js");
+/* harmony import */ var _public_login_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../public/login.scss */ "./src/public/login.scss");
+/* harmony import */ var _public_login_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_public_login_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _template_registerTemplate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../template/registerTemplate */ "./src/template/registerTemplate.js");
+/* harmony import */ var _util_api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/api */ "./src/util/api.js");
+/* harmony import */ var _back_src_util_validator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../back/src/util/validator */ "../back/src/util/validator.js");
+/* harmony import */ var _back_src_util_validator__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_back_src_util_validator__WEBPACK_IMPORTED_MODULE_5__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var RegisterPage = function RegisterPage(_ref) {
-  var root = _ref.root;
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-  _classCallCheck(this, RegisterPage);
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-  var div = document.createElement("div");
-  div.innerText = "회원가입 페이지 입니다.";
-  root.appendChild(div);
-};
+
+
+
+
+
+
+
+
+var RegisterPage = /*#__PURE__*/function () {
+  function RegisterPage(_ref) {
+    var root = _ref.root;
+
+    _classCallCheck(this, RegisterPage);
+
+    this.root = root;
+    this.loginContainer = Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$new"])("div", "loginContainer");
+    this.inputState = {
+      email: "",
+      password: "",
+      nuck: ""
+    };
+    this.init();
+    this.render();
+    this.addEvent();
+  }
+
+  _createClass(RegisterPage, [{
+    key: "init",
+    value: function init() {
+      this.loginContainer.innerHTML = Object(_template_registerTemplate__WEBPACK_IMPORTED_MODULE_3__["registerTemplate"])();
+    }
+  }, {
+    key: "addEvent",
+    value: function addEvent() {
+      Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])('#registerButton').addEventListener('click', this.register.bind(this));
+      Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])('#goToLogin').addEventListener('click', this.goToRegister);
+      Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])('.registerForm').addEventListener('input', this.updateInput.bind(this));
+    }
+  }, {
+    key: "register",
+    value: function register() {
+      if (!Object(_back_src_util_validator__WEBPACK_IMPORTED_MODULE_5__["isEmail"])(this.inputState.email) || !Object(_back_src_util_validator__WEBPACK_IMPORTED_MODULE_5__["isPassword"])(this.inputState.password) || !Object(_back_src_util_validator__WEBPACK_IMPORTED_MODULE_5__["isNick"])(this.inputState.nick)) {
+        return alert('invaild inputs');
+      }
+
+      Object(_util_api__WEBPACK_IMPORTED_MODULE_4__["postData"])('/auth/register', this.inputState).then(function (res) {
+        console.log(res);
+      })["catch"](function (err) {
+        console.error(err);
+        alert(err);
+      });
+    }
+  }, {
+    key: "updateInput",
+    value: function updateInput(e) {
+      var name = e.target.name;
+      console.log(name);
+      if (name === "email") this.inputState = _objectSpread(_objectSpread({}, this.inputState), {}, {
+        email: Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])("#".concat(name)).value
+      });
+      if (name === "password") this.inputState = _objectSpread(_objectSpread({}, this.inputState), {}, {
+        password: Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])("#".concat(name)).value
+      });
+      if (name === 'nick') this.inputState = _objectSpread(_objectSpread({}, this.inputState), {}, {
+        nick: Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])("#".concat(name)).value
+      });
+    }
+  }, {
+    key: "goToRegister",
+    value: function goToRegister() {
+      Object(_util_link__WEBPACK_IMPORTED_MODULE_1__["linkTo"])("");
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      this.root.appendChild(this.loginContainer);
+    }
+  }]);
+
+  return RegisterPage;
+}();
 
 /* harmony default export */ __webpack_exports__["default"] = (RegisterPage);
 

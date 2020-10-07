@@ -17,7 +17,7 @@ const rootRouter = require('./route');
 app.set('port', process.env.PORT || 8001);
 
 app.use(morgan('dev'));
-app.use(cors({origin: 'http://localhost:8005', credentials: true}));
+app.use(cors({origin: 'http://localhost:5500', credentials: true}));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, '/public')));

@@ -16,6 +16,7 @@ export class App {
     window.addEventListener("popstate", () => {
       location.reload();
     });
+    console.log(localStorage.getItem("user"));
     this.user = JSON.parse(localStorage.getItem("user"));
   }
 
