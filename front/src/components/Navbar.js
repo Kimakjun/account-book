@@ -1,12 +1,18 @@
 import { $new } from "../util/dom";
 import "../public/navbar.scss";
+import navbarModel from "../models/NavbarModel";
 
 class Navbar {
   constructor({ root }) {
     this.root = root;
+    this.model = navbarModel;
     this.navbar = $new("div", "navbar");
     this.init();
     this.render();
+  }
+
+  getInitMonth() {
+    this.date = new Date();
   }
 
   init() {
@@ -22,6 +28,10 @@ class Navbar {
                 <div class="navbar__contentSelctor--analysis">통계</div>
             </div>
         `;
+
+    this.model.subscribe("leftClickButton", () => {
+      console.log("test");
+    });
   }
 
   render() {

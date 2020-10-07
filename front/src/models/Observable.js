@@ -1,20 +1,22 @@
 class Observable {
   constructor() {
-    this._observers = new Set();
+    this._observers = new Map();
   }
 
-  subscribe(observer) {
-    this._observers.add(observer);
+  subscribe(type, callback) {
+    let temp = [];
+    if (this._observers.get(temp) != undefined) {
+      this._observers.get(temp).add(callback);
+    }
+    {
+      temp.push(callback);
+      this._observers.set(type, temp);
+    }
   }
 
-  unsubscribe(observer) {
-    this._observers = [...this._observers].filter(
-      (subscriber) => subscriber !== observer
-    );
-  }
-
-  notify(data) {
-    this._observers.forEach((observer) => observer(data));
+  notify(type, data) {
+    const list = this._observers.get(type);
+    list?.forEach((observer) => observer(data));
   }
 }
 
