@@ -12,6 +12,10 @@ export const getData = (restUrl = "", data = {}) => {
   return instance.get(restUrl, data);
 };
 
+export const postData = (restUrl = "", data = {}) => {
+  return instance.post(restUrl, data);
+};
+
 export const patchData = (restUrl = "", data = {}) => {
   return instance.patch(restUrl, data);
 };

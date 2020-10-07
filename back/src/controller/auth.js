@@ -44,8 +44,10 @@ exports.localLogin = async (req, res, next) => {
 exports.kakaoLogin = async (req, res, next) => {
     passport.authenticate('kakao', {session: false, failureRedirect: '/'}, (err, user) => {
         if(err) return next(createError(500, err));
-        req.locals = {user};
-        next();
+        res.json({message: 'ok'});
+        // req.locals = {user};
+        // console.log('tetetttttttttt')
+        // next();
     })(req, res, next);
 }
 
@@ -59,7 +61,8 @@ exports.logout = (req, res, next) => {
 exports.generateToken = (req, res, next) => {
     const {user} = req.locals;
     const secretKey = process.env.JWT_SECRET;
-
+    console.log(user.nick);
+    console.log(user);
     const payLoad = {
         id: user.id,
         email: user.email,
@@ -68,7 +71,7 @@ exports.generateToken = (req, res, next) => {
 
     const token = jwt.sign(payLoad, secretKey);
     res.cookie(TOKEN_NAME, token, TOKEN_CONFIG);
-    res.status(200).json({success: true, message: 'create jwt', user: {nick}});
+    res.status(200).json({success: true, message: 'create jwt', user: {nick: user.nick}});
 
 }
 

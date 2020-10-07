@@ -1,7 +1,7 @@
 import "./index.scss";
-import LoginPage from "./page/LoginPage";
-import MainPage from "./page/MainPage";
-import RegisterPage from "./page/RegisterPage";
+import LoginPage from "./views/LoginPage";
+import MainPage from "./views/MainPage";
+import RegisterPage from "./views/RegisterPage";
 
 export class App {
   constructor(root) {
@@ -21,7 +21,8 @@ export class App {
 
   routing(path) {
     this.root.innerHTML = "";
-    if (path == "/main" && !this.user.nick) path = "/";
+    if (path == "/main" && !this.user) path = "/";
+    if (path != "/main" && this.user) path = "/main";
 
     switch (path) {
       case "/":
