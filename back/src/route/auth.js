@@ -8,7 +8,8 @@ const {
     generateToken,
     isNotLoggedIn,
     isLoggedIn,
-    logout
+    logout,
+    getUserData
 } = require('../controller/auth');
 const {asyncErrorHandler} = require('../util/error');
 
@@ -40,6 +41,10 @@ router.get('/kakao/callback',
     asyncErrorHandler(generateToken)
     );
 
+router.get('/userData',
+    isLoggedIn,
+    asyncErrorHandler(getUserData)   
+);
 
 
 module.exports = router;

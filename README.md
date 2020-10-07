@@ -4,6 +4,8 @@
 ## Getting start
 
 
+
+
 ## back end
 
 ### day 1
@@ -19,14 +21,14 @@
 
 - passport strategy
 
-- [ ] server api 작성.
-- [ ] passport, token 이용한 로그인구현
+- [x] server api 작성.
+- [x] passport, token 이용한 로그인구현
 
 
 ### day 3
 
-- [ ] server api 구현.
-- [ ] test(post man) 
+- [x] server api 구현.
+- [x] test(post man) 
 
 
 .......
