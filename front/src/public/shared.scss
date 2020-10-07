@@ -8,6 +8,8 @@
     align-content: center;
     justify-content: center;
 
+    
+
     input{
         border: 0;
         outline: 0;
@@ -19,6 +21,18 @@
         margin: 15px auto;
     
         box-shadow: 0px 0px 3px #000;
+
+        font-size: large;
+        font-weight: 900;
+        
+    }
+
+    #kakaoLoginButton{
+
+        background-color: #ffeb3b;
+        &:hover {
+            background-color: thistle;
+        }
     }
 
     input[type="button"] {

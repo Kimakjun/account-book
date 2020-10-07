@@ -8,7 +8,8 @@ const {
     generateToken,
     isNotLoggedIn,
     isLoggedIn,
-    logout
+    logout,
+    getUserData
 } = require('../controller/auth');
 const {asyncErrorHandler} = require('../util/error');
 
@@ -32,16 +33,18 @@ router.get('/logout',
     )
 
 router.get('/kakao', 
-    // isNotLoggedIn,
+    isNotLoggedIn,
     passport.authenticate('kakao'));
 
+router.get('/kakao/callback', 
+    kakaoLogin, 
+    asyncErrorHandler(generateToken)
+    );
 
-    router.get('/kakao/callback', passport.authenticate('kakao', {
-        failureRedirect: '/', session: false
-    }), (req, res)=>{
-        console.log('test');
-        res.redirect('/');
-    })
-    
+router.get('/userData',
+    isLoggedIn,
+    asyncErrorHandler(getUserData)   
+);
+
 
 module.exports = router;

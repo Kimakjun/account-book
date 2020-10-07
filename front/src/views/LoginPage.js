@@ -2,9 +2,11 @@ import { $el, $new } from "../util/dom";
 import { linkTo } from "../util/link";
 import { loginTemplate } from "../template/loginTemplate";
 import { isEmail, isPassword } from "../util/vailidator";
-import { getData, postData } from "../util/api";
+import { postData } from "../util/api";
 import "../public/shared.scss";
 import Header from "../components/Header";
+
+const KAKAO_URL = "http://localhost:8005/api/v1/auth/kakao";
 
 class LoginPage {
   constructor({ root }) {
@@ -54,13 +56,7 @@ class LoginPage {
   }
 
   kakaoLogin() {
-    getData("/auth/kakao")
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    location.href = KAKAO_URL;
   }
 
   updateInput(e) {

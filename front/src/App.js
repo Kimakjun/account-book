@@ -1,4 +1,5 @@
 import "./index.scss";
+import { getData } from "./util/api";
 import LoginPage from "./views/LoginPage";
 import MainPage from "./views/MainPage";
 import RegisterPage from "./views/RegisterPage";
@@ -9,15 +10,27 @@ export class App {
     this.user;
     this.urlHash = "/" + location.hash.replace("#", "");
     this.init();
-    this.routing(this.urlHash);
   }
 
-  init() {
+  async init() {
     window.addEventListener("popstate", () => {
       location.reload();
     });
-    console.log(localStorage.getItem("user"));
-    this.user = JSON.parse(localStorage.getItem("user"));
+    if (!this.user) {
+      getData("/auth/userData")
+        .then((res) => {
+          if (res.data.success && res.data.user) {
+            localStorage.setItem("user", JSON.stringify(res.data.user));
+            this.user = res.data.user;
+          }
+          this.routing(this.urlHash);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    } else {
+      this.routing(this.urlHash);
+    }
   }
 
   routing(path) {
