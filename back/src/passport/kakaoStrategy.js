@@ -15,7 +15,7 @@ module.exports = (passport) => {
     }, async (accessToken, refreshToken, profile, done)=> {
         // TODO : accessToken, refreshToken 로직 추가.
         try{
-            const exUser = await User.findOne({
+         const exUser = await User.findOne({
                 where: {
                     snsId: profile.id,
                     provider: 'kakao'
