@@ -36,7 +36,7 @@ exports.localLogin = async (req, res, next) => {
     passport.authenticate('local', (authError, user, info) => {
         if(authError) return next(authError);
         if(!user) return res.json({success: false, message: info.message});
-        req.locals = {user};
+        req.locals = {user, type: 'local'};
         next();
     })(req, res, next);
 }
@@ -44,7 +44,7 @@ exports.localLogin = async (req, res, next) => {
 exports.kakaoLogin = async (req, res, next) => {
     passport.authenticate('kakao', {session: false}, (err, user) => {
         if(err) return next(createError(500, err));
-        req.locals = {user};
+        req.locals = {user, type: 'kakao'};
         next();
     })(req, res, next);
 }
@@ -57,7 +57,7 @@ exports.logout = (req, res, next) => {
 }
 
 exports.generateToken = (req, res, next) => {
-    const {user} = req.locals;
+    const {user,  type} = req.locals;
     const secretKey = process.env.JWT_SECRET;
     console.log(user.nick);
     console.log(user);
@@ -69,8 +69,8 @@ exports.generateToken = (req, res, next) => {
 
     const token = jwt.sign(payLoad, secretKey);
     res.cookie(TOKEN_NAME, token, TOKEN_CONFIG);
-    res.redirect('/');
-    res.status(200).json({success: true, message: 'create jwt', user: {nick: user.nick}});
+    if(type === 'kakao') return res.redirect('/');
+    if(type === 'local') return res.status(200).json({success: true, message: 'create jwt', user: {nick: user.nick}});
 
 }
 

@@ -21,7 +21,7 @@ class Header {
   }
 
   addEvent() {
-    $el(".auth__logout")?.addEventListener("click", this.logout);
+    $el(".auth__logout")?.addEventListener("click", this.logout); // ? 있으면 진행
   }
 
   async logout() {

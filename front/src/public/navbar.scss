@@ -1,0 +1,77 @@
+.navbar{
+
+  
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    margin-top: 20px;
+    padding: 0 10vh;
+
+    .navbar__monthSelector{
+     
+        font-size: 50px;
+
+        .navbar__monthSelector--button{
+            border: 0;
+            outline: 0;
+            
+            background-color: white;
+
+            font-size: 50px;
+            color: #e0e0e0;
+            cursor: pointer;
+            transition: 0.5s;
+            &:hover{
+                color: gray;
+            }
+
+        }
+    }
+    
+    .navbar__contentSelector{
+       
+        display: flex;
+        justify-content: center;
+
+        margin-top: 20px;
+        width: 100%;
+        
+        font-weight: 900;
+
+        div {
+            
+            width: 30%;
+            height: 50px;
+            line-height: 50px;
+            background-color: #e0e0e0;
+            text-align: center;
+            
+            cursor: pointer;
+            transition: 0.5s;
+
+            &:hover{
+                background-color: gray;
+            }
+        }
+
+        .navbar__contentSelctor--history{
+            @extend div;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            border-right: 3px solid white;
+        }
+
+
+
+        .navbar__contentSelctor--analysis{
+            @extend div;
+            border-bottom-right-radius: 10px;
+            border-top-right-radius: 10px;
+            border-left: 3px solid white;
+        }
+
+    }
+
+}
