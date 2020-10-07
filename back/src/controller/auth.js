@@ -44,6 +44,8 @@ exports.localLogin = async (req, res, next) => {
 exports.kakaoLogin = async (req, res, next) => {
     passport.authenticate('kakao', {session: false, failureRedirect: '/'}, (err, user) => {
         if(err) return next(createError(500, err));
+        console.log('카카오 로그인이 성공하긴했어~!');
+        console.log(user);
         res.json({message: 'ok'});
         // req.locals = {user};
         // console.log('tetetttttttttt')

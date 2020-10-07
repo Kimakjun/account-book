@@ -30,6 +30,7 @@ module.exports = (passport) => {
                     snsId: profile.id,
                     provider: 'kakao',
                 })
+                console.log('카카오 로그인 성공~!')
                 done(null, newUser);
             }
         }catch(error){

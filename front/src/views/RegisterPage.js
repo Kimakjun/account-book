@@ -1,13 +1,14 @@
 import { $el, $new } from "../util/dom";
 import { linkTo } from "../util/link";
-import "../public/login.scss";
 import { registerTemplate } from "../template/registerTemplate";
-import "../public/login.scss";
+import "../public/shared.scss";
 import { postData } from "../util/api";
 import { isEmail, isNick, isPassword } from "../../../back/src/util/validator";
+import Header from "../components/Header";
 
 class RegisterPage {
   constructor({ root }) {
+    new Header({ root });
     this.root = root;
     this.loginContainer = $new("div", "loginContainer");
     this.inputState = { email: "", password: "", nick: "" };

@@ -13023,10 +13023,10 @@ ___CSS_LOADER_EXPORT___.push([module.i, "body {\n  color: red;\n  font-size: 16p
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/public/login.scss":
-/*!************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/public/login.scss ***!
-  \************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/public/shared.scss":
+/*!*************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/public/shared.scss ***!
+  \*************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -13038,7 +13038,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".form {\n  height: 100vh;\n  padding: 0px 20%;\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  justify-content: center; }\n\n.form > input {\n  border: 0;\n  outline: 0;\n  height: 35px;\n  width: 100%;\n  border-radius: 10px;\n  margin: 15px auto;\n  box-shadow: 0px 0px 3px #000; }\n\n.form > input[type=\"button\"] {\n  background-color: slategray;\n  color: white;\n  font-weight: bold;\n  cursor: pointer;\n  transition: 0.8s; }\n\n.form > input[type=\"button\"]:hover {\n  background-color: thistle; }\n", "",{"version":3,"sources":["webpack://src/public/login.scss"],"names":[],"mappings":"AAAA;EAEI,aAAa;EACb,gBAAgB;EAEhB,aAAa;EACb,sBAAsB;EACtB,qBAAqB;EACrB,uBAAuB,EAAA;;AAG3B;EAEI,SAAS;EACT,UAAU;EAEV,YAAY;EACZ,WAAW;EAEX,mBAAmB;EACnB,iBAAiB;EAEjB,4BAA4B,EAAA;;AAIhC;EAEI,2BAA2B;EAE3B,YAAY;EACZ,iBAAiB;EACjB,eAAe;EAEf,gBAAgB,EAAA;;AAIpB;EACI,yBAAyB,EAAA","sourcesContent":[".form {\r\n\r\n    height: 100vh;\r\n    padding: 0px 20%;\r\n\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n    justify-content: center;\r\n}\r\n\r\n.form > input {\r\n\r\n    border: 0;\r\n    outline: 0;\r\n\r\n    height: 35px;\r\n    width: 100%;\r\n\r\n    border-radius: 10px;\r\n    margin: 15px auto;\r\n\r\n    box-shadow: 0px 0px 3px #000;\r\n\r\n}\r\n\r\n.form > input[type=\"button\"] {\r\n\r\n    background-color: slategray;\r\n\r\n    color: white;\r\n    font-weight: bold;\r\n    cursor: pointer;\r\n\r\n    transition: 0.8s;\r\n    \r\n}\r\n\r\n.form > input[type=\"button\"]:hover {\r\n    background-color: thistle;\r\n}\r\n\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".form {\n  height: 100vh;\n  padding: 0px 20%;\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  justify-content: center; }\n  .form input {\n    border: 0;\n    outline: 0;\n    height: 35px;\n    width: 100%;\n    border-radius: 10px;\n    margin: 15px auto;\n    box-shadow: 0px 0px 3px #000; }\n  .form input[type=\"button\"] {\n    background-color: slategray;\n    color: white;\n    font-weight: bold;\n    cursor: pointer;\n    transition: 0.8s; }\n    .form input[type=\"button\"]:hover {\n      background-color: thistle; }\n", "",{"version":3,"sources":["webpack://src/public/shared.scss"],"names":[],"mappings":"AAAA;EAEI,aAAa;EACb,gBAAgB;EAEhB,aAAa;EACb,sBAAsB;EACtB,qBAAqB;EACrB,uBAAuB,EAAA;EAR3B;IAWQ,SAAS;IACT,UAAU;IAEV,YAAY;IACZ,WAAW;IAEX,mBAAmB;IACnB,iBAAiB;IAEjB,4BAA4B,EAAA;EApBpC;IAyBQ,2BAA2B;IAE3B,YAAY;IACZ,iBAAiB;IACjB,eAAe;IAEf,gBAAgB,EAAA;IA/BxB;MAkCY,yBAAyB,EAAA","sourcesContent":[".form {\r\n\r\n    height: 100vh;\r\n    padding: 0px 20%;\r\n\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n    justify-content: center;\r\n\r\n    input{\r\n        border: 0;\r\n        outline: 0;\r\n\r\n        height: 35px;\r\n        width: 100%;\r\n\r\n        border-radius: 10px;\r\n        margin: 15px auto;\r\n    \r\n        box-shadow: 0px 0px 3px #000;\r\n    }\r\n\r\n    input[type=\"button\"] {\r\n\r\n        background-color: slategray;\r\n    \r\n        color: white;\r\n        font-weight: bold;\r\n        cursor: pointer;\r\n    \r\n        transition: 0.8s;\r\n        \r\n        &:hover {\r\n            background-color: thistle;\r\n        }\r\n\r\n    }\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -13698,6 +13698,7 @@ var App = /*#__PURE__*/function () {
       window.addEventListener("popstate", function () {
         location.reload();
       });
+      console.log(localStorage.getItem("user"));
       this.user = JSON.parse(localStorage.getItem("user"));
     }
   }, {
@@ -13778,15 +13779,15 @@ module.exports = content.locals || {};
 
 /***/ }),
 
-/***/ "./src/public/login.scss":
-/*!*******************************!*\
-  !*** ./src/public/login.scss ***!
-  \*******************************/
+/***/ "./src/public/shared.scss":
+/*!********************************!*\
+  !*** ./src/public/shared.scss ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./login.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/public/login.scss");
+            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./shared.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/public/shared.scss");
 
             content = content.__esModule ? content.default : content;
 
@@ -13856,7 +13857,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
-var url = "http://localhost:8005/api/v1";
+var url = "/api/v1";
 var instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
   baseURL: url,
   timeout: 3000,
@@ -13979,8 +13980,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_vailidator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/vailidator */ "./src/util/vailidator.js");
 /* harmony import */ var _util_vailidator__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_util_vailidator__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _util_api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/api */ "./src/util/api.js");
-/* harmony import */ var _public_login_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../public/login.scss */ "./src/public/login.scss");
-/* harmony import */ var _public_login_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_public_login_scss__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _public_shared_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../public/shared.scss */ "./src/public/shared.scss");
+/* harmony import */ var _public_shared_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_public_shared_scss__WEBPACK_IMPORTED_MODULE_5__);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -14031,7 +14032,7 @@ var LoginPage = /*#__PURE__*/function () {
     value: function addEvent() {
       Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])("#goToRegister").addEventListener("click", this.goToRegister);
       Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])("#localLoginButton").addEventListener("click", this.localLogin.bind(this));
-      Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])("#kakaoLoginButton").addEventListener("click", this.kakaoLogin);
+      Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])("#kakaoLoginButton").addEventListener('click', this.kakaoLogin);
       Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])(".loginForm").addEventListener("input", this.updateInput.bind(this));
     }
   }, {
@@ -14047,24 +14048,25 @@ var LoginPage = /*#__PURE__*/function () {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log(this.inputState);
-
                 if (!(!Object(_util_vailidator__WEBPACK_IMPORTED_MODULE_3__["isEmail"])(this.inputState.email) || !Object(_util_vailidator__WEBPACK_IMPORTED_MODULE_3__["isPassword"])(this.inputState.password))) {
-                  _context.next = 3;
+                  _context.next = 2;
                   break;
                 }
 
                 return _context.abrupt("return", alert("invaild input"));
 
-              case 3:
-                _context.next = 5;
+              case 2:
+                _context.next = 4;
                 return Object(_util_api__WEBPACK_IMPORTED_MODULE_4__["postData"])("/auth/login", this.inputState).then(function (res) {
-                  if (res.data.success) Object(_util_link__WEBPACK_IMPORTED_MODULE_1__["linkTo"])("main");else alert("".concat(res.data.message));
+                  if (res.data.success) {
+                    localStorage.setItem("user", JSON.stringify(res.data.user));
+                    Object(_util_link__WEBPACK_IMPORTED_MODULE_1__["linkTo"])("main");
+                  } else alert("".concat(res.data.message));
                 })["catch"](function (err) {
                   console.error(err);
                 });
 
-              case 5:
+              case 4:
               case "end":
                 return _context.stop();
             }
@@ -14080,40 +14082,17 @@ var LoginPage = /*#__PURE__*/function () {
     }()
   }, {
     key: "kakaoLogin",
-    value: function () {
-      var _kakaoLogin = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-        var data;
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                console.log("test");
-                _context2.next = 3;
-                return Object(_util_api__WEBPACK_IMPORTED_MODULE_4__["getData"])("/auth/kakao");
-
-              case 3:
-                data = _context2.sent;
-                console.log(data);
-
-              case 5:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }));
-
-      function kakaoLogin() {
-        return _kakaoLogin.apply(this, arguments);
-      }
-
-      return kakaoLogin;
-    }()
+    value: function kakaoLogin() {
+      Object(_util_api__WEBPACK_IMPORTED_MODULE_4__["getData"])('/auth/kakao').then(function (res) {
+        console.log(res);
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
   }, {
     key: "updateInput",
     value: function updateInput(e) {
       var name = e.target.name;
-      console.log(name);
       if (name === "email") this.inputState = _objectSpread(_objectSpread({}, this.inputState), {}, {
         email: Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])("#".concat(name)).value
       });
@@ -14144,7 +14123,14 @@ var LoginPage = /*#__PURE__*/function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _util_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/dom */ "./src/util/dom.js");
+/* harmony import */ var _util_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/api */ "./src/util/api.js");
+/* harmony import */ var _util_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/link */ "./src/util/link.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+
 
 var MainPage = function MainPage(_ref) {
   var root = _ref.root;
@@ -14153,7 +14139,22 @@ var MainPage = function MainPage(_ref) {
 
   var div = document.createElement("div");
   div.innerText = "메인 페이지 입니다.";
+  var button = Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$new"])("button", "logout");
+  button.innerText = "logout";
   root.appendChild(div);
+  root.appendChild(button);
+  Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])(".logout").addEventListener("click", function () {
+    Object(_util_api__WEBPACK_IMPORTED_MODULE_1__["getData"])("/auth/logout").then(function (res) {
+      console.log(res);
+
+      if (res.data.success) {
+        localStorage.clear();
+        Object(_util_link__WEBPACK_IMPORTED_MODULE_2__["linkTo"])("");
+      }
+    })["catch"](function (err) {
+      console.error(err);
+    });
+  });
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MainPage);
@@ -14171,9 +14172,9 @@ var MainPage = function MainPage(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/dom */ "./src/util/dom.js");
 /* harmony import */ var _util_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/link */ "./src/util/link.js");
-/* harmony import */ var _public_login_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../public/login.scss */ "./src/public/login.scss");
-/* harmony import */ var _public_login_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_public_login_scss__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _template_registerTemplate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../template/registerTemplate */ "./src/template/registerTemplate.js");
+/* harmony import */ var _template_registerTemplate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../template/registerTemplate */ "./src/template/registerTemplate.js");
+/* harmony import */ var _public_shared_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../public/shared.scss */ "./src/public/shared.scss");
+/* harmony import */ var _public_shared_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_public_shared_scss__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _util_api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/api */ "./src/util/api.js");
 /* harmony import */ var _back_src_util_validator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../back/src/util/validator */ "../back/src/util/validator.js");
 /* harmony import */ var _back_src_util_validator__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_back_src_util_validator__WEBPACK_IMPORTED_MODULE_5__);
@@ -14196,7 +14197,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
 
-
 var RegisterPage = /*#__PURE__*/function () {
   function RegisterPage(_ref) {
     var root = _ref.root;
@@ -14208,7 +14208,7 @@ var RegisterPage = /*#__PURE__*/function () {
     this.inputState = {
       email: "",
       password: "",
-      nuck: ""
+      nick: ""
     };
     this.init();
     this.render();
@@ -14218,7 +14218,7 @@ var RegisterPage = /*#__PURE__*/function () {
   _createClass(RegisterPage, [{
     key: "init",
     value: function init() {
-      this.loginContainer.innerHTML = Object(_template_registerTemplate__WEBPACK_IMPORTED_MODULE_3__["registerTemplate"])();
+      this.loginContainer.innerHTML = Object(_template_registerTemplate__WEBPACK_IMPORTED_MODULE_2__["registerTemplate"])();
     }
   }, {
     key: "addEvent",
@@ -14235,17 +14235,19 @@ var RegisterPage = /*#__PURE__*/function () {
       }
 
       Object(_util_api__WEBPACK_IMPORTED_MODULE_4__["postData"])('/auth/register', this.inputState).then(function (res) {
-        console.log(res);
+        if (res.data.success) {
+          alert('회원가입 성공 로그인페이지로 이동합니다.');
+          Object(_util_link__WEBPACK_IMPORTED_MODULE_1__["linkTo"])('');
+        }
       })["catch"](function (err) {
         console.error(err);
-        alert(err);
+        alert(err.message);
       });
     }
   }, {
     key: "updateInput",
     value: function updateInput(e) {
       var name = e.target.name;
-      console.log(name);
       if (name === "email") this.inputState = _objectSpread(_objectSpread({}, this.inputState), {}, {
         email: Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])("#".concat(name)).value
       });

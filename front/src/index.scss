@@ -4,13 +4,7 @@ $font_size: 16px;
 $line_height: percentage(20px / $font_size);
 
 body {
-    color: $font_color;
-  
-    // Property Nesting
-    font: {
-      size: $font_size;
-      family: $font_family;
-    }
-  
-    line-height: $line_height;
-  }
+  border: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}

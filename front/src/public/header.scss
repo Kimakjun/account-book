@@ -1,0 +1,61 @@
+
+.header {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    height: 10vh;
+
+    padding: 0 20px;
+
+    background-color: #00bfa5;
+    color: white;
+
+    .header__empty{
+        width: 20%;
+    }
+
+    .header__title{
+        font-size: 2em;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .header__content {
+
+        font-weight: bold;
+        width: 20%;
+        button{
+            outline: 0;
+            border: 0;
+            border-radius: 10px;
+            background: #64ffda;            ;
+            box-shadow:  3px 3px 3px #000000;
+            cursor: pointer;
+
+            transition: .5s;
+            &:hover{
+                box-shadow: none;
+                border: 1px solid chartreuse;
+            }
+        }
+    }
+
+    .header__auth{
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .header__util{
+           display: flex;
+           justify-content: space-evenly;
+           
+           margin-top: 5px;
+
+           div{
+                padding: 3px;
+           }
+    }
+
+}

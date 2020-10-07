@@ -2,11 +2,13 @@ import { $el, $new } from "../util/dom";
 import { linkTo } from "../util/link";
 import { loginTemplate } from "../template/loginTemplate";
 import { isEmail, isPassword } from "../util/vailidator";
-import { postData } from "../util/api";
-import "../public/login.scss";
+import { getData, postData } from "../util/api";
+import "../public/shared.scss";
+import Header from "../components/Header";
 
 class LoginPage {
   constructor({ root }) {
+    new Header({ root });
     this.root = root;
     this.loginContainer = $new("div", "loginContainer");
     this.inputState = { email: "", password: "" };
@@ -25,6 +27,7 @@ class LoginPage {
       "click",
       this.localLogin.bind(this)
     );
+    $el("#kakaoLoginButton").addEventListener("click", this.kakaoLogin);
     $el(".loginForm").addEventListener("input", this.updateInput.bind(this));
   }
 
@@ -50,7 +53,15 @@ class LoginPage {
       });
   }
 
-  async kakaoLogin() {}
+  kakaoLogin() {
+    getData("/auth/kakao")
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   updateInput(e) {
     const { name } = e.target;
