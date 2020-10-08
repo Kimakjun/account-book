@@ -1,37 +1,31 @@
-import { $new } from "../util/dom";
+import { $el, $new } from "../util/dom";
 import "../public/navbar.scss";
-import navbarModel from "../models/NavbarModel";
+import { navBarTemplate } from "../template/navbarTemplate";
+import { MONTH_BUTTON_CLICK } from "../util/event";
 
 class Navbar {
   constructor({ root }) {
     this.root = root;
-    this.model = navbarModel;
     this.navbar = $new("div", "navbar");
     this.init();
     this.render();
   }
 
+  subscribe(model) {
+    model.subscribe(MONTH_BUTTON_CLICK, this.buttonUpdate.bind(this));
+  }
+
+  buttonUpdate({ month }) {
+    $el(".navbar__monthSelector--month").innerText = `${month}월`;
+  }
+
   getInitMonth() {
-    this.date = new Date();
+    return new Date().getMonth();
   }
 
   init() {
-    this.navbar.innerHTML = `
-            <div class="navbar__monthSelector">
-                <button class="navbar__monthSelector--button">◀</button>
-                <span class="navbar__monthSelector--month">10월</span>
-                <button class="navbar__monthSelector--button">▶</button>
-            </div>
-            <div class="navbar__contentSelector">
-                <div class="navbar__contentSelctor--history">내역</div>
-                <div class="navbar__contentSelctor--clander">달력</div>
-                <div class="navbar__contentSelctor--analysis">통계</div>
-            </div>
-        `;
-
-    this.model.subscribe("leftClickButton", () => {
-      console.log("test");
-    });
+    const month = this.getInitMonth() + 1;
+    this.navbar.innerHTML = navBarTemplate(month);
   }
 
   render() {

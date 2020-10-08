@@ -13045,6 +13045,28 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".header {\n  display: flex;\n  justify-
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/public/navbar.scss":
+/*!*************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/public/navbar.scss ***!
+  \*************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.i, ".navbar {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  margin-top: 20px;\n  padding: 0 30vh; }\n  .navbar .navbar__monthSelector {\n    font-size: 50px; }\n    .navbar .navbar__monthSelector .navbar__monthSelector--button {\n      border: 0;\n      outline: 0;\n      background-color: white;\n      font-size: 50px;\n      color: #e0e0e0;\n      cursor: pointer;\n      transition: 0.5s; }\n      .navbar .navbar__monthSelector .navbar__monthSelector--button:hover {\n        color: gray; }\n  .navbar .navbar__contentSelector {\n    display: flex;\n    justify-content: center;\n    margin-top: 20px;\n    width: 100%;\n    font-weight: 900; }\n    .navbar .navbar__contentSelector div, .navbar .navbar__contentSelector .navbar__contentSelctor--history, .navbar .navbar__contentSelector .navbar__contentSelctor--analysis {\n      width: 33%;\n      height: 50px;\n      line-height: 50px;\n      background-color: #e0e0e0;\n      text-align: center;\n      cursor: pointer;\n      transition: 0.5s; }\n      .navbar .navbar__contentSelector div:hover, .navbar .navbar__contentSelector .navbar__contentSelctor--history:hover, .navbar .navbar__contentSelector .navbar__contentSelctor--analysis:hover {\n        background-color: gray; }\n    .navbar .navbar__contentSelector .navbar__contentSelctor--history {\n      border-top-left-radius: 10px;\n      border-bottom-left-radius: 10px;\n      border-right: 3px solid white; }\n    .navbar .navbar__contentSelector .navbar__contentSelctor--analysis {\n      border-bottom-right-radius: 10px;\n      border-top-right-radius: 10px;\n      border-left: 3px solid white; }\n", "",{"version":3,"sources":["webpack://src/public/navbar.scss"],"names":[],"mappings":"AAAA;EAII,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EAEnB,gBAAgB;EAChB,eAAe,EAAA;EATnB;IAaQ,eAAe,EAAA;IAbvB;MAgBY,SAAS;MACT,UAAU;MAEV,uBAAuB;MAEvB,eAAe;MACf,cAAc;MACd,eAAe;MACf,gBAAgB,EAAA;MAxB5B;QA0BgB,WAAW,EAAA;EA1B3B;IAkCQ,aAAa;IACb,uBAAuB;IAEvB,gBAAgB;IAChB,WAAW;IAEX,gBAAgB,EAAA;IAxCxB;MA4CY,UAAU;MACV,YAAY;MACZ,iBAAiB;MACjB,yBAAyB;MACzB,kBAAkB;MAElB,eAAe;MACf,gBAAgB,EAAA;MAnD5B;QAsDgB,sBAAsB,EAAA;IAtDtC;MA4DY,4BAA4B;MAC5B,+BAA+B;MAC/B,6BAA6B,EAAA;IA9DzC;MAqEY,gCAAgC;MAChC,6BAA6B;MAC7B,4BAA4B,EAAA","sourcesContent":[".navbar{\r\n\r\n  \r\n\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    \r\n    margin-top: 20px;\r\n    padding: 0 30vh;\r\n\r\n    .navbar__monthSelector{\r\n     \r\n        font-size: 50px;\r\n\r\n        .navbar__monthSelector--button{\r\n            border: 0;\r\n            outline: 0;\r\n            \r\n            background-color: white;\r\n\r\n            font-size: 50px;\r\n            color: #e0e0e0;\r\n            cursor: pointer;\r\n            transition: 0.5s;\r\n            &:hover{\r\n                color: gray;\r\n            }\r\n\r\n        }\r\n    }\r\n    \r\n    .navbar__contentSelector{\r\n       \r\n        display: flex;\r\n        justify-content: center;\r\n\r\n        margin-top: 20px;\r\n        width: 100%;\r\n        \r\n        font-weight: 900;\r\n\r\n        div {\r\n            \r\n            width: 33%;\r\n            height: 50px;\r\n            line-height: 50px;\r\n            background-color: #e0e0e0;\r\n            text-align: center;\r\n            \r\n            cursor: pointer;\r\n            transition: 0.5s;\r\n\r\n            &:hover{\r\n                background-color: gray;\r\n            }\r\n        }\r\n\r\n        .navbar__contentSelctor--history{\r\n            @extend div;\r\n            border-top-left-radius: 10px;\r\n            border-bottom-left-radius: 10px;\r\n            border-right: 3px solid white;\r\n        }\r\n\r\n\r\n\r\n        .navbar__contentSelctor--analysis{\r\n            @extend div;\r\n            border-bottom-right-radius: 10px;\r\n            border-top-right-radius: 10px;\r\n            border-left: 3px solid white;\r\n        }\r\n\r\n    }\r\n\r\n}"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/public/shared.scss":
 /*!*************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/public/shared.scss ***!
@@ -13061,6 +13083,50 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
 ___CSS_LOADER_EXPORT___.push([module.i, ".form {\n  height: 100vh;\n  padding: 0px 20%;\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  justify-content: center; }\n  .form input {\n    border: 0;\n    outline: 0;\n    height: 35px;\n    width: 100%;\n    border-radius: 10px;\n    margin: 15px auto;\n    box-shadow: 0px 0px 3px #000;\n    font-size: large;\n    font-weight: 900; }\n  .form #kakaoLoginButton {\n    background-color: #ffeb3b; }\n    .form #kakaoLoginButton:hover {\n      background-color: thistle; }\n  .form input[type=\"button\"] {\n    background-color: slategray;\n    color: white;\n    font-weight: bold;\n    cursor: pointer;\n    transition: 0.8s; }\n    .form input[type=\"button\"]:hover {\n      background-color: thistle; }\n", "",{"version":3,"sources":["webpack://src/public/shared.scss"],"names":[],"mappings":"AAAA;EAEI,aAAa;EACb,gBAAgB;EAEhB,aAAa;EACb,sBAAsB;EACtB,qBAAqB;EACrB,uBAAuB,EAAA;EAR3B;IAaQ,SAAS;IACT,UAAU;IAEV,YAAY;IACZ,WAAW;IAEX,mBAAmB;IACnB,iBAAiB;IAEjB,4BAA4B;IAE5B,gBAAgB;IAChB,gBAAgB,EAAA;EAzBxB;IA+BQ,yBAAyB,EAAA;IA/BjC;MAiCY,yBAAyB,EAAA;EAjCrC;IAuCQ,2BAA2B;IAE3B,YAAY;IACZ,iBAAiB;IACjB,eAAe;IAEf,gBAAgB,EAAA;IA7CxB;MAgDY,yBAAyB,EAAA","sourcesContent":[".form {\r\n\r\n    height: 100vh;\r\n    padding: 0px 20%;\r\n\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n    justify-content: center;\r\n\r\n    \r\n\r\n    input{\r\n        border: 0;\r\n        outline: 0;\r\n\r\n        height: 35px;\r\n        width: 100%;\r\n\r\n        border-radius: 10px;\r\n        margin: 15px auto;\r\n    \r\n        box-shadow: 0px 0px 3px #000;\r\n\r\n        font-size: large;\r\n        font-weight: 900;\r\n        \r\n    }\r\n\r\n    #kakaoLoginButton{\r\n\r\n        background-color: #ffeb3b;\r\n        &:hover {\r\n            background-color: thistle;\r\n        }\r\n    }\r\n\r\n    input[type=\"button\"] {\r\n\r\n        background-color: slategray;\r\n    \r\n        color: white;\r\n        font-weight: bold;\r\n        cursor: pointer;\r\n    \r\n        transition: 0.8s;\r\n        \r\n        &:hover {\r\n            background-color: thistle;\r\n        }\r\n\r\n    }\r\n}\r\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/public/tranHistory.scss":
+/*!******************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/public/tranHistory.scss ***!
+  \******************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.i, ".tranHistory {\n  border: 1px solid black;\n  margin-top: 20px;\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n\n.tranHistory__hostory {\n  display: flex;\n  padding: 10px; }\n", "",{"version":3,"sources":["webpack://src/public/tranHistory.scss"],"names":[],"mappings":"AACA;EACI,uBAAuB;EACvB,gBAAgB;EAChB,aAAa;EACb,sBAAsB;EACtB,mBAAmB,EAAA;;AAGvB;EAEI,aAAa;EACb,aAAa,EAAA","sourcesContent":["\r\n.tranHistory{\r\n    border: 1px solid black;\r\n    margin-top: 20px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n}\r\n\r\n.tranHistory__hostory{\r\n    \r\n    display: flex;           \r\n    padding: 10px;\r\n}\r\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/public/tranInput.scss":
+/*!****************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/public/tranInput.scss ***!
+  \****************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.i, ".tranInput {\n  margin-top: 20px;\n  padding: 0 30vh;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  font-weight: 900; }\n  .tranInput div, .tranInput .tranInput__firstSection .tranInput__firstSection__clasify .selected {\n    padding: 0.2rem; }\n  .tranInput .tranInput__firstSection {\n    display: flex;\n    justify-content: space-between;\n    width: 100%; }\n    .tranInput .tranInput__firstSection .tranInput__firstSection__clasify {\n      display: flex; }\n      .tranInput .tranInput__firstSection .tranInput__firstSection__clasify span {\n        line-height: 30px; }\n      .tranInput .tranInput__firstSection .tranInput__firstSection__clasify div, .tranInput .tranInput__firstSection .tranInput__firstSection__clasify .selected {\n        border: 3px solid #00bfa5;\n        border-radius: 5px;\n        width: 100px;\n        padding: 2px;\n        margin: 0 10px;\n        box-shadow: 2px 2px 2px #000000;\n        text-align: center;\n        color: #00bfa5;\n        cursor: pointer; }\n        .tranInput .tranInput__firstSection .tranInput__firstSection__clasify div:hover, .tranInput .tranInput__firstSection .tranInput__firstSection__clasify .selected:hover {\n          box-shadow: none;\n          border: 3px solid #00bfa5; }\n      .tranInput .tranInput__firstSection .tranInput__firstSection__clasify .selected {\n        color: white;\n        background-color: #00bfa5; }\n    .tranInput .tranInput__firstSection .tranInput__firstSection__update--delete {\n      border: 0;\n      outline: 0;\n      background-color: white;\n      color: #00bfa5;\n      font-weight: 900;\n      cursor: pointer; }\n  .tranInput .tranInputContainer__secondSection {\n    display: flex;\n    justify-content: space-between; }\n  .tranInput .tranInputContainer__thirdSection {\n    display: flex;\n    justify-content: space-between; }\n    .tranInput .tranInputContainer__thirdSection input {\n      border: 0;\n      outline: 0;\n      border-bottom: 1px solid black; }\n  .tranInput .tranInputContainer__lastSection--button {\n    width: 100%;\n    height: 30px;\n    line-height: 30px;\n    border-radius: 5px;\n    background-color: #00bfa5;\n    box-shadow: 2px 2px 2px #000000;\n    text-align: center;\n    color: white;\n    cursor: pointer; }\n    .tranInput .tranInputContainer__lastSection--button:hover {\n      box-shadow: none;\n      border: 2px solid #00bfa5; }\n", "",{"version":3,"sources":["webpack://src/public/tranInput.scss"],"names":[],"mappings":"AACA;EAII,gBAAgB;EAChB,eAAe;EAEf,aAAa;EACb,sBAAsB;EACtB,uBAAuB;EAEvB,gBAAgB,EAAA;EAXpB;IAcQ,eAAe,EAAA;EAdvB;IAkBQ,aAAa;IACb,8BAA8B;IAE9B,WAAW,EAAA;IArBnB;MAwBY,aAAa,EAAA;MAxBzB;QA2BgB,iBAAiB,EAAA;MA3BjC;QA+BgB,yBAAyB;QACzB,kBAAkB;QAElB,YAAY;QACZ,YAAY;QACZ,cAAc;QAEd,+BAAgC;QAChC,kBAAkB;QAClB,cAAc;QACd,eAAe,EAAA;QAzC/B;UA4CoB,gBAAgB;UAChB,yBAAyB,EAAA;MA7C7C;QAoDgB,YAAY;QACZ,yBAAyB,EAAA;IArDzC;MA2DY,SAAS;MACT,UAAU;MACV,uBAAuB;MACvB,cAAc;MACd,gBAAgB;MAChB,eAAe,EAAA;EAhE3B;IAuEQ,aAAa;IACb,8BAA8B,EAAA;EAxEtC;IA6EQ,aAAa;IACb,8BAA8B,EAAA;IA9EtC;MAiFY,SAAS;MACT,UAAU;MACV,8BAA8B,EAAA;EAnF1C;IAyFQ,WAAW;IACX,YAAY;IACZ,iBAAiB;IACjB,kBAAkB;IAClB,yBAAyB;IAEzB,+BAAgC;IAEhC,kBAAkB;IAClB,YAAY;IACZ,eAAe,EAAA;IAnGvB;MAsGY,gBAAgB;MAChB,yBAAyB,EAAA","sourcesContent":["\r\n.tranInput{\r\n\r\n  \r\n\r\n    margin-top: 20px;\r\n    padding: 0 30vh;\r\n\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n\r\n    font-weight: 900;\r\n\r\n    div{\r\n        padding: 0.2rem;\r\n    }\r\n\r\n    .tranInput__firstSection{\r\n        display: flex;\r\n        justify-content: space-between;\r\n\r\n        width: 100%;\r\n\r\n        .tranInput__firstSection__clasify{\r\n            display: flex;  \r\n\r\n            span{\r\n                line-height: 30px;\r\n            }\r\n\r\n            div{\r\n                border: 3px solid #00bfa5;\r\n                border-radius: 5px;\r\n                \r\n                width: 100px;\r\n                padding: 2px;\r\n                margin: 0 10px;\r\n\r\n                box-shadow:  2px 2px 2px #000000;\r\n                text-align: center;\r\n                color: #00bfa5; \r\n                cursor: pointer;\r\n\r\n                &:hover{\r\n                    box-shadow: none;\r\n                    border: 3px solid #00bfa5;\r\n                }\r\n\r\n            }\r\n\r\n            .selected{\r\n                @extend div;\r\n                color: white;\r\n                background-color: #00bfa5;\r\n            }\r\n\r\n        }\r\n\r\n        .tranInput__firstSection__update--delete{\r\n            border: 0;\r\n            outline: 0;\r\n            background-color: white;\r\n            color: #00bfa5;\r\n            font-weight: 900;\r\n            cursor: pointer;\r\n        }\r\n\r\n\r\n    }\r\n\r\n    .tranInputContainer__secondSection{\r\n        display: flex;\r\n        justify-content: space-between;\r\n\r\n    }\r\n\r\n    .tranInputContainer__thirdSection{\r\n        display: flex;\r\n        justify-content: space-between;\r\n\r\n        input{\r\n            border: 0;\r\n            outline: 0;\r\n            border-bottom: 1px solid black;\r\n        }\r\n\r\n    }\r\n\r\n    .tranInputContainer__lastSection--button{\r\n        width: 100%;\r\n        height: 30px;\r\n        line-height: 30px;\r\n        border-radius: 5px;\r\n        background-color: #00bfa5;\r\n\r\n        box-shadow:  2px 2px 2px #000000;\r\n\r\n        text-align: center;\r\n        color: white;\r\n        cursor: pointer;    \r\n\r\n        &:hover{\r\n            box-shadow: none;\r\n            border: 2px solid #00bfa5;\r\n        }\r\n\r\n\r\n    }\r\n\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -13745,7 +13811,6 @@ var App = /*#__PURE__*/function () {
                     console.error(err);
                   });
                 } else {
-                  console.log('test');
                   this.routing(this.urlHash);
                 }
 
@@ -13902,6 +13967,270 @@ var Header = /*#__PURE__*/function () {
 
 /***/ }),
 
+/***/ "./src/components/Navbar.js":
+/*!**********************************!*\
+  !*** ./src/components/Navbar.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _util_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/dom */ "./src/util/dom.js");
+/* harmony import */ var _public_navbar_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../public/navbar.scss */ "./src/public/navbar.scss");
+/* harmony import */ var _public_navbar_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_public_navbar_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _template_navbarTemplate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../template/navbarTemplate */ "./src/template/navbarTemplate.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+
+
+var Navbar = /*#__PURE__*/function () {
+  function Navbar(_ref) {
+    var root = _ref.root;
+
+    _classCallCheck(this, Navbar);
+
+    this.root = root;
+    this.navbar = Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$new"])("div", "navbar");
+    this.init();
+    this.render();
+  }
+
+  _createClass(Navbar, [{
+    key: "subscribe",
+    value: function subscribe(model) {
+      model.subscribe("buttonClick", this.buttonUpdate.bind(this));
+    }
+  }, {
+    key: "buttonUpdate",
+    value: function buttonUpdate(data) {
+      Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])(".navbar__monthSelector--month").innerText = "".concat(data, "\uC6D4");
+    }
+  }, {
+    key: "getInitMonth",
+    value: function getInitMonth() {
+      return new Date().getMonth();
+    }
+  }, {
+    key: "init",
+    value: function init() {
+      var month = this.getInitMonth() + 1;
+      this.navbar.innerHTML = Object(_template_navbarTemplate__WEBPACK_IMPORTED_MODULE_2__["navBarTemplate"])(month);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      this.root.appendChild(this.navbar);
+    }
+  }]);
+
+  return Navbar;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (Navbar);
+
+/***/ }),
+
+/***/ "./src/components/TransactionFrom.js":
+/*!*******************************************!*\
+  !*** ./src/components/TransactionFrom.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _util_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/dom */ "./src/util/dom.js");
+/* harmony import */ var _public_tranInput_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../public/tranInput.scss */ "./src/public/tranInput.scss");
+/* harmony import */ var _public_tranInput_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_public_tranInput_scss__WEBPACK_IMPORTED_MODULE_1__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+
+var TransactionForm = /*#__PURE__*/function () {
+  function TransactionForm(_ref) {
+    var root = _ref.root;
+
+    _classCallCheck(this, TransactionForm);
+
+    this.root = root;
+    this.transactionInput = Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$new"])("div", "tranInput");
+    this.init();
+    this.render();
+  }
+
+  _createClass(TransactionForm, [{
+    key: "init",
+    value: function init() {
+      this.transactionInput.innerHTML = "\n        <div class=\"tranInput__firstSection\">\n            <div class=\"tranInput__firstSection__clasify\">\n                <span>\uBD84\uB958</span>\n                <div class=\"tranInput__firstSection__clasify--isIncome\">\uC218\uC785</div>\n                <div class=\"tranInput__firstSection__clasify--isExpenditure selected \">\uC9C0\uCD9C</div>\n            </div>\n            <div class=\"tranInput__firstSection__update\">\n                <button class=\"tranInput__firstSection__update--delete\">\uB0B4\uC6A9 \uC9C0\uC6B0\uAE30</button>\n            </div>\n        </div>\n        <div class=\"tranInputContainer__secondSection\">\n            <div class=\"tranInputContainer__secondSection__date\">\n                <span>\uB0A0\uC9DC</span>\n                <input type=\"date\"/>\n            </div>\n            <div class=\"tranInputContainer__secondSection__date\">\n                <span>\uCE74\uD14C\uACE0\uB9AC</span>\n                <select name=\"category\">\n                    <option value=\"\uC678\uC2DD\">\uC678\uC2DD</option>\n                    <option value=\"\uBDF0\uD2F0\">\uBDF0\uD2F0</option>\n                    <option value=\"\uC0DD\uD65C\" selected=\"selected\">\uC0DD\uD65C</option>\n                    <option value=\"\uAE30\uD0C0\">\uAE30\uD0C0</option>\n                </select>\n            </div>\n            <div class=\"tranInputContainer__secondSection__date\">\n                <span>\uACB0\uC81C\uC218\uB2E8</span>\n                <select name=\"category\">\n                    <option value=\"\uC678\uC2DD\">\uC678\uC2DD</option>\n                    <option value=\"\uBDF0\uD2F0\">\uBDF0\uD2F0</option>\n                    <option value=\"\uC0DD\uD65C\" selected=\"selected\">\uC0DD\uD65C</option>\n                    <option value=\"\uAE30\uD0C0\">\uAE30\uD0C0</option>\n                </select>\n            </div>\n        </div>\n        <div class=\"tranInputContainer__thirdSection\">\n            <div class=\"tranInput__firstSection__clasify\">\n                <span>\uAE08\uC561</span>\n                <input/>\n            </div>\n            <div class=\"tranInput__firstSection__clasify\">\n                <span>\uB0B4\uC6A9</span>\n                <input/>\n            </div>\n        </div>\n        <div class=\"tranInputContainer__lastSection--button\">\n            \uD655\uC778\n        </div>\n    ";
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      this.root.appendChild(this.transactionInput);
+    }
+  }]);
+
+  return TransactionForm;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (TransactionForm);
+
+/***/ }),
+
+/***/ "./src/components/Transactionhitory.js":
+/*!*********************************************!*\
+  !*** ./src/components/Transactionhitory.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _util_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/api */ "./src/util/api.js");
+/* harmony import */ var _util_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/dom */ "./src/util/dom.js");
+/* harmony import */ var _public_tranHistory_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../public/tranHistory.scss */ "./src/public/tranHistory.scss");
+/* harmony import */ var _public_tranHistory_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_public_tranHistory_scss__WEBPACK_IMPORTED_MODULE_2__);
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+
+
+var TransactionHistory = /*#__PURE__*/function () {
+  function TransactionHistory(_ref) {
+    var root = _ref.root;
+
+    _classCallCheck(this, TransactionHistory);
+
+    this.root = root;
+    this.transactionHistory = Object(_util_dom__WEBPACK_IMPORTED_MODULE_1__["$new"])("div", "tranHistory");
+    this.init();
+    this.render();
+  }
+
+  _createClass(TransactionHistory, [{
+    key: "subscribe",
+    value: function subscribe(model) {
+      model.subscribe('getTransByMonth', this.getTrans.bind(this));
+      model.subscribe('tranUpdate', this.updateTrans.bind(this));
+    }
+  }, {
+    key: "getTrans",
+    value: function getTrans(datas) {
+      this.drawTrans(datas);
+    }
+  }, {
+    key: "updateTrans",
+    value: function updateTrans() {}
+  }, {
+    key: "getInitTran",
+    value: function () {
+      var _getInitTran = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        var year, month, _yield$getData, data;
+
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                year = new Date().getFullYear();
+                month = new Date().getMonth() + 1;
+                _context.next = 4;
+                return Object(_util_api__WEBPACK_IMPORTED_MODULE_0__["getData"])("/transaction/".concat(year, "-").concat(month));
+
+              case 4:
+                _yield$getData = _context.sent;
+                data = _yield$getData.data.data;
+                return _context.abrupt("return", data);
+
+              case 7:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function getInitTran() {
+        return _getInitTran.apply(this, arguments);
+      }
+
+      return getInitTran;
+    }()
+  }, {
+    key: "drawTrans",
+    value: function drawTrans(trans) {
+      this.transactionHistory.innerHTML = "\n      ".concat(trans.reduce(function (acc, cur) {
+        var history = "\n        <div class=\"tranHistory__hostory\">\n          <div>".concat(cur.createdAt, "</div>\n          <div>").concat(cur.category.content, "</div>\n          <div>").concat(cur.content, "</div>\n          <div>").concat(cur.payment.content, "</div>\n          <div>").concat(cur.amount, "</div>\n        </div>  \n          ");
+        return acc + history;
+      }, ''), "\n    ");
+    }
+  }, {
+    key: "init",
+    value: function () {
+      var _init = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+        var trans;
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return this.getInitTran();
+
+              case 2:
+                trans = _context2.sent;
+                trans.map(function (tran) {
+                  return console.log(tran);
+                });
+                this.drawTrans(trans);
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function init() {
+        return _init.apply(this, arguments);
+      }
+
+      return init;
+    }()
+  }, {
+    key: "render",
+    value: function render() {
+      this.root.appendChild(this.transactionHistory);
+    }
+  }]);
+
+  return TransactionHistory;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (TransactionHistory);
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -13946,6 +14275,206 @@ module.exports = content.locals || {};
 
 /***/ }),
 
+/***/ "./src/models/NavbarModel.js":
+/*!***********************************!*\
+  !*** ./src/models/NavbarModel.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _util_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/api */ "./src/util/api.js");
+/* harmony import */ var _util_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/dom */ "./src/util/dom.js");
+/* harmony import */ var _Observable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Observable */ "./src/models/Observable.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+var NavbarModel = /*#__PURE__*/function (_Observable) {
+  _inherits(NavbarModel, _Observable);
+
+  var _super = _createSuper(NavbarModel);
+
+  function NavbarModel() {
+    var _this;
+
+    _classCallCheck(this, NavbarModel);
+
+    _this = _super.call(this);
+    _this.month = "";
+    _this.trans = [];
+
+    _this.init();
+
+    return _this;
+  }
+
+  _createClass(NavbarModel, [{
+    key: "init",
+    value: function init() {
+      this.leftButtonClick();
+      this.rightButtonClick();
+      this.month = this.getInitMonth();
+    }
+  }, {
+    key: "getInitYear",
+    value: function getInitYear() {
+      return new Date().getFullYear();
+    }
+  }, {
+    key: "getInitMonth",
+    value: function getInitMonth() {
+      return new Date().getMonth() + 1;
+    }
+  }, {
+    key: "leftButtonClick",
+    value: function leftButtonClick() {
+      var _this2 = this;
+
+      var leftButton = Object(_util_dom__WEBPACK_IMPORTED_MODULE_1__["$el"])(".left");
+      leftButton.addEventListener("click", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _this2.month = _this2.month - 1 === 0 ? 12 : _this2.month - 1;
+                _context.next = 3;
+                return Object(_util_api__WEBPACK_IMPORTED_MODULE_0__["getData"])("/transaction/".concat(_this2.getInitYear(), "-").concat(_this2.month));
+
+              case 3:
+                _this2.trans = _context.sent;
+
+                _this2.notify("buttonClick", _this2.month);
+
+                _this2.notify("getTransByMonth", _this2.trans.data.data);
+
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      })));
+    }
+  }, {
+    key: "rightButtonClick",
+    value: function rightButtonClick() {
+      var _this3 = this;
+
+      var leftButton = Object(_util_dom__WEBPACK_IMPORTED_MODULE_1__["$el"])(".right");
+      leftButton.addEventListener("click", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _this3.month = _this3.month + 1 == 13 ? 1 : _this3.month + 1;
+                _context2.next = 3;
+                return Object(_util_api__WEBPACK_IMPORTED_MODULE_0__["getData"])("/transaction/".concat(_this3.getInitYear(), "-").concat(_this3.month));
+
+              case 3:
+                _this3.trans = _context2.sent;
+
+                _this3.notify("buttonClick", _this3.month);
+
+                _this3.notify("getTransByMonth", _this3.trans.data.data);
+
+              case 6:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      })));
+    }
+  }]);
+
+  return NavbarModel;
+}(_Observable__WEBPACK_IMPORTED_MODULE_2__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (NavbarModel);
+
+/***/ }),
+
+/***/ "./src/models/Observable.js":
+/*!**********************************!*\
+  !*** ./src/models/Observable.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Observable = /*#__PURE__*/function () {
+  function Observable() {
+    _classCallCheck(this, Observable);
+
+    this._observers = new Map();
+  }
+
+  _createClass(Observable, [{
+    key: "subscribe",
+    value: function subscribe(type, callback) {
+      var temp = [];
+
+      if (this._observers.get(type) != undefined) {
+        this._observers.get(type).push(callback);
+      } else {
+        temp.push(callback);
+
+        this._observers.set(type, temp);
+      }
+    }
+  }, {
+    key: "notify",
+    value: function notify(type, data) {
+      var list = this._observers.get(type);
+
+      list === null || list === void 0 ? void 0 : list.forEach(function (observer) {
+        return observer(data);
+      });
+    }
+  }]);
+
+  return Observable;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (Observable);
+
+/***/ }),
+
 /***/ "./src/public/header.scss":
 /*!********************************!*\
   !*** ./src/public/header.scss ***!
@@ -13955,6 +14484,35 @@ module.exports = content.locals || {};
 
 var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
             var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./header.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/public/header.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./src/public/navbar.scss":
+/*!********************************!*\
+  !*** ./src/public/navbar.scss ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./navbar.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/public/navbar.scss");
 
             content = content.__esModule ? content.default : content;
 
@@ -14004,6 +14562,64 @@ module.exports = content.locals || {};
 
 /***/ }),
 
+/***/ "./src/public/tranHistory.scss":
+/*!*************************************!*\
+  !*** ./src/public/tranHistory.scss ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./tranHistory.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/public/tranHistory.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./src/public/tranInput.scss":
+/*!***********************************!*\
+  !*** ./src/public/tranInput.scss ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./tranInput.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/public/tranInput.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
 /***/ "./src/template/headerTemplate.js":
 /*!****************************************!*\
   !*** ./src/template/headerTemplate.js ***!
@@ -14032,6 +14648,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loginTemplate", function() { return loginTemplate; });
 var loginTemplate = function loginTemplate() {
   return "\n        <div class=\"form loginForm\">\n            <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"email\"/>\n            <input type=\"password\" name=\"password\" id=\"password\" placeholder=\"password\"/>\n            <input type=\"button\" class=\"loginFormButton\" id=\"localLoginButton\" value=\"login\">\n            <input type=\"button\" class=\"loginFormButton\" id=\"kakaoLoginButton\" value=\"kakao login\">\n            <input type=\"button\" class=\"loginFormButton\" id=\"goToRegister\" value=\"to to register\">\n        </div>\n";
+};
+
+/***/ }),
+
+/***/ "./src/template/navbarTemplate.js":
+/*!****************************************!*\
+  !*** ./src/template/navbarTemplate.js ***!
+  \****************************************/
+/*! exports provided: navBarTemplate */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "navBarTemplate", function() { return navBarTemplate; });
+var navBarTemplate = function navBarTemplate(date) {
+  return "\n    <div class=\"navbar__monthSelector\">\n        <button class=\"navbar__monthSelector--button left\">\u25C0</button>\n        <span class=\"navbar__monthSelector--month\">".concat(date, "\uC6D4</span>\n        <button class=\"navbar__monthSelector--button right\">\u25B6</button>\n    </div>\n        <div class=\"navbar__contentSelector\">\n        <div class=\"navbar__contentSelctor--history\">\uB0B4\uC5ED</div>\n        <div class=\"navbar__contentSelctor--clander\">\uB2EC\uB825</div>\n        <div class=\"navbar__contentSelctor--analysis\">\uD1B5\uACC4</div>\n    </div>\n  ");
 };
 
 /***/ }),
@@ -14338,22 +14970,55 @@ var LoginPage = /*#__PURE__*/function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Header */ "./src/components/Header.js");
+/* harmony import */ var _components_Navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Navbar */ "./src/components/Navbar.js");
+/* harmony import */ var _components_TransactionFrom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/TransactionFrom */ "./src/components/TransactionFrom.js");
+/* harmony import */ var _components_Transactionhitory__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Transactionhitory */ "./src/components/Transactionhitory.js");
+/* harmony import */ var _models_NavbarModel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../models/NavbarModel */ "./src/models/NavbarModel.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 
-var MainPage = function MainPage(_ref) {
-  var root = _ref.root;
 
-  _classCallCheck(this, MainPage);
 
-  new _components_Header__WEBPACK_IMPORTED_MODULE_0__["default"]({
-    root: root
-  }); // 헤더 필요하고,
-  // 가계부
-  // 날짜
-  // 표
-};
+
+
+
+var MainPage = /*#__PURE__*/function () {
+  function MainPage(_ref) {
+    var root = _ref.root;
+
+    _classCallCheck(this, MainPage);
+
+    this.root = root;
+    this.init();
+  }
+
+  _createClass(MainPage, [{
+    key: "init",
+    value: function init() {
+      var header = new _components_Header__WEBPACK_IMPORTED_MODULE_0__["default"]({
+        root: this.root
+      });
+      var navbar = new _components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"]({
+        root: this.root
+      });
+      var tranInput = new _components_TransactionFrom__WEBPACK_IMPORTED_MODULE_2__["default"]({
+        root: this.root
+      });
+      var tranHistory = new _components_Transactionhitory__WEBPACK_IMPORTED_MODULE_3__["default"]({
+        root: this.root
+      });
+      var navbarModel = new _models_NavbarModel__WEBPACK_IMPORTED_MODULE_4__["default"]();
+      navbar.subscribe(navbarModel);
+      tranHistory.subscribe(navbarModel);
+    }
+  }]);
+
+  return MainPage;
+}();
 
 /* harmony default export */ __webpack_exports__["default"] = (MainPage);
 

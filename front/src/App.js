@@ -29,7 +29,6 @@ export class App {
           console.error(err);
         });
     } else {
-      console.log("test");
       this.routing(this.urlHash);
     }
   }
