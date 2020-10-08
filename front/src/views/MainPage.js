@@ -1,13 +1,25 @@
 import Header from "../components/Header";
 import NabVar from "../components/Navbar";
+import TranInput from "../components/TransactionFrom";
+import TranHistory from "../components/Transactionhitory";
+import NavbarModel from "../models/NavbarModel";
 
 class MainPage {
   constructor({ root }) {
-    new Header({ root });
-    new NabVar({ root });
-    // 가계부 => 입력영역, 조회역영
-    // 달력
-    // 날짜통계표
+    this.root = root;
+    this.init();
+  }
+
+  init() {
+    new Header({ root: this.root });
+    const navbar = new NabVar({ root: this.root });
+    const tranInput = new TranInput({ root: this.root });
+    const tranHistory = new TranHistory({ root: this.root });
+
+    const navbarModel = new NavbarModel();
+    navbar.subscribe(navbarModel);
+    tranHistory.subscribe(navbarModel);
+    tranInput.subscribe(navbarModel);
   }
 }
 
