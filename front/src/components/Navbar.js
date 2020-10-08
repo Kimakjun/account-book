@@ -1,7 +1,7 @@
 import { $el, $new } from "../util/dom";
 import "../public/navbar.scss";
-import navbarModel from "../models/NavbarModel";
 import { navBarTemplate } from "../template/navbarTemplate";
+import { MONTH_BUTTON_CLICK } from "../util/event";
 
 class Navbar {
   constructor({ root }) {
@@ -9,16 +9,14 @@ class Navbar {
     this.navbar = $new("div", "navbar");
     this.init();
     this.render();
-    this.subscribe();
   }
 
-  subscribe() {
-    this.model = new navbarModel();
-    this.model.subscribe("buttonClick", this.buttonUpdate.bind(this));
+  subscribe(model) {
+    model.subscribe(MONTH_BUTTON_CLICK, this.buttonUpdate.bind(this));
   }
 
-  buttonUpdate(data) {
-    $el(".navbar__monthSelector--month").innerText = `${data}월`;
+  buttonUpdate({ month }) {
+    $el(".navbar__monthSelector--month").innerText = `${month}월`;
   }
 
   getInitMonth() {

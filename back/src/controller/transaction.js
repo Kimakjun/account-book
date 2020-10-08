@@ -4,6 +4,7 @@ const {Op} = require('sequelize');
 exports.getTransaction = async(req, res, next) => {
 
         const {date} = req.params; // 2020-09
+       
         const min = new Date(date);
         const max = new Date(date);
         max.setMonth(min.getMonth() + 1);
@@ -18,7 +19,8 @@ exports.getTransaction = async(req, res, next) => {
             },{
                 model: Category,
                 attributes: ['id','content']
-            }]
+            }],
+            order: [[sequelize.literal('createdAt'), 'DESC']],
         });
 
         return res.json({success: true, data: result});

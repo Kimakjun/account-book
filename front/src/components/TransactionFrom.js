@@ -1,5 +1,6 @@
-import { $new } from "../util/dom";
+import { $el, $new } from "../util/dom";
 import "../public/tranInput.scss";
+import { TRAN_HISTORY_CLICK } from "../util/event";
 
 class TransactionForm {
   constructor({ root }) {
@@ -7,6 +8,16 @@ class TransactionForm {
     this.transactionInput = $new("div", "tranInput");
     this.init();
     this.render();
+  }
+
+  subscribe(model) {
+    model.subscribe(TRAN_HISTORY_CLICK, this.setTranInput.bind(this));
+  }
+
+  setTranInput({ tranInputs }) {
+    // 모델에서 받은 데이터로 돔 업데이트~!
+    const test = $el(".tranInput__firstSection__content input");
+    test.value = tranInputs;
   }
 
   init() {
@@ -46,11 +57,11 @@ class TransactionForm {
             </div>
         </div>
         <div class="tranInputContainer__thirdSection">
-            <div class="tranInput__firstSection__clasify">
+            <div class="tranInput__firstSection__money">
                 <span>금액</span>
                 <input/>
             </div>
-            <div class="tranInput__firstSection__clasify">
+            <div class="tranInput__firstSection__content">
                 <span>내용</span>
                 <input/>
             </div>

@@ -5,10 +5,9 @@ class Observable {
 
   subscribe(type, callback) {
     let temp = [];
-    if (this._observers.get(temp) != undefined) {
-      this._observers.get(temp).add(callback);
-    }
-    {
+    if (this._observers.get(type) != undefined) {
+      this._observers.get(type).push(callback);
+    } else {
       temp.push(callback);
       this._observers.set(type, temp);
     }
