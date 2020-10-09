@@ -5,6 +5,7 @@ import {
   MONTH_BUTTON_CLICK,
   TRAN_HISTORY_CLICK,
   MONEY_SELECT_BOX_CLICK,
+  CLEAN_TRAN_FORM,
 } from "../util/event";
 class NavbarModel extends Observable {
   constructor() {
@@ -28,7 +29,8 @@ class NavbarModel extends Observable {
     this.HistoryClick();
     this.monthButtonClick();
     this.selectBoxClick();
-    this.deleteInputForm;
+    this.cleanTranForm();
+    this.moneyTypeToogle();
   }
 
   async getCategory() {
@@ -63,6 +65,27 @@ class NavbarModel extends Observable {
       return this.month;
     }
     return null;
+  }
+
+  moneyTypeToogle() {
+    const tranInput = $el(".tranInput");
+    tranInput.addEventListener("click", (e) => {
+      if (
+        e.target.classList.contains(
+          "tranInput__firstSection__clasify--isIncome"
+        ) ||
+        e.target.classList.contains(
+          "tranInput__firstSection__clasify--isExpenditure"
+        )
+      ) {
+        $el(".tranInput__firstSection__clasify--isIncome").classList.toggle(
+          "selected"
+        );
+        $el(
+          ".tranInput__firstSection__clasify--isExpenditure"
+        ).classList.toggle("selected");
+      }
+    });
   }
 
   async monthButtonClick() {
@@ -103,6 +126,18 @@ class NavbarModel extends Observable {
         trans: returnedTrans,
         type: this.slectType,
       });
+    });
+  }
+
+  cleanTranForm() {
+    const tranInput = $el(".tranInput");
+    tranInput.addEventListener("click", (e) => {
+      if (e.target.className === "tranInput__firstSection__update--delete") {
+        this.notify(CLEAN_TRAN_FORM, {
+          categorys: this.categorys,
+          payments: this.payments,
+        });
+      }
     });
   }
 
