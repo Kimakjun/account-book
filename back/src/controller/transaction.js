@@ -4,7 +4,7 @@ const {Op} = require('sequelize');
 exports.getTransaction = async(req, res, next) => {
 
         const {date} = req.params; // 2020-09
-       
+        // TODO: where 조건 추가, req.user.id 현재로그인한 사용자정보
         const min = new Date(date);
         const max = new Date(date);
         max.setMonth(min.getMonth() + 1);

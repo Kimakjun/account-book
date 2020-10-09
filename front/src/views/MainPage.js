@@ -16,6 +16,8 @@ class MainPage {
     const tranInput = new TranInput({ root: this.root });
     const tranHistory = new TranHistory({ root: this.root });
 
+    // TODO: 돔다그리고 이벤트 달아야함..!
+
     const navbarModel = new NavbarModel();
     navbar.subscribe(navbarModel);
     tranHistory.subscribe(navbarModel);

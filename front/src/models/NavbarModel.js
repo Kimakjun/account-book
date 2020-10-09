@@ -1,19 +1,34 @@
 import { getData } from "../util/api";
 import { $el } from "../util/dom";
 import Observable from "./Observable";
-import { MONTH_BUTTON_CLICK, TRAN_HISTORY_CLICK } from "../util/event";
+import {
+  MONTH_BUTTON_CLICK,
+  TRAN_HISTORY_CLICK,
+  MONEY_SELECT_BOX_CLICK,
+} from "../util/event";
 class NavbarModel extends Observable {
   constructor() {
     super();
-    this.month = "";
-    this.trans = [];
+    this.month = this.getMonth();
+    this.trans;
+    this.slectType = { income: true, expenditure: true };
     this.init();
   }
 
-  init() {
+  async init() {
+    this.trans = await this.getTran();
+    this.initEvent();
+  }
+
+  initEvent() {
     this.HistoryClick();
     this.monthButtonClick();
-    this.month = this.getMonth();
+    this.selectBoxClick();
+  }
+
+  async getTran() {
+    const datas = await getData(`/transaction/${this.getYear()}-${this.month}`);
+    return datas.data.data;
   }
 
   getYear() {
@@ -35,18 +50,50 @@ class NavbarModel extends Observable {
     return null;
   }
 
-  monthButtonClick() {
+  async monthButtonClick() {
     const monthSelector = $el(".navbar__monthSelector");
     monthSelector.addEventListener("click", async (e) => {
       if (this.getMonthByType(e.target.classList) === null) return;
-      this.trans = await getData(
-        `/transaction/${this.getYear()}-${this.month}`
-      );
+      this.trans = await this.getTran();
       this.notify(MONTH_BUTTON_CLICK, {
         month: this.month,
-        trans: this.trans.data.data,
+        trans: this.trans,
       });
     });
+  }
+
+  selectBoxClick() {
+    const historyHeader = $el(".tranHistory");
+    historyHeader.addEventListener("click", (e) => {
+      if (e.target.className === "tranHistory_header--income") {
+        this.slectType = { ...this.slectType, income: !this.slectType.income };
+      }
+      if (e.target.className === "tranHistory_header--expenditure") {
+        this.slectType = {
+          ...this.slectType,
+          expenditure: !this.slectType.expenditure,
+        };
+      }
+      let returnedTrans = this.trans;
+      if (this.slectType.income && !this.slectType.expenditure) {
+        returnedTrans = this.trans.filter((tran) => tran.isIncome);
+      }
+      if (!this.slectType.income && this.slectType.expenditure) {
+        returnedTrans = this.trans.filter((tran) => !tran.isIncome);
+      }
+      if (!this.slectType.income && !this.slectType.expenditure) {
+        returnedTrans = [];
+      }
+      this.notify(MONEY_SELECT_BOX_CLICK, {
+        trans: returnedTrans,
+        type: this.slectType,
+      });
+    });
+
+    // 둘다 체크일떄
+    // 수입만 체크일떄
+    // 지출만 체크일떄
+    // 둘다 아닐때
   }
 
   HistoryClick() {
@@ -54,9 +101,9 @@ class NavbarModel extends Observable {
     //https://juein.tistory.com/63
     const tranHistory = $el(".tranHistory");
     tranHistory.addEventListener("click", (e) => {
-      if (e.target.className === "tranHistory__history") {
+      if (e.target.className === "tranHistory_body__content--each") {
         this.notify(TRAN_HISTORY_CLICK, {
-          tranInputs: "새로운 데이터 갑니다~!",
+          tranInputs: JSON.parse(e.target.dataset.info),
         });
       }
     });

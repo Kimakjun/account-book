@@ -59,8 +59,6 @@ exports.logout = (req, res, next) => {
 exports.generateToken = (req, res, next) => {
     const {user,  type} = req.locals;
     const secretKey = process.env.JWT_SECRET;
-    console.log(user.nick);
-    console.log(user);
     const payLoad = {
         id: user.id,
         email: user.email,

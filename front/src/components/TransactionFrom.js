@@ -1,4 +1,4 @@
-import { $el, $new } from "../util/dom";
+import { $new } from "../util/dom";
 import "../public/tranInput.scss";
 import { TRAN_HISTORY_CLICK } from "../util/event";
 
@@ -14,10 +14,8 @@ class TransactionForm {
     model.subscribe(TRAN_HISTORY_CLICK, this.setTranInput.bind(this));
   }
 
-  setTranInput({ tranInputs }) {
+  setTranInput() {
     // 모델에서 받은 데이터로 돔 업데이트~!
-    const test = $el(".tranInput__firstSection__content input");
-    test.value = tranInputs;
   }
 
   init() {
