@@ -12,11 +12,15 @@ class NavbarModel extends Observable {
     this.month = this.getMonth();
     this.trans;
     this.slectType = { income: true, expenditure: true };
+    this.categorys;
+    this.payments;
     this.init();
   }
 
   async init() {
     this.trans = await this.getTran();
+    this.categorys = await this.getCategory();
+    this.payments = await this.getPayments();
     this.initEvent();
   }
 
@@ -24,6 +28,17 @@ class NavbarModel extends Observable {
     this.HistoryClick();
     this.monthButtonClick();
     this.selectBoxClick();
+    this.deleteInputForm;
+  }
+
+  async getCategory() {
+    const res = await getData(`/category`);
+    return res.data.data;
+  }
+
+  async getPayments() {
+    const res = await getData(`/payment`);
+    return res.data.data;
   }
 
   async getTran() {
@@ -89,11 +104,6 @@ class NavbarModel extends Observable {
         type: this.slectType,
       });
     });
-
-    // 둘다 체크일떄
-    // 수입만 체크일떄
-    // 지출만 체크일떄
-    // 둘다 아닐때
   }
 
   HistoryClick() {
@@ -104,6 +114,8 @@ class NavbarModel extends Observable {
       if (e.target.className === "tranHistory_body__content--each") {
         this.notify(TRAN_HISTORY_CLICK, {
           tranInputs: JSON.parse(e.target.dataset.info),
+          categorys: this.categorys,
+          payments: this.payments,
         });
       }
     });
