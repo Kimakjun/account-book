@@ -7,6 +7,7 @@ import {
   MONEY_SELECT_BOX_CLICK,
   CLEAN_TRAN_FORM,
   ENTER_TRAN_VALUE,
+  MONEY_TYPE_CLICK,
 } from "../util/event";
 class NavbarModel extends Observable {
   constructor() {
@@ -14,6 +15,7 @@ class NavbarModel extends Observable {
     this.month = this.getMonth();
     this.trans;
     this.tranInputs = {
+      isIncome: "",
       date: "",
       categoryId: "",
       paymentId: "",
@@ -87,12 +89,17 @@ class NavbarModel extends Observable {
           "tranInput__firstSection__clasify--isExpenditure"
         )
       ) {
+        const isIncome = e.target.classList.contains(
+          "tranInput__firstSection__clasify--isIncome"
+        );
         $el(".tranInput__firstSection__clasify--isIncome").classList.toggle(
           "selected"
         );
         $el(
           ".tranInput__firstSection__clasify--isExpenditure"
         ).classList.toggle("selected");
+        this.tranInputs = { ...this.tranInputs, isIncome: isIncome };
+        this.notify(MONEY_TYPE_CLICK, { categorys: this.categorys, isIncome });
       }
     });
   }

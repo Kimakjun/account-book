@@ -4,6 +4,7 @@ import {
   TRAN_HISTORY_CLICK,
   CLEAN_TRAN_FORM,
   ENTER_TRAN_VALUE,
+  MONEY_TYPE_CLICK,
 } from "../util/event";
 import { getData } from "../util/api";
 class TransactionForm {
@@ -20,6 +21,7 @@ class TransactionForm {
     model.subscribe(TRAN_HISTORY_CLICK, this.setTranInput.bind(this));
     model.subscribe(CLEAN_TRAN_FORM, this.setTranInput.bind(this));
     model.subscribe(ENTER_TRAN_VALUE, this.updateTranInput.bind(this));
+    model.subscribe(MONEY_TYPE_CLICK, this.changeCategoryBox.bind(this));
   }
 
   async init() {
@@ -66,6 +68,20 @@ class TransactionForm {
     this.drawTransactionInput({ inputsData: tranInputs, categorys, payments });
   }
 
+  changeCategoryBox({ categorys, isIncome }) {
+    const moneyType = isIncome ? "수입" : "지출";
+    const category = $el(".category");
+    if (!category) return;
+    category.innerHTML = `
+      <option value="category">카테고리</option>
+        ${categorys.reduce((acc, cur) => {
+          if (cur.isIncome !== moneyType) return acc;
+          acc += `<option data-id=${cur.id} value=${cur.content}>${cur.content}</option>`;
+          return acc;
+        })}
+    `;
+  }
+
   drawTransactionInput({
     inputsData = { isIncome: false },
     categorys = this.initCategory,
@@ -93,9 +109,9 @@ class TransactionForm {
             <span>날짜</span>
             <input name="date" type="date" value="${date}"/>
         </div>
-        <div class="tranInputContainer__secondSection__date">
+        <div class="tranInputContainer__secondSection__category">
             <span>카테고리</span>
-            <select name="category">
+            <select class="category" name="category">
                 <option value="category">카테고리</option>
                 ${categorys.reduce((acc, cur) => {
                   if (cur.isIncome !== moneyType) return acc;
@@ -104,7 +120,7 @@ class TransactionForm {
                 })}
             </select>
         </div>
-        <div class="tranInputContainer__secondSection__date">
+        <div class="tranInputContainer__secondSection__payment">
             <span>결제수단</span>
             <select name="payment">
                 <option value="payment">결제수단</option>
