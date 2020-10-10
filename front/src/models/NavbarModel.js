@@ -6,12 +6,20 @@ import {
   TRAN_HISTORY_CLICK,
   MONEY_SELECT_BOX_CLICK,
   CLEAN_TRAN_FORM,
+  ENTER_TRAN_VALUE,
 } from "../util/event";
 class NavbarModel extends Observable {
   constructor() {
     super();
     this.month = this.getMonth();
     this.trans;
+    this.tranInputs = {
+      date: "",
+      categoryId: "",
+      paymentId: "",
+      amount: "",
+      content: "",
+    }; // 변화값관리하다 확인시 보내면 되는 정보.
     this.slectType = { income: true, expenditure: true };
     this.categorys;
     this.payments;
@@ -31,6 +39,7 @@ class NavbarModel extends Observable {
     this.selectBoxClick();
     this.cleanTranForm();
     this.moneyTypeToogle();
+    this.tranInputChange();
   }
 
   async getCategory() {
@@ -88,6 +97,44 @@ class NavbarModel extends Observable {
     });
   }
 
+  tranInputChange() {
+    const tranInput = $el(".tranInput");
+    tranInput.addEventListener("input", (e) => {
+      const { name } = e.target;
+      if (name === "date") {
+        this.tranInputs = { ...this.tranInputs, date: e.target.value };
+      }
+      if (name === "content") {
+        this.tranInputs = { ...this.tranInputs, content: e.target.value };
+      }
+      if (name === "amount") {
+        const newValue = e.target.value.replace(/[,||원]+/gi, "");
+        console.log(newValue, "test");
+        if (isNaN(newValue)) {
+          e.target.value = "";
+          return alert("금액은 숫자만 입력하세요!");
+        }
+        this.tranInputs = { ...this.tranInputs, amount: newValue };
+      }
+      if (name === "category") {
+        for (let i of e.target.options) {
+          if (i.selected) {
+            this.tranInputs = { ...this.tranInputs, categoryId: i.dataset.id };
+          }
+        }
+      }
+      if (name === "payment") {
+        for (let i of e.target.options) {
+          if (i.selected) {
+            this.tranInputs = { ...this.tranInputs, categoryId: i.dataset.id };
+          }
+        }
+      }
+      console.log(this.tranInputs);
+      this.notify(ENTER_TRAN_VALUE, { tranInputs: this.tranInputs });
+    });
+  }
+
   async monthButtonClick() {
     const monthSelector = $el(".navbar__monthSelector");
     monthSelector.addEventListener("click", async (e) => {
@@ -133,6 +180,13 @@ class NavbarModel extends Observable {
     const tranInput = $el(".tranInput");
     tranInput.addEventListener("click", (e) => {
       if (e.target.className === "tranInput__firstSection__update--delete") {
+        this.tranInputs = {
+          date: "",
+          categoryId: "",
+          paymentId: "",
+          amount: "",
+          content: "",
+        };
         this.notify(CLEAN_TRAN_FORM, {
           categorys: this.categorys,
           payments: this.payments,
