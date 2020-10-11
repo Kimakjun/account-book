@@ -1,5 +1,7 @@
 import { $new } from "../util/dom";
 import "../public/modal.scss";
+import { MANAGEMENT_MADAL_OPEN } from "../util/event";
+
 class Modal {
   constructor({ root }) {
     this.root = root;
@@ -8,27 +10,16 @@ class Modal {
     this.render();
   }
 
-  subscribe() {}
+  subscribe(model) {
+    model.subscribe(MANAGEMENT_MADAL_OPEN, this.drwaModal.bind(this));
+  }
 
   init() {
-    const datas = [
-      {
-        content: "test",
-        id: 2,
-      },
-      {
-        content: "tesadasdst2",
-        id: 3,
-      },
-      {
-        content: "test3",
-        id: 4,
-      },
-    ];
-    this.drwaModal({ datas, type: "결제 수단" });
+    this.drwaModal({ datas: [], type: "결제 수단" });
   }
 
   drwaModal({ datas, type }) {
+    console.log("test");
     this.ModalContainer.innerHTML = `
             <div class="modal__wrapper">
                 <div class ="modal__header">

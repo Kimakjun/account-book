@@ -1,5 +1,5 @@
 import { getData } from "../util/api";
-import { $el } from "../util/dom";
+import { $el, setStyle } from "../util/dom";
 import Observable from "./Observable";
 import {
   MONTH_BUTTON_CLICK,
@@ -8,6 +8,7 @@ import {
   CLEAN_TRAN_FORM,
   ENTER_TRAN_VALUE,
   MONEY_TYPE_CLICK,
+  MANAGEMENT_MADAL_OPEN,
 } from "../util/event";
 class NavbarModel extends Observable {
   constructor() {
@@ -42,6 +43,7 @@ class NavbarModel extends Observable {
     this.cleanTranForm();
     this.moneyTypeToogle();
     this.tranInputChange();
+    this.ModalControl();
   }
 
   async getCategory() {
@@ -76,6 +78,31 @@ class NavbarModel extends Observable {
       return this.month;
     }
     return null;
+  }
+
+  ModalControl() {
+    $el(".header").addEventListener("click", (e) => {
+      if (e.target.className === "util__category") {
+        setStyle($el(".modal"), { display: "flex" });
+        this.notify(MANAGEMENT_MADAL_OPEN, {
+          datas: this.categorys,
+          type: "카테고리",
+        });
+      }
+      if (e.target.className === "util__payment") {
+        setStyle($el(".modal"), { display: "flex" });
+        this.notify(MANAGEMENT_MADAL_OPEN, {
+          datas: this.payments,
+          type: "결제수단",
+        });
+      }
+    });
+
+    $el(".modal").addEventListener("click", (e) => {
+      if (e.target.className === "modal__header--delete") {
+        setStyle($el(".modal"), { display: "none" });
+      }
+    });
   }
 
   moneyTypeToogle() {

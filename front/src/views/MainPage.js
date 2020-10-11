@@ -13,7 +13,7 @@ class MainPage {
 
   init() {
     new Header({ root: this.root });
-    new Modal({ root: this.root });
+    const modal = new Modal({ root: this.root });
     const navbar = new NabVar({ root: this.root });
     const tranInput = new TranInput({ root: this.root });
     const tranHistory = new TranHistory({ root: this.root });
@@ -21,6 +21,7 @@ class MainPage {
     // TODO: 돔다그리고 이벤트 달아야함..!
 
     const navbarModel = new NavbarModel();
+    modal.subscribe(navbarModel);
     navbar.subscribe(navbarModel);
     tranHistory.subscribe(navbarModel);
     tranInput.subscribe(navbarModel);
