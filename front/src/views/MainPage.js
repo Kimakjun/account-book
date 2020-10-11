@@ -1,4 +1,5 @@
 import Header from "../components/Header";
+import Modal from "../components/Modal";
 import NabVar from "../components/Navbar";
 import TranInput from "../components/TransactionFrom";
 import TranHistory from "../components/Transactionhitory";
@@ -12,6 +13,7 @@ class MainPage {
 
   init() {
     new Header({ root: this.root });
+    new Modal({ root: this.root });
     const navbar = new NabVar({ root: this.root });
     const tranInput = new TranInput({ root: this.root });
     const tranHistory = new TranHistory({ root: this.root });
