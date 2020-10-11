@@ -5,6 +5,7 @@ import {
   CLEAN_TRAN_FORM,
   ENTER_TRAN_VALUE,
   MONEY_TYPE_CLICK,
+  PAYMENT_CHANGE,
 } from "../util/event";
 import { getData } from "../util/api";
 class TransactionForm {
@@ -20,6 +21,7 @@ class TransactionForm {
   subscribe(model) {
     model.subscribe(TRAN_HISTORY_CLICK, this.setTranInput.bind(this));
     model.subscribe(CLEAN_TRAN_FORM, this.setTranInput.bind(this));
+    model.subscribe(PAYMENT_CHANGE, this.changePaymentBox.bind(this));
     model.subscribe(ENTER_TRAN_VALUE, this.updateTranInput.bind(this));
     model.subscribe(MONEY_TYPE_CLICK, this.changeCategoryBox.bind(this));
   }
@@ -65,6 +67,7 @@ class TransactionForm {
 
   setTranInput({ tranInputs, categorys, payments }) {
     // 모델에서 받은 데이터로 돔 업데이트~!
+    console.log(tranInputs);
     this.drawTransactionInput({ inputsData: tranInputs, categorys, payments });
   }
 
@@ -79,6 +82,20 @@ class TransactionForm {
           acc += `<option data-id=${cur.id} value=${cur.content}>${cur.content}</option>`;
           return acc;
         })}
+    `;
+  }
+
+  changePaymentBox({ payments }) {
+    const payment = $el(".payment");
+    if (!payment) return;
+    payment.innerHTML = `
+      <option value="payment">결제수단</option>
+    ${payments.reduce((acc, cur) => {
+      acc += `<option data-id=${cur.id} value=${cur.content}>
+                  ${cur.content}
+                </option>`;
+      return acc;
+    }, "")}
     `;
   }
 
@@ -115,21 +132,42 @@ class TransactionForm {
                 <option value="category">카테고리</option>
                 ${categorys.reduce((acc, cur) => {
                   if (cur.isIncome !== moneyType) return acc;
-                  acc += `<option data-id=${cur.id} value=${cur.content}>${cur.content}</option>`;
+
+                  acc += `<option 
+                            data-id=${cur.id} value=${cur.content}
+                            ${
+                              inputsData.category &&
+                              cur.id === inputsData.category.id
+                                ? "selected"
+                                : ""
+                            }
+                            >
+                            ${cur.content}
+                            </option>`;
                   return acc;
                 })}
             </select>
         </div>
         <div class="tranInputContainer__secondSection__payment">
             <span>결제수단</span>
-            <select name="payment">
+            <select class="payment" name="payment">
                 <option value="payment">결제수단</option>
                 ${
                   payments.length !== 0 &&
                   payments.reduce((acc, cur) => {
-                    acc += `<option data-id=${cur.id} value=${cur.content}>${cur.content}</option>`;
+                    acc += `<option 
+                              data-id=${cur.id} value=${cur.content}
+                              ${
+                                inputsData.payment &&
+                                cur.id === inputsData.payment.id
+                                  ? "selected"
+                                  : ""
+                              }
+                            >
+                              ${cur.content}
+                            </option>`;
                     return acc;
-                  })
+                  }, "")
                 }
             </select>
         </div>
@@ -143,7 +181,7 @@ class TransactionForm {
         </div>
         <div class="tranInput__firstSection__content">
             <span>내용</span>
-            <input name="content" ="${inputsData.content || ""}" />
+            <input name="content" value="${inputsData.content || ""}" />
         </div>
     </div>
     <div class="tranInputContainer__lastSection--button">

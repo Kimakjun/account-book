@@ -1,25 +1,20 @@
 import { $new } from "../util/dom";
 import "../public/modal.scss";
-import { MANAGEMENT_MADAL_OPEN } from "../util/event";
+import { MANAGEMENT_MADAL_OPEN, MONEY_MANAGEMENT_CHANGE } from "../util/event";
 
 class Modal {
   constructor({ root }) {
     this.root = root;
     this.ModalContainer = $new("div", "modal");
-    this.init();
     this.render();
   }
 
   subscribe(model) {
     model.subscribe(MANAGEMENT_MADAL_OPEN, this.drwaModal.bind(this));
-  }
-
-  init() {
-    this.drwaModal({ datas: [], type: "결제 수단" });
+    model.subscribe(MONEY_MANAGEMENT_CHANGE, this.drwaModal.bind(this));
   }
 
   drwaModal({ datas, type }) {
-    console.log("test");
     this.ModalContainer.innerHTML = `
             <div class="modal__wrapper">
                 <div class ="modal__header">
@@ -28,8 +23,8 @@ class Modal {
                 </div>
                 <div class="modal__inputContent">
                     <span>${type} 이름</span>
-                    <input name=${type} />
-                    <button class="modal__inputContent--button">
+                    <input class="modal__inputContent--input" name=${type} />
+                    <button class="modal__inputContent--button" data-type=${type}>
                         등록
                     </button>
                 </div>
@@ -39,7 +34,7 @@ class Modal {
                             <div class="modal__cotentList__content">
                                 <div></div>
                                 <span>${cur.content}</span>
-                                <button id=${cur.id}>X</button>
+                                <button class="modal__cotentList__content--delete" data-type=${type} id=${cur.id}>X</button>
                             </div>
                         `;
                       return acc;

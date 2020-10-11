@@ -1,4 +1,4 @@
-import { getData } from "../util/api";
+import { getData, postData, deleteData } from "../util/api";
 import { $el, setStyle } from "../util/dom";
 import Observable from "./Observable";
 import {
@@ -9,6 +9,8 @@ import {
   ENTER_TRAN_VALUE,
   MONEY_TYPE_CLICK,
   MANAGEMENT_MADAL_OPEN,
+  MONEY_MANAGEMENT_CHANGE,
+  PAYMENT_CHANGE,
 } from "../util/event";
 class NavbarModel extends Observable {
   constructor() {
@@ -44,6 +46,8 @@ class NavbarModel extends Observable {
     this.moneyTypeToogle();
     this.tranInputChange();
     this.ModalControl();
+    this.createMoneyManagement();
+    this.deleteMoneyManagement();
   }
 
   async getCategory() {
@@ -53,6 +57,7 @@ class NavbarModel extends Observable {
 
   async getPayments() {
     const res = await getData(`/payment`);
+    console.log(res.data.data);
     return res.data.data;
   }
 
@@ -78,6 +83,62 @@ class NavbarModel extends Observable {
       return this.month;
     }
     return null;
+  }
+
+  createMoneyManagement() {
+    // create 눌렀을때 , dataset. 으로 카테고리, 결제수단 판단
+    // 보내고 응답이 오면 카테고리, 페이먼트 상태 갱신하고, 인풋폼, 모달 폼새로 그려줌
+    // 삭제도 마찬가지
+    $el(".modal").addEventListener("click", (e) => {
+      if (e.target.className === "modal__inputContent--button") {
+        if (e.target.dataset.type === "결제수단") {
+          const content = $el(".modal__inputContent--input").value;
+          if (content.length === 0) return;
+          postData("/payment", { content: content })
+            .then(async () => {
+              this.payments = await this.getPayments();
+              this.notify(MONEY_MANAGEMENT_CHANGE, {
+                datas: this.payments,
+                type: "결제수단",
+              });
+              this.notify(PAYMENT_CHANGE, { payments: this.payments });
+              this.tranInputs = { ...this.tranInputs, paymentId: "" };
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+        }
+        // if(e.target.dataset.type === '카테고리'){
+
+        // }
+      }
+    });
+  }
+
+  deleteMoneyManagement() {
+    $el(".modal").addEventListener("click", (e) => {
+      if (e.target.className === "modal__cotentList__content--delete") {
+        if (e.target.dataset.type === "결제수단") {
+          if (!confirm("정말로 삭제하시겠습니까 ?")) return;
+          deleteData(`/payment/${e.target.id}`)
+            .then(async () => {
+              this.payments = await this.getPayments();
+              this.notify(MONEY_MANAGEMENT_CHANGE, {
+                datas: this.payments,
+                type: "결제수단",
+              });
+              this.notify(PAYMENT_CHANGE, { payments: this.payments });
+              this.tranInputs = { ...this.tranInputs, paymentId: "" };
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+        }
+        // if(e.target.dataset.type === '카테고리'){
+
+        // }
+      }
+    });
   }
 
   ModalControl() {
@@ -125,7 +186,11 @@ class NavbarModel extends Observable {
         $el(
           ".tranInput__firstSection__clasify--isExpenditure"
         ).classList.toggle("selected");
-        this.tranInputs = { ...this.tranInputs, isIncome: isIncome };
+        this.tranInputs = {
+          ...this.tranInputs,
+          isIncome: isIncome,
+          categoryId: "",
+        };
         this.notify(MONEY_TYPE_CLICK, { categorys: this.categorys, isIncome });
       }
     });
@@ -160,7 +225,7 @@ class NavbarModel extends Observable {
       if (name === "payment") {
         for (let i of e.target.options) {
           if (i.selected) {
-            this.tranInputs = { ...this.tranInputs, categoryId: i.dataset.id };
+            this.tranInputs = { ...this.tranInputs, paymentId: i.dataset.id };
           }
         }
       }
@@ -235,6 +300,7 @@ class NavbarModel extends Observable {
     const tranHistory = $el(".tranHistory");
     tranHistory.addEventListener("click", (e) => {
       if (e.target.className === "tranHistory_body__content--each") {
+        console.log(this.payments);
         this.notify(TRAN_HISTORY_CLICK, {
           tranInputs: JSON.parse(e.target.dataset.info),
           categorys: this.categorys,
