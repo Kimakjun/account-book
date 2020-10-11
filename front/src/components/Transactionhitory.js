@@ -1,5 +1,5 @@
 import { getData } from "../util/api";
-import { $el, $new } from "../util/dom";
+import { $new } from "../util/dom";
 import "../public/tranHistory.scss";
 import { MONTH_BUTTON_CLICK, MONEY_SELECT_BOX_CLICK } from "../util/event";
 
@@ -42,25 +42,30 @@ class TransactionHistory {
       if (tran.isIncome) totalIncome += tran.amount;
       else totalExpenditure += tran.amount;
     });
+    console.log(type.income);
+    console.log(type.expenditure);
     const tranHistory_header = $new("div", "tranHistory_header");
     tranHistory_header.innerHTML = `
+      <div class="tranHistory_header__income">
         <input class="tranHistory_header--income" name="checkbox" type="checkbox" value="수입" ${
           type.income ? `checked` : ``
         }/>
-        <span>수입${Number(totalIncome).toLocaleString("en")}원</span></br>
+        <span>수입 ${Number(totalIncome).toLocaleString("en")} 원</span>
+      </div>
+      <div class="tranHistory_header__expenditure">
         <input class="tranHistory_header--expenditure" name="checkbox" type="checkbox" value="지출" ${
           type.expenditure ? `checked` : ``
         }/> 
-        <span>지출 ${Number(totalExpenditure).toLocaleString("en")}원</span>
-  `;
-    $el(".tranHistory_header--income", tranHistory_header).checked = true;
+        <span>지출 ${Number(totalExpenditure).toLocaleString("en")} 원</span>
+      </div> 
+      `;
+
     this.transactionHistory.appendChild(tranHistory_header);
   }
 
-  // </div>
   drawTranHistoryBody({ trans }) {
     if (trans.length === 0) {
-      this.transactionHistory.innerHTML += `<div>내역이 없네요.</div>`;
+      this.transactionHistory.innerHTML += `<div class="tranHistory_body__empty">내역이 없네요.</div>`;
       return;
     }
     let date = "";
@@ -98,18 +103,35 @@ class TransactionHistory {
       (acc, cur, index) => {
         if (index === 0) {
           acc += `
-              <div>
-                ${tempTrans.month}월 ${tempTrans.date}일 +${tempTrans.income} -${tempTrans.expenditure}원
-              </div>
+              <div class="tranHistory_body__content__header">
+                <span class="tranHistory_body__content__header__date">${tempTrans.month}월 ${tempTrans.date}일</span> 
+                <div>
+                  <span class="tranHistory_body__content__header__income"> +${tempTrans.income}원</span>
+                  <span class="tranHistory_body__content__header__expenditure"> -${tempTrans.expenditure}원 </span>
+                </div>              
+               </div>
               `;
         }
         acc += `
             <div class = "tranHistory_body__content--each" data-info=${JSON.stringify(
               { ...cur, month: tempTrans.month, date: tempTrans.date }
             )}>
-                ${cur.category.content} ${cur.content} ${cur.payment.content} ${
-          cur.isIncome ? "+" : "-"
-        }${cur.amount} 
+              <div class="tranHistory_body__content--each__section1">
+                <div class="tranHistory_body__content__category ${
+                  cur.isIncome ? "incomeStyle" : "expenditureStyle"
+                }">${cur.category.content}</div>
+                <div class="tranHistory_body__content__content">${
+                  cur.content
+                }</div>
+              </div>
+              <div class="tranHistory_body__content--each__section2"> 
+                <div class="tranHistory_body__content__payment">${
+                  cur.payment.content
+                }</div>
+                <div class="tranHistory_body__content__isIncome  ${
+                  cur.isIncome ? "incomeStyle__money" : "expenditureStyle_money"
+                }">${cur.isIncome ? "+" : "-"}${cur.amount}</div>
+              </div>
             </div>
             `;
 

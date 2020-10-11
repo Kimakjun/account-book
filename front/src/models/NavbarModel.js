@@ -144,11 +144,12 @@ class NavbarModel extends Observable {
   ModalControl() {
     $el(".header").addEventListener("click", (e) => {
       if (e.target.className === "util__category") {
-        setStyle($el(".modal"), { display: "flex" });
-        this.notify(MANAGEMENT_MADAL_OPEN, {
-          datas: this.categorys,
-          type: "카테고리",
-        });
+        return alert("준비중입니다!");
+        // setStyle($el(".modal"), { display: "flex" });
+        // this.notify(MANAGEMENT_MADAL_OPEN, {
+        //   datas: this.categorys,
+        //   type: "카테고리",
+        // });
       }
       if (e.target.className === "util__payment") {
         setStyle($el(".modal"), { display: "flex" });
@@ -250,7 +251,9 @@ class NavbarModel extends Observable {
     const historyHeader = $el(".tranHistory");
     historyHeader.addEventListener("click", (e) => {
       if (e.target.className === "tranHistory_header--income") {
+        console.log(this.slectType);
         this.slectType = { ...this.slectType, income: !this.slectType.income };
+        console.log(this.slectType);
       }
       if (e.target.className === "tranHistory_header--expenditure") {
         this.slectType = {
