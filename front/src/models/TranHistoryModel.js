@@ -76,16 +76,17 @@ class TranHistoryModel extends Observable {
     //https://juein.tistory.com/63
     const tranHistory = $el(".tranHistory");
     tranHistory.addEventListener("click", (e) => {
-      if (e.target.className === "tranHistory_body__content--each") {
+      if (e.target.className === "tranHistory_body__content--update") {
+        this.state.setState("tranMode", "수정");
         this.notify(TRAN_HISTORY_CLICK, {
-          tranInputs: JSON.parse(e.target.dataset.info),
+          tranInputs: JSON.parse(e.target.parentNode.parentNode.dataset.info),
           categorys: this.categorys,
           payments: this.state.getState("payment"),
+          tranMode: "수정",
         });
       }
     });
   }
-  v;
 }
 
 export default TranHistoryModel;

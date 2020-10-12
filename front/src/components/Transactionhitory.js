@@ -5,6 +5,7 @@ import {
   MONTH_BUTTON_CLICK,
   MONEY_SELECT_BOX_CLICK,
   CREATE_TRAN_VALUE,
+  DELETE_TRAN,
 } from "../util/event";
 
 class TransactionHistory {
@@ -25,6 +26,7 @@ class TransactionHistory {
 
   subscribeTranInput(model) {
     model.subscribe(CREATE_TRAN_VALUE, this.getTrans.bind(this));
+    model.subscribe(DELETE_TRAN, this.getTrans.bind(this));
   }
 
   getTrans({ trans, type }) {

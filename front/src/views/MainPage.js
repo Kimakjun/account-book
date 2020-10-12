@@ -28,6 +28,7 @@ class MainPage {
     state.useState("payment", "");
     state.useState("trans", "");
     state.useState("selectType", { income: true, expenditure: true });
+    state.useState("tranMode", "생성");
 
     const modalModal = new ModalModel({ state });
     modal.subscribeModal(modalModal);

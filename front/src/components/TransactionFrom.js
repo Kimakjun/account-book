@@ -6,6 +6,8 @@ import {
   ENTER_TRAN_VALUE,
   MONEY_TYPE_CLICK,
   PAYMENT_CHANGE,
+  DELETE_TRAN_UPDATE,
+  DELETE_TRAN,
 } from "../util/event";
 import { getData } from "../util/api";
 class TransactionForm {
@@ -26,6 +28,8 @@ class TransactionForm {
     model.subscribe(ENTER_TRAN_VALUE, this.updateTranInput.bind(this));
     model.subscribe(MONEY_TYPE_CLICK, this.changeCategoryBox.bind(this));
     model.subscribe(CLEAN_TRAN_FORM, this.setTranInput.bind(this));
+    model.subscribe(DELETE_TRAN_UPDATE, this.setTranInput.bind(this));
+    model.subscribe(DELETE_TRAN, this.setTranInput.bind(this));
   }
 
   subscribeModal(model) {
@@ -69,8 +73,13 @@ class TransactionForm {
     );
   }
 
-  setTranInput({ tranInputs, categorys, payments }) {
-    this.drawTransactionInput({ inputsData: tranInputs, categorys, payments });
+  setTranInput({ tranInputs, categorys, payments, tranMode }) {
+    this.drawTransactionInput({
+      inputsData: tranInputs,
+      categorys,
+      payments,
+      tranMode,
+    });
   }
 
   changeCategoryBox({ categorys, isIncome }) {
@@ -105,6 +114,7 @@ class TransactionForm {
     inputsData = { isIncome: false },
     categorys = this.initCategory,
     payments = this.payments,
+    tranMode = "생성",
   }) {
     const date = this.getDateForm(inputsData.createdAt);
     const moneyType = inputsData.isIncome ? "수입" : "지출";
@@ -120,7 +130,13 @@ class TransactionForm {
             }">지출</div>
         </div>
         <div class="tranInput__firstSection__update">
-            <button class="tranInput__firstSection__update--delete">내용 지우기</button>
+            ${
+              tranMode === "생성"
+                ? `<button class="tranInput__firstSection__update--delete">내용 지우기</button>`
+                : `<button class="tranInput__firstSection__update--tranDlete" data-id=${inputsData.id}>삭제</button>
+              <button class="tranInput__firstSection__update--cancle">취소</button> 
+              `
+            }
         </div>
     </div>
     <div class="tranInputContainer__secondSection">

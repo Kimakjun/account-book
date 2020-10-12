@@ -1,4 +1,4 @@
-import { getData, postData } from "../util/api";
+import { deleteData, getData, postData } from "../util/api";
 import { $el } from "../util/dom";
 import Observable from "./Observable";
 import {
@@ -6,6 +6,8 @@ import {
   ENTER_TRAN_VALUE,
   MONEY_TYPE_CLICK,
   CREATE_TRAN_VALUE,
+  DELETE_TRAN_UPDATE,
+  DELETE_TRAN,
 } from "../util/event";
 class TranInputModel extends Observable {
   constructor({ state }) {
@@ -29,6 +31,8 @@ class TranInputModel extends Observable {
     this.moneyTypeToogle();
     this.tranInputChange();
     this.createNewTran();
+    this.cancleTranUpdate();
+    this.deleteTran();
   }
 
   async getCategory() {
@@ -157,6 +161,45 @@ class TranInputModel extends Observable {
         .catch((err) => {
           console.error(err);
         });
+    });
+  }
+
+  cancleTranUpdate() {
+    $el(".tranInput").addEventListener("click", (e) => {
+      if (e.target.className === "tranInput__firstSection__update--cancle") {
+        this.state.setState("tranMode", "생성");
+        this.notify(DELETE_TRAN_UPDATE, {
+          categorys: this.categorys,
+          payments: this.payments,
+          tranMode: "생성",
+        });
+      }
+    });
+  }
+
+  deleteTran() {
+    $el(".tranInput").addEventListener("click", (e) => {
+      if (e.target.className === "tranInput__firstSection__update--tranDlete") {
+        const deleteTranId = e.target.dataset.id;
+        if (!confirm("정말로 삭제하시겠습니까?")) return;
+        deleteData(`/transaction/${deleteTranId}`)
+          .then(async (res) => {
+            if (res.data.success) {
+              const newTrans = await this.getTran();
+              this.state.setState("trans", newTrans);
+              this.state.setState("tranMode", "생성");
+              this.notify(DELETE_TRAN, {
+                categorys: this.categorys,
+                payments: this.payments,
+                tranMode: "생성",
+                trans: newTrans,
+              });
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
     });
   }
 }

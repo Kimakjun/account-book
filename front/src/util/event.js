@@ -8,3 +8,5 @@ export const MANAGEMENT_MADAL_OPEN = "modalOpen";
 export const MONEY_MANAGEMENT_CHANGE = "moneyManagementChange";
 export const PAYMENT_CHANGE = "paymentChange";
 export const CREATE_TRAN_VALUE = "create_newTran";
+export const DELETE_TRAN_UPDATE = "deleteTranUpdate";
+export const DELETE_TRAN = "deleteTran";
