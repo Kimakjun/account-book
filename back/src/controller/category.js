@@ -11,7 +11,6 @@ exports.addCategories = async(req, res, next) => {
     const {content, isIncome} = req.body;
     const category = 0;
     const result = await Category.findOrCreate({where: {content, isIncome}});
-    console.log(result);
     await result[category].addUser(req.user.id);
     res.status(200).json({success: true, message: 'category created'});   
 }

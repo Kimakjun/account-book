@@ -204,7 +204,9 @@ class TransactionForm {
             }" />
         </div>
     </div>
-    <div class="tranInputContainer__lastSection--button">
+    <div class="tranInputContainer__lastSection--button" data-id=${
+      inputsData.id
+    }>
         확인
     </div>    
     `;

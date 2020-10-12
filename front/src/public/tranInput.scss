@@ -65,7 +65,12 @@
             font-weight: 900;
             cursor: pointer;
         }
-
+        .tranInput__firstSection__update--tranDlete{
+            @extend .tranInput__firstSection__update--delete;
+        }
+        .tranInput__firstSection__update--cancle{
+            @extend .tranInput__firstSection__update--delete;
+        }
 
     }
 

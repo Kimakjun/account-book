@@ -30,7 +30,7 @@ exports.getTransaction = async(req, res, next) => {
 exports.addTransaction = async(req, res, next) => {
 
     const {amount, content, date, isIncome, paymentId, categoryId} = req.body;
-    const test = await Transaction.create({
+    await Transaction.create({
         amount,
         content,
         isIncome,
@@ -39,13 +39,24 @@ exports.addTransaction = async(req, res, next) => {
         userId: req.user.id,
         createdAt: date
     })
-    console.log(test);
+
     res.json({success: true, message: 'transaction create'});
 };
 
 exports.updateTransaction = async(req, res, next) => {
     const {id} = req.params;
-    await Transaction.update(req.body, {where: {id}});
+    const {amount, content, date, isIncome, paymentId, categoryId} = req.body;
+    await Transaction.update({
+        amount,
+        content,
+        isIncome,
+        paymentId,
+        categoryId,
+        userId: req.user.id,
+        createdAt: date},
+        {
+            where: {id}
+        });
     res.json({success: true, message: 'update success'});
 };
 

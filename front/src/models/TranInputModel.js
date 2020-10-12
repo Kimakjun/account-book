@@ -1,4 +1,4 @@
-import { deleteData, getData, postData } from "../util/api";
+import { deleteData, getData, putData, postData } from "../util/api";
 import { $el } from "../util/dom";
 import Observable from "./Observable";
 import {
@@ -136,31 +136,63 @@ class TranInputModel extends Observable {
       const paymentId = this.getSelectedId("payment");
       if (!amount || !content || !date || !categoryId || !paymentId)
         return alert("올바른 값 입력하세요.");
-      postData("/transaction", {
-        amount,
-        content,
-        isIncome,
-        date,
-        categoryId,
-        paymentId,
-      })
-        .then(async (res) => {
-          if (res.data.success) {
-            // TODO: 응답이성공이면 서버에서 받지말고 생성된 값만 기존값에 추가하여 랜더링하기
-            const newTran = await this.getTran();
-            this.trans = this.state.setState("trans", newTran);
-            this.notify(CLEAN_TRAN_FORM, {
-              categorys: this.categorys,
-              payments: this.payments,
-            });
-            this.notify(CREATE_TRAN_VALUE, {
-              trans: this.trans,
-            });
-          }
+
+      const tranMode = this.state.getState("tranMode");
+      if (tranMode === "생성") {
+        postData("/transaction", {
+          amount,
+          content,
+          isIncome,
+          date,
+          categoryId,
+          paymentId,
         })
-        .catch((err) => {
-          console.error(err);
-        });
+          .then(async (res) => {
+            if (res.data.success) {
+              // TODO: 응답이성공이면 서버에서 받지말고 생성된 값만 기존값에 추가하여 랜더링하기
+              const newTran = await this.getTran();
+              this.trans = this.state.setState("trans", newTran);
+              this.notify(CLEAN_TRAN_FORM, {
+                categorys: this.categorys,
+                payments: this.payments,
+              });
+              this.notify(CREATE_TRAN_VALUE, {
+                trans: this.trans,
+              });
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
+      if (tranMode === "수정") {
+        putData(`/transaction/${e.target.dataset.id}`, {
+          amount,
+          content,
+          isIncome,
+          date,
+          categoryId,
+          paymentId,
+        })
+          .then(async (res) => {
+            if (res.data.success) {
+              // TODO: 응답이성공이면 서버에서 받지말고 생성된 값만 기존값에 추가하여 랜더링하기
+              const newTran = await this.getTran();
+              this.state.setState("tranMode", "생성");
+              this.trans = this.state.setState("trans", newTran);
+              this.notify(CLEAN_TRAN_FORM, {
+                categorys: this.categorys,
+                payments: this.payments,
+              });
+              this.notify(CREATE_TRAN_VALUE, {
+                trans: this.trans,
+              });
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
     });
   }
 
@@ -186,7 +218,7 @@ class TranInputModel extends Observable {
           .then(async (res) => {
             if (res.data.success) {
               const newTrans = await this.getTran();
-              this.state.setState("trans", newTrans);
+              this.tran = this.state.setState("trans", newTrans);
               this.state.setState("tranMode", "생성");
               this.notify(DELETE_TRAN, {
                 categorys: this.categorys,
