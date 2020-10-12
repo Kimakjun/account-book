@@ -18,12 +18,18 @@ class TransactionForm {
     this.render();
   }
 
-  subscribe(model) {
+  subscribeHistory(model) {
     model.subscribe(TRAN_HISTORY_CLICK, this.setTranInput.bind(this));
-    model.subscribe(CLEAN_TRAN_FORM, this.setTranInput.bind(this));
-    model.subscribe(PAYMENT_CHANGE, this.changePaymentBox.bind(this));
+  }
+
+  subscribeTranInput(model) {
     model.subscribe(ENTER_TRAN_VALUE, this.updateTranInput.bind(this));
     model.subscribe(MONEY_TYPE_CLICK, this.changeCategoryBox.bind(this));
+    model.subscribe(CLEAN_TRAN_FORM, this.setTranInput.bind(this));
+  }
+
+  subscribeModal(model) {
+    model.subscribe(PAYMENT_CHANGE, this.changePaymentBox.bind(this));
   }
 
   async init() {
@@ -31,7 +37,6 @@ class TransactionForm {
     this.payments = await this.getPayments();
     this.drawTransactionInput({});
   }
-  // 구독할 필요가 없는 이벤트는...?
 
   async getCategory() {
     const res = await getData(`/category`);
@@ -55,19 +60,17 @@ class TransactionForm {
   }
 
   getMoneyForm(rowMoney) {
-    //Number(totalIncome).toLocaleString("en")
     return Number(rowMoney).toLocaleString("en") + "원";
   }
 
-  updateTranInput({ tranInputs }) {
+  updateTranInput({ amount }) {
     $el(".tranInput__firstSection__money--input").value = this.getMoneyForm(
-      tranInputs.amount
+      amount
     );
   }
 
   setTranInput({ tranInputs, categorys, payments }) {
-    // 모델에서 받은 데이터로 돔 업데이트~!
-    console.log(tranInputs);
+    console.log("test");
     this.drawTransactionInput({ inputsData: tranInputs, categorys, payments });
   }
 

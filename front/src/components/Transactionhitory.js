@@ -11,8 +11,11 @@ class TransactionHistory {
     this.render();
   }
 
-  subscribe(model) {
+  subscribeNavBar(model) {
     model.subscribe(MONTH_BUTTON_CLICK, this.getTrans.bind(this));
+  }
+
+  subscribeHistory(model) {
     model.subscribe(MONEY_SELECT_BOX_CLICK, this.getTrans.bind(this));
   }
 
@@ -42,8 +45,6 @@ class TransactionHistory {
       if (tran.isIncome) totalIncome += tran.amount;
       else totalExpenditure += tran.amount;
     });
-    console.log(type.income);
-    console.log(type.expenditure);
     const tranHistory_header = $new("div", "tranHistory_header");
     tranHistory_header.innerHTML = `
       <div class="tranHistory_header__income">

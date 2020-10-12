@@ -7,3 +7,4 @@ export const MONEY_TYPE_CLICK = "moneyTypeCllick";
 export const MANAGEMENT_MADAL_OPEN = "modalOpen";
 export const MONEY_MANAGEMENT_CHANGE = "moneyManagementChange";
 export const PAYMENT_CHANGE = "paymentChange";
+export const CREATE_TRAN_VALUE = "create_newTran";

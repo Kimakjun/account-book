@@ -11,7 +11,7 @@ class Navbar {
     this.render();
   }
 
-  subscribe(model) {
+  subscribeNavBar(model) {
     model.subscribe(MONTH_BUTTON_CLICK, this.buttonUpdate.bind(this));
   }
 

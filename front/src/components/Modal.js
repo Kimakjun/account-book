@@ -9,7 +9,7 @@ class Modal {
     this.render();
   }
 
-  subscribe(model) {
+  subscribeModal(model) {
     model.subscribe(MANAGEMENT_MADAL_OPEN, this.drwaModal.bind(this));
     model.subscribe(MONEY_MANAGEMENT_CHANGE, this.drwaModal.bind(this));
   }
