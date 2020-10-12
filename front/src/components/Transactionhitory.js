@@ -1,7 +1,11 @@
 import { getData } from "../util/api";
 import { $new } from "../util/dom";
 import "../public/tranHistory.scss";
-import { MONTH_BUTTON_CLICK, MONEY_SELECT_BOX_CLICK } from "../util/event";
+import {
+  MONTH_BUTTON_CLICK,
+  MONEY_SELECT_BOX_CLICK,
+  CREATE_TRAN_VALUE,
+} from "../util/event";
 
 class TransactionHistory {
   constructor({ root }) {
@@ -17,6 +21,10 @@ class TransactionHistory {
 
   subscribeHistory(model) {
     model.subscribe(MONEY_SELECT_BOX_CLICK, this.getTrans.bind(this));
+  }
+
+  subscribeTranInput(model) {
+    model.subscribe(CREATE_TRAN_VALUE, this.getTrans.bind(this));
   }
 
   getTrans({ trans, type }) {

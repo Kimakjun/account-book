@@ -9,7 +9,7 @@ class TranHistoryModel extends Observable {
     this.month = this.getMonth();
     this.state = state;
     this.trans;
-    this.slectType = { income: true, expenditure: true };
+    this.slectType = state.getState("selectType");
     this.init();
   }
 
@@ -39,13 +39,18 @@ class TranHistoryModel extends Observable {
     const historyHeader = $el(".tranHistory");
     historyHeader.addEventListener("click", (e) => {
       if (e.target.className === "tranHistory_header--income") {
-        this.slectType = { ...this.slectType, income: !this.slectType.income };
+        const newSelectState = {
+          ...this.slectType,
+          income: !this.slectType.income,
+        };
+        this.slectType = this.state.setState("selectType", newSelectState);
       }
       if (e.target.className === "tranHistory_header--expenditure") {
-        this.slectType = {
+        const newSelectState = {
           ...this.slectType,
           expenditure: !this.slectType.expenditure,
         };
+        this.slectType = this.state.setState("selectType", newSelectState);
       }
       this.trans = this.state.getState("trans");
       let returnedTrans = this.trans;

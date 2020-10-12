@@ -27,6 +27,7 @@ class MainPage {
     state.useState("category", "");
     state.useState("payment", "");
     state.useState("trans", "");
+    state.useState("selectType", { income: true, expenditure: true });
 
     const modalModal = new ModalModel({ state });
     modal.subscribeModal(modalModal);
@@ -42,6 +43,7 @@ class MainPage {
 
     const tranInputModel = new TranInputModel({ state });
     tranInput.subscribeTranInput(tranInputModel);
+    tranHistory.subscribeTranInput(tranInputModel);
   }
 }
 

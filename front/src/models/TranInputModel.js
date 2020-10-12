@@ -1,10 +1,11 @@
-import { getData } from "../util/api";
+import { getData, postData } from "../util/api";
 import { $el } from "../util/dom";
 import Observable from "./Observable";
 import {
   CLEAN_TRAN_FORM,
   ENTER_TRAN_VALUE,
   MONEY_TYPE_CLICK,
+  CREATE_TRAN_VALUE,
 } from "../util/event";
 class TranInputModel extends Observable {
   constructor({ state }) {
@@ -107,11 +108,57 @@ class TranInputModel extends Observable {
     });
   }
 
+  getSelectedId(type) {
+    const options = $el(`.${type}`);
+    for (let i = 0; i < options.length; i++) {
+      if (options[i].selected) return options[i].dataset.id;
+    }
+    return false;
+  }
+
   createNewTran() {
-    // 전송할 값들 다 가지와서
-    // 이상한 값이 입력되지 않았으면
-    // 보내고.
-    // 잘 생성이됬으면. 입력폼 초기화하고, 새로운 데이터로 다시 그려주면될듯.
+    $el(".tranInput").addEventListener("click", (e) => {
+      if (e.target.className !== "tranInputContainer__lastSection--button")
+        return;
+      const amount = $el(
+        ".tranInput__firstSection__money--input"
+      ).value.replace(/[,||원]+/gi, "");
+      const content = $el(".tranInput__firstSection__content--content").value;
+      const isIncome = $el(
+        ".tranInput__firstSection__clasify"
+      ).children[1].classList.contains("selected");
+      const date = $el(".tranInputContainer__secondSection__date--date").value;
+      const categoryId = this.getSelectedId("category");
+      const paymentId = this.getSelectedId("payment");
+      console.log(amount, content, isIncome, date, categoryId, paymentId);
+      if (!amount || !content || !date || !categoryId || !paymentId)
+        return alert("올바른 값 입력하세요.");
+      postData("/transaction", {
+        amount,
+        content,
+        isIncome,
+        date,
+        categoryId,
+        paymentId,
+      })
+        .then(async (res) => {
+          if (res.data.success) {
+            // TODO: 응답이성공이면 서버에서 받지말고 생성된 값만 기존값에 추가하여 랜더링하기
+            const newTran = await this.getTran();
+            this.trans = this.state.setState("trans", newTran);
+            this.notify(CLEAN_TRAN_FORM, {
+              categorys: this.categorys,
+              payments: this.payments,
+            });
+            this.notify(CREATE_TRAN_VALUE, {
+              trans: this.trans,
+            });
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    });
   }
 }
 

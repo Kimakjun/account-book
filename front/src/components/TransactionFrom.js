@@ -127,7 +127,7 @@ class TransactionForm {
     <div class="tranInputContainer__secondSection">
         <div class="tranInputContainer__secondSection__date">
             <span>날짜</span>
-            <input name="date" type="date" value="${date}"/>
+            <input class="tranInputContainer__secondSection__date--date" name="date" type="date" value="${date}"/>
         </div>
         <div class="tranInputContainer__secondSection__category">
             <span>카테고리</span>
@@ -184,7 +184,9 @@ class TransactionForm {
         </div>
         <div class="tranInput__firstSection__content">
             <span>내용</span>
-            <input name="content" value="${inputsData.content || ""}" />
+            <input class="tranInput__firstSection__content--content" name="content" value="${
+              inputsData.content || ""
+            }" />
         </div>
     </div>
     <div class="tranInputContainer__lastSection--button">
