@@ -122,6 +122,7 @@ class TransactionHistory {
               `;
         }
         acc += `
+            <div class = "tranHistory_body__content-wrapper">
             <div class = "tranHistory_body__content--each" data-info=${JSON.stringify(
               { ...cur, month: tempTrans.month, date: tempTrans.date }
             )}>
@@ -133,6 +134,9 @@ class TransactionHistory {
                   cur.content
                 }</div>
               </div>
+              <div class="tranHistory_body__content--each__hidden">
+              <button class="tranHistory_body__content--update">수정</button>
+            </div>
               <div class="tranHistory_body__content--each__section2"> 
                 <div class="tranHistory_body__content__payment">${
                   cur.payment.content
@@ -142,7 +146,8 @@ class TransactionHistory {
                 }">${cur.isIncome ? "+" : "-"}${cur.amount}</div>
               </div>
             </div>
-            `;
+            </div>
+             `;
 
         return acc;
       },

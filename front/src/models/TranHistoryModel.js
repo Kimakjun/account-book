@@ -35,6 +35,7 @@ class TranHistoryModel extends Observable {
     return datas.data.data;
   }
 
+  //TODO: 로직수정
   selectBoxClick() {
     const historyHeader = $el(".tranHistory");
     historyHeader.addEventListener("click", (e) => {
@@ -79,7 +80,7 @@ class TranHistoryModel extends Observable {
         this.notify(TRAN_HISTORY_CLICK, {
           tranInputs: JSON.parse(e.target.dataset.info),
           categorys: this.categorys,
-          payments: this.payments,
+          payments: this.state.getState("payment"),
         });
       }
     });

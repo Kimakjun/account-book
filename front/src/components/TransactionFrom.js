@@ -70,7 +70,6 @@ class TransactionForm {
   }
 
   setTranInput({ tranInputs, categorys, payments }) {
-    console.log("test");
     this.drawTransactionInput({ inputsData: tranInputs, categorys, payments });
   }
 

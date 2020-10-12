@@ -130,7 +130,6 @@ class TranInputModel extends Observable {
       const date = $el(".tranInputContainer__secondSection__date--date").value;
       const categoryId = this.getSelectedId("category");
       const paymentId = this.getSelectedId("payment");
-      console.log(amount, content, isIncome, date, categoryId, paymentId);
       if (!amount || !content || !date || !categoryId || !paymentId)
         return alert("올바른 값 입력하세요.");
       postData("/transaction", {

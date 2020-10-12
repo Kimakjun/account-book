@@ -54,16 +54,46 @@
 
     }
 
+    .tranHistory_body__content-wrapper{
+        position: relative;
+    }
+
     .tranHistory_body__content--each{
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 50px;
 
+        height: 50px;
         border-top: 1px solid gray;
+
+
+        &:hover{
+            background-color: greenyellow;
+            opacity: 0.5;
+
+            .tranHistory_body__content--update{
+                opacity: 1;
+                border: 0;
+                outline: 0;
+                font-weight: 900;
+                font-size: 16px;
+                cursor: pointer;
+                background-color: rgb(58, 194, 110);
+
+                border-radius: 10px;
+
+            }
+
+        }
+
+        .tranHistory_body__content--update{  
+            opacity: 0;
+        }
 
         .tranHistory_body__content--each__section1{
             display: flex;
+            justify-content: space-between;
+            width: 35%;
         }
 
         .tranHistory_body__content__category{
@@ -71,7 +101,7 @@
             padding: 5px;
             width: 100px;
             text-align: center;
-            margin-right: 40px;
+           
         }
 
         .tranHistory_body__content__content{
@@ -82,8 +112,11 @@
 
         .tranHistory_body__content--each__section2{
             display: flex;
+            justify-content: space-between;
+            width: 35%;
         }
         .tranHistory_body__content__payment{
+            
             font-weight: 900;
             font-size: 18px;
             line-height: 30px;
@@ -94,7 +127,7 @@
             font-weight: 900;
             font-size: 18px;
             line-height: 30px;
-            margin-left: 80px;
+            
         }
         .incomeStyle{
             background-color: rgb(81, 81, 226);

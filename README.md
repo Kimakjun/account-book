@@ -13,7 +13,7 @@
 ## Getting start
     1. install
         /front, /back : npm i
-    2. dovenv
+    2. dotenv
         /back => .env.example
     3. initiallize db
         /back : sequelize db:create && sequelize db:seed
