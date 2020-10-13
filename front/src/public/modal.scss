@@ -1,0 +1,131 @@
+
+
+
+.modal{
+
+    @mixin styledButton($width, $color){
+        width: $width;
+        outline: 0;
+        border: 0;
+        border-radius: 10px;
+        background: #64ffda;            ;
+        box-shadow:  3px 3px 3px #000000;
+        cursor: pointer;
+
+        color: $color;
+        font-weight: 900;
+
+        transition: .5s;
+        &:hover{
+            box-shadow: none;
+            border: 1px solid white;
+        }
+    } 
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    font-weight: 900;
+
+    .modal__wrapper {
+
+        background-color: white;
+        width: 500px;
+        height: 500px;
+    
+        border-radius: 5px;
+        overflow: auto;
+        font-weight: 900;
+        font-size: 16px;
+
+        .modal__header{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            height: 50px;
+            background-color: #00bfa5;
+
+            span{
+                font-weight: 900;
+                color: white;
+            }
+
+            button{
+                border: 0;
+                outline: 0;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+
+                background-color: #00bfa5;
+                color: white;
+                font-size: 20px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+
+
+        .modal__inputContent{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+
+            height: 70px;
+            padding: 0 20px;
+
+            input{
+                border: 0;
+                border-bottom: 1px solid black;
+                width: 60%;
+                text-align: center;
+                font-size: large;
+                font-weight: 900;
+                outline: none;
+            }
+
+            button{
+                @include styledButton(15%, black);
+            }
+
+        }
+
+        .modal__contentList{
+           
+            display: flex;
+            flex-direction: column;
+            
+            .modal__cotentList__content{
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 50px;
+                border-top: 1px solid black;
+               
+
+                button{
+                   position: absolute;
+                   right: 40px;
+                   @include styledButton(10%, white); 
+                }
+                
+            }
+
+        }
+
+    }
+
+}
+
+

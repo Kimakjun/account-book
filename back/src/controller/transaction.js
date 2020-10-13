@@ -4,7 +4,7 @@ const {Op} = require('sequelize');
 exports.getTransaction = async(req, res, next) => {
 
         const {date} = req.params; // 2020-09
-       
+        // TODO: where 조건 추가, req.user.id 현재로그인한 사용자정보
         const min = new Date(date);
         const max = new Date(date);
         max.setMonth(min.getMonth() + 1);
@@ -29,21 +29,34 @@ exports.getTransaction = async(req, res, next) => {
 
 exports.addTransaction = async(req, res, next) => {
 
-    const {amount, content, isIncome, paymentId, categoryId} = req.body;
+    const {amount, content, date, isIncome, paymentId, categoryId} = req.body;
     await Transaction.create({
         amount,
         content,
         isIncome,
         paymentId,
         categoryId,
-        userId: req.user.id
+        userId: req.user.id,
+        createdAt: date
     })
+
     res.json({success: true, message: 'transaction create'});
 };
 
 exports.updateTransaction = async(req, res, next) => {
     const {id} = req.params;
-    await Transaction.update(req.body, {where: {id}});
+    const {amount, content, date, isIncome, paymentId, categoryId} = req.body;
+    await Transaction.update({
+        amount,
+        content,
+        isIncome,
+        paymentId,
+        categoryId,
+        userId: req.user.id,
+        createdAt: date},
+        {
+            where: {id}
+        });
     res.json({success: true, message: 'update success'});
 };
 

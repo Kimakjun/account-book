@@ -5,6 +5,152 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    padding: 0 30vh;
+    padding-bottom: 10vh;
+ 
+
+    .tranHistory_header{
+        font-size: 17px;
+        padding: 20px;
+        .tranHistory_header__income{
+            color: rgb(81, 81, 226);
+            margin-bottom: 5px;
+        }
+        .tranHistory_header__expenditure{
+            color: rgb(14, 233, 14);
+        }
+    }
+
+    .tranHistory_body{
+        
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .tranHistory_body__content{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            .tranHistory_body__content__header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;   
+                height: 30px;
+                border-top: 1px solid gray;
+                
+            }
+            .tranHistory_body__content__header__date{
+                font-weight: 900;
+            }
+            .tranHistory_body__content__header__income{
+                color: rgb(81, 81, 226);
+            }
+            .tranHistory_body__content__header__expenditure{
+                color: rgb(14, 233, 14);
+            }
+        }
+
+    }
+
+    .tranHistory_body__content-wrapper{
+        position: relative;
+    }
+
+    .tranHistory_body__content--each{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        height: 50px;
+        border-top: 1px solid gray;
+
+
+        &:hover{
+            background-color: greenyellow;
+            opacity: 0.5;
+
+            .tranHistory_body__content--update{
+                opacity: 1;
+                border: 0;
+                outline: 0;
+                font-weight: 900;
+                font-size: 16px;
+                cursor: pointer;
+                background-color: rgb(58, 194, 110);
+
+                border-radius: 10px;
+
+            }
+
+        }
+
+        .tranHistory_body__content--update{  
+            opacity: 0;
+        }
+
+        .tranHistory_body__content--each__section1{
+            display: flex;
+            justify-content: space-between;
+            width: 35%;
+        }
+
+        .tranHistory_body__content__category{
+            border-radius: 15px;
+            padding: 5px;
+            width: 100px;
+            text-align: center;
+           
+        }
+
+        .tranHistory_body__content__content{
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 30px;
+        }
+
+        .tranHistory_body__content--each__section2{
+            display: flex;
+            justify-content: space-between;
+            width: 35%;
+        }
+        .tranHistory_body__content__payment{
+            
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 30px;
+            color: gray;
+        }
+
+        .tranHistory_body__content__isIncome{
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 30px;
+            
+        }
+        .incomeStyle{
+            background-color: rgb(81, 81, 226);
+            color: white;  
+           
+        }
+        
+        .incomeStyle__money{
+            color: rgb(81, 81, 226);
+        }
+
+        .expenditureStyle{
+            background-color: rgb(14, 233, 14);
+            color: white;
+        }
+
+        .expenditureStyle_money{
+            color: rgb(14, 233, 14);  
+        }
+    }
+
+    
+
 }
 
 .tranHistory__history{

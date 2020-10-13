@@ -1,2 +1,12 @@
 export const MONTH_BUTTON_CLICK = "buttonClick";
 export const TRAN_HISTORY_CLICK = "tranHistoryClick";
+export const MONEY_SELECT_BOX_CLICK = "monneySelectBoxClick";
+export const CLEAN_TRAN_FORM = "cleanTranForm";
+export const ENTER_TRAN_VALUE = "enterTranValue";
+export const MONEY_TYPE_CLICK = "moneyTypeCllick";
+export const MANAGEMENT_MADAL_OPEN = "modalOpen";
+export const MONEY_MANAGEMENT_CHANGE = "moneyManagementChange";
+export const PAYMENT_CHANGE = "paymentChange";
+export const CREATE_TRAN_VALUE = "create_newTran";
+export const DELETE_TRAN_UPDATE = "deleteTranUpdate";
+export const DELETE_TRAN = "deleteTran";

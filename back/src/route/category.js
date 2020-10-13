@@ -11,6 +11,7 @@ const router = express.Router();
 
 router.get('/', asyncErrorHandler(getCategories));
 router.post('/', asyncErrorHandler(addCategories));
+// DELETE CATEGORY/2
 router.delete('/:id', asyncErrorHandler(deleteCategories));
 
 

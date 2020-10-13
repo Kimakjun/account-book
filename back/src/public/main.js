@@ -13104,7 +13104,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".tranHistory {\n  border: 1px solid black;\n  margin-top: 20px;\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n\n.tranHistory__hostory {\n  display: flex;\n  padding: 10px; }\n", "",{"version":3,"sources":["webpack://src/public/tranHistory.scss"],"names":[],"mappings":"AACA;EACI,uBAAuB;EACvB,gBAAgB;EAChB,aAAa;EACb,sBAAsB;EACtB,mBAAmB,EAAA;;AAGvB;EAEI,aAAa;EACb,aAAa,EAAA","sourcesContent":["\r\n.tranHistory{\r\n    border: 1px solid black;\r\n    margin-top: 20px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n}\r\n\r\n.tranHistory__hostory{\r\n    \r\n    display: flex;           \r\n    padding: 10px;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".tranHistory {\n  border: 1px solid black;\n  margin-top: 20px;\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n\n.tranHistory__history {\n  display: flex;\n  padding: 10px; }\n  .tranHistory__history div {\n    pointer-events: none; }\n", "",{"version":3,"sources":["webpack://src/public/tranHistory.scss"],"names":[],"mappings":"AACA;EACI,uBAAuB;EACvB,gBAAgB;EAChB,aAAa;EACb,sBAAsB;EACtB,mBAAmB,EAAA;;AAGvB;EAEI,aAAa;EACb,aAAa,EAAA;EAHjB;IAMQ,oBAAoB,EAAA","sourcesContent":["\r\n.tranHistory{\r\n    border: 1px solid black;\r\n    margin-top: 20px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n}\r\n\r\n.tranHistory__history{\r\n    \r\n    display: flex;           \r\n    padding: 10px;\r\n\r\n    div{\r\n        pointer-events: none;\r\n    }\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -13980,11 +13980,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _public_navbar_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../public/navbar.scss */ "./src/public/navbar.scss");
 /* harmony import */ var _public_navbar_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_public_navbar_scss__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _template_navbarTemplate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../template/navbarTemplate */ "./src/template/navbarTemplate.js");
+/* harmony import */ var _util_event__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/event */ "./src/util/event.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 
 
 
@@ -14005,12 +14007,13 @@ var Navbar = /*#__PURE__*/function () {
   _createClass(Navbar, [{
     key: "subscribe",
     value: function subscribe(model) {
-      model.subscribe("buttonClick", this.buttonUpdate.bind(this));
+      model.subscribe(_util_event__WEBPACK_IMPORTED_MODULE_3__["MONTH_BUTTON_CLICK"], this.buttonUpdate.bind(this));
     }
   }, {
     key: "buttonUpdate",
-    value: function buttonUpdate(data) {
-      Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])(".navbar__monthSelector--month").innerText = "".concat(data, "\uC6D4");
+    value: function buttonUpdate(_ref2) {
+      var month = _ref2.month;
+      Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])(".navbar__monthSelector--month").innerText = "".concat(month, "\uC6D4");
     }
   }, {
     key: "getInitMonth",
@@ -14049,11 +14052,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/dom */ "./src/util/dom.js");
 /* harmony import */ var _public_tranInput_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../public/tranInput.scss */ "./src/public/tranInput.scss");
 /* harmony import */ var _public_tranInput_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_public_tranInput_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _util_event__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/event */ "./src/util/event.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 
 
 
@@ -14071,9 +14076,22 @@ var TransactionForm = /*#__PURE__*/function () {
   }
 
   _createClass(TransactionForm, [{
+    key: "subscribe",
+    value: function subscribe(model) {
+      model.subscribe(_util_event__WEBPACK_IMPORTED_MODULE_2__["TRAN_HISTORY_CLICK"], this.setTranInput.bind(this));
+    }
+  }, {
+    key: "setTranInput",
+    value: function setTranInput(_ref2) {
+      var tranInputs = _ref2.tranInputs;
+      // 모델에서 받은 데이터로 돔 업데이트~!
+      var test = Object(_util_dom__WEBPACK_IMPORTED_MODULE_0__["$el"])(".tranInput__firstSection__content input");
+      test.value = tranInputs;
+    }
+  }, {
     key: "init",
     value: function init() {
-      this.transactionInput.innerHTML = "\n        <div class=\"tranInput__firstSection\">\n            <div class=\"tranInput__firstSection__clasify\">\n                <span>\uBD84\uB958</span>\n                <div class=\"tranInput__firstSection__clasify--isIncome\">\uC218\uC785</div>\n                <div class=\"tranInput__firstSection__clasify--isExpenditure selected \">\uC9C0\uCD9C</div>\n            </div>\n            <div class=\"tranInput__firstSection__update\">\n                <button class=\"tranInput__firstSection__update--delete\">\uB0B4\uC6A9 \uC9C0\uC6B0\uAE30</button>\n            </div>\n        </div>\n        <div class=\"tranInputContainer__secondSection\">\n            <div class=\"tranInputContainer__secondSection__date\">\n                <span>\uB0A0\uC9DC</span>\n                <input type=\"date\"/>\n            </div>\n            <div class=\"tranInputContainer__secondSection__date\">\n                <span>\uCE74\uD14C\uACE0\uB9AC</span>\n                <select name=\"category\">\n                    <option value=\"\uC678\uC2DD\">\uC678\uC2DD</option>\n                    <option value=\"\uBDF0\uD2F0\">\uBDF0\uD2F0</option>\n                    <option value=\"\uC0DD\uD65C\" selected=\"selected\">\uC0DD\uD65C</option>\n                    <option value=\"\uAE30\uD0C0\">\uAE30\uD0C0</option>\n                </select>\n            </div>\n            <div class=\"tranInputContainer__secondSection__date\">\n                <span>\uACB0\uC81C\uC218\uB2E8</span>\n                <select name=\"category\">\n                    <option value=\"\uC678\uC2DD\">\uC678\uC2DD</option>\n                    <option value=\"\uBDF0\uD2F0\">\uBDF0\uD2F0</option>\n                    <option value=\"\uC0DD\uD65C\" selected=\"selected\">\uC0DD\uD65C</option>\n                    <option value=\"\uAE30\uD0C0\">\uAE30\uD0C0</option>\n                </select>\n            </div>\n        </div>\n        <div class=\"tranInputContainer__thirdSection\">\n            <div class=\"tranInput__firstSection__clasify\">\n                <span>\uAE08\uC561</span>\n                <input/>\n            </div>\n            <div class=\"tranInput__firstSection__clasify\">\n                <span>\uB0B4\uC6A9</span>\n                <input/>\n            </div>\n        </div>\n        <div class=\"tranInputContainer__lastSection--button\">\n            \uD655\uC778\n        </div>\n    ";
+      this.transactionInput.innerHTML = "\n        <div class=\"tranInput__firstSection\">\n            <div class=\"tranInput__firstSection__clasify\">\n                <span>\uBD84\uB958</span>\n                <div class=\"tranInput__firstSection__clasify--isIncome\">\uC218\uC785</div>\n                <div class=\"tranInput__firstSection__clasify--isExpenditure selected \">\uC9C0\uCD9C</div>\n            </div>\n            <div class=\"tranInput__firstSection__update\">\n                <button class=\"tranInput__firstSection__update--delete\">\uB0B4\uC6A9 \uC9C0\uC6B0\uAE30</button>\n            </div>\n        </div>\n        <div class=\"tranInputContainer__secondSection\">\n            <div class=\"tranInputContainer__secondSection__date\">\n                <span>\uB0A0\uC9DC</span>\n                <input type=\"date\"/>\n            </div>\n            <div class=\"tranInputContainer__secondSection__date\">\n                <span>\uCE74\uD14C\uACE0\uB9AC</span>\n                <select name=\"category\">\n                    <option value=\"\uC678\uC2DD\">\uC678\uC2DD</option>\n                    <option value=\"\uBDF0\uD2F0\">\uBDF0\uD2F0</option>\n                    <option value=\"\uC0DD\uD65C\" selected=\"selected\">\uC0DD\uD65C</option>\n                    <option value=\"\uAE30\uD0C0\">\uAE30\uD0C0</option>\n                </select>\n            </div>\n            <div class=\"tranInputContainer__secondSection__date\">\n                <span>\uACB0\uC81C\uC218\uB2E8</span>\n                <select name=\"category\">\n                    <option value=\"\uC678\uC2DD\">\uC678\uC2DD</option>\n                    <option value=\"\uBDF0\uD2F0\">\uBDF0\uD2F0</option>\n                    <option value=\"\uC0DD\uD65C\" selected=\"selected\">\uC0DD\uD65C</option>\n                    <option value=\"\uAE30\uD0C0\">\uAE30\uD0C0</option>\n                </select>\n            </div>\n        </div>\n        <div class=\"tranInputContainer__thirdSection\">\n            <div class=\"tranInput__firstSection__money\">\n                <span>\uAE08\uC561</span>\n                <input/>\n            </div>\n            <div class=\"tranInput__firstSection__content\">\n                <span>\uB0B4\uC6A9</span>\n                <input/>\n            </div>\n        </div>\n        <div class=\"tranInputContainer__lastSection--button\">\n            \uD655\uC778\n        </div>\n    ";
     }
   }, {
     key: "render",
@@ -14102,6 +14120,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/dom */ "./src/util/dom.js");
 /* harmony import */ var _public_tranHistory_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../public/tranHistory.scss */ "./src/public/tranHistory.scss");
 /* harmony import */ var _public_tranHistory_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_public_tranHistory_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _util_event__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/event */ "./src/util/event.js");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -14111,6 +14130,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 
 
 
@@ -14131,13 +14151,16 @@ var TransactionHistory = /*#__PURE__*/function () {
   _createClass(TransactionHistory, [{
     key: "subscribe",
     value: function subscribe(model) {
-      model.subscribe('getTransByMonth', this.getTrans.bind(this));
-      model.subscribe('tranUpdate', this.updateTrans.bind(this));
+      model.subscribe(_util_event__WEBPACK_IMPORTED_MODULE_3__["MONTH_BUTTON_CLICK"], this.getTrans.bind(this));
+      model.subscribe(_util_event__WEBPACK_IMPORTED_MODULE_3__["TRAN_HISTORY_CLICK"], this.updateTrans.bind(this));
     }
   }, {
     key: "getTrans",
-    value: function getTrans(datas) {
-      this.drawTrans(datas);
+    value: function getTrans(_ref2) {
+      var trans = _ref2.trans;
+      this.drawTrans({
+        trans: trans
+      });
     }
   }, {
     key: "updateTrans",
@@ -14178,11 +14201,12 @@ var TransactionHistory = /*#__PURE__*/function () {
     }()
   }, {
     key: "drawTrans",
-    value: function drawTrans(trans) {
+    value: function drawTrans(_ref3) {
+      var trans = _ref3.trans;
       this.transactionHistory.innerHTML = "\n      ".concat(trans.reduce(function (acc, cur) {
-        var history = "\n        <div class=\"tranHistory__hostory\">\n          <div>".concat(cur.createdAt, "</div>\n          <div>").concat(cur.category.content, "</div>\n          <div>").concat(cur.content, "</div>\n          <div>").concat(cur.payment.content, "</div>\n          <div>").concat(cur.amount, "</div>\n        </div>  \n          ");
+        var history = "\n        <div class=\"tranHistory__history\">\n          <div>".concat(cur.createdAt, "</div>\n          <div>").concat(cur.category.content, "</div>\n          <div>").concat(cur.content, "</div>\n          <div>").concat(cur.payment.content, "</div>\n          <div>").concat(cur.amount, "</div>\n        </div>  \n          ");
         return acc + history;
-      }, ''), "\n    ");
+      }, ""), "\n    ");
     }
   }, {
     key: "init",
@@ -14198,12 +14222,11 @@ var TransactionHistory = /*#__PURE__*/function () {
 
               case 2:
                 trans = _context2.sent;
-                trans.map(function (tran) {
-                  return console.log(tran);
+                this.drawTrans({
+                  trans: trans
                 });
-                this.drawTrans(trans);
 
-              case 5:
+              case 4:
               case "end":
                 return _context2.stop();
             }
@@ -14287,6 +14310,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/api */ "./src/util/api.js");
 /* harmony import */ var _util_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/dom */ "./src/util/dom.js");
 /* harmony import */ var _Observable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Observable */ "./src/models/Observable.js");
+/* harmony import */ var _util_event__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/event */ "./src/util/event.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -14317,6 +14341,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var NavbarModel = /*#__PURE__*/function (_Observable) {
   _inherits(NavbarModel, _Observable);
 
@@ -14339,79 +14364,94 @@ var NavbarModel = /*#__PURE__*/function (_Observable) {
   _createClass(NavbarModel, [{
     key: "init",
     value: function init() {
-      this.leftButtonClick();
-      this.rightButtonClick();
-      this.month = this.getInitMonth();
+      this.HistoryClick();
+      this.monthButtonClick();
+      this.month = this.getMonth();
     }
   }, {
-    key: "getInitYear",
-    value: function getInitYear() {
+    key: "getYear",
+    value: function getYear() {
       return new Date().getFullYear();
     }
   }, {
-    key: "getInitMonth",
-    value: function getInitMonth() {
+    key: "getMonth",
+    value: function getMonth() {
       return new Date().getMonth() + 1;
     }
   }, {
-    key: "leftButtonClick",
-    value: function leftButtonClick() {
-      var _this2 = this;
+    key: "getMonthByType",
+    value: function getMonthByType(classList) {
+      if (classList.contains("right")) {
+        this.month = this.month + 1 == 13 ? 1 : this.month + 1;
+        return this.month;
+      }
 
-      var leftButton = Object(_util_dom__WEBPACK_IMPORTED_MODULE_1__["$el"])(".left");
-      leftButton.addEventListener("click", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _this2.month = _this2.month - 1 === 0 ? 12 : _this2.month - 1;
-                _context.next = 3;
-                return Object(_util_api__WEBPACK_IMPORTED_MODULE_0__["getData"])("/transaction/".concat(_this2.getInitYear(), "-").concat(_this2.month));
+      if (classList.contains("left")) {
+        this.month = this.month - 1 === 0 ? 12 : this.month - 1;
+        return this.month;
+      }
 
-              case 3:
-                _this2.trans = _context.sent;
-
-                _this2.notify("buttonClick", _this2.month);
-
-                _this2.notify("getTransByMonth", _this2.trans.data.data);
-
-              case 6:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      })));
+      return null;
     }
   }, {
-    key: "rightButtonClick",
-    value: function rightButtonClick() {
+    key: "monthButtonClick",
+    value: function monthButtonClick() {
+      var _this2 = this;
+
+      var monthSelector = Object(_util_dom__WEBPACK_IMPORTED_MODULE_1__["$el"])(".navbar__monthSelector");
+      monthSelector.addEventListener("click", /*#__PURE__*/function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(e) {
+          return regeneratorRuntime.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  if (!(_this2.getMonthByType(e.target.classList) === null)) {
+                    _context.next = 2;
+                    break;
+                  }
+
+                  return _context.abrupt("return");
+
+                case 2:
+                  _context.next = 4;
+                  return Object(_util_api__WEBPACK_IMPORTED_MODULE_0__["getData"])("/transaction/".concat(_this2.getYear(), "-").concat(_this2.month));
+
+                case 4:
+                  _this2.trans = _context.sent;
+
+                  _this2.notify(_util_event__WEBPACK_IMPORTED_MODULE_3__["MONTH_BUTTON_CLICK"], {
+                    month: _this2.month,
+                    trans: _this2.trans.data.data
+                  });
+
+                case 6:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee);
+        }));
+
+        return function (_x) {
+          return _ref.apply(this, arguments);
+        };
+      }());
+    }
+  }, {
+    key: "HistoryClick",
+    value: function HistoryClick() {
       var _this3 = this;
 
-      var leftButton = Object(_util_dom__WEBPACK_IMPORTED_MODULE_1__["$el"])(".right");
-      leftButton.addEventListener("click", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _this3.month = _this3.month + 1 == 13 ? 1 : _this3.month + 1;
-                _context2.next = 3;
-                return Object(_util_api__WEBPACK_IMPORTED_MODULE_0__["getData"])("/transaction/".concat(_this3.getInitYear(), "-").concat(_this3.month));
-
-              case 3:
-                _this3.trans = _context2.sent;
-
-                _this3.notify("buttonClick", _this3.month);
-
-                _this3.notify("getTransByMonth", _this3.trans.data.data);
-
-              case 6:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      })));
+      // TORO 이벤트 위임시 겹치는 문제 해결.
+      //https://juein.tistory.com/63
+      var tranHistory = Object(_util_dom__WEBPACK_IMPORTED_MODULE_1__["$el"])(".tranHistory");
+      tranHistory.addEventListener("click", function (e) {
+        if (e.target.className === "tranHistory__history") {
+          _this3.notify(_util_event__WEBPACK_IMPORTED_MODULE_3__["TRAN_HISTORY_CLICK"], {
+            tranInputs: "새로운 데이터 갑니다~!"
+          });
+        }
+      });
     }
   }]);
 
@@ -14701,7 +14741,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
-var url = "http://localhost:8005/api/v1";
+var url = "/api/v1";
 var instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
   baseURL: url,
   timeout: 3000,
@@ -14762,6 +14802,22 @@ var setStyle = function setStyle(el, styles) {
     el.style[key] = styles[key];
   });
 };
+
+/***/ }),
+
+/***/ "./src/util/event.js":
+/*!***************************!*\
+  !*** ./src/util/event.js ***!
+  \***************************/
+/*! exports provided: MONTH_BUTTON_CLICK, TRAN_HISTORY_CLICK */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MONTH_BUTTON_CLICK", function() { return MONTH_BUTTON_CLICK; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TRAN_HISTORY_CLICK", function() { return TRAN_HISTORY_CLICK; });
+var MONTH_BUTTON_CLICK = "buttonClick";
+var TRAN_HISTORY_CLICK = "tranHistoryClick";
 
 /***/ }),
 
@@ -14999,7 +15055,7 @@ var MainPage = /*#__PURE__*/function () {
   _createClass(MainPage, [{
     key: "init",
     value: function init() {
-      var header = new _components_Header__WEBPACK_IMPORTED_MODULE_0__["default"]({
+      new _components_Header__WEBPACK_IMPORTED_MODULE_0__["default"]({
         root: this.root
       });
       var navbar = new _components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"]({
@@ -15014,6 +15070,7 @@ var MainPage = /*#__PURE__*/function () {
       var navbarModel = new _models_NavbarModel__WEBPACK_IMPORTED_MODULE_4__["default"]();
       navbar.subscribe(navbarModel);
       tranHistory.subscribe(navbarModel);
+      tranInput.subscribe(navbarModel);
     }
   }]);
 
