@@ -8,6 +8,7 @@ import {
   PAYMENT_CHANGE,
   DELETE_TRAN_UPDATE,
   DELETE_TRAN,
+  NAVBAR_CHANGE,
 } from "../util/event";
 import { getData } from "../util/api";
 class TransactionForm {
@@ -35,6 +36,9 @@ class TransactionForm {
   subscribeModal(model) {
     model.subscribe(PAYMENT_CHANGE, this.changePaymentBox.bind(this));
   }
+  subscribeNavBar(model) {
+    model.subscribe(NAVBAR_CHANGE, this.viewChange.bind(this));
+  }
 
   async init() {
     this.initCategory = await this.getCategory();
@@ -50,6 +54,15 @@ class TransactionForm {
   async getPayments() {
     const res = await getData(`/payment`);
     return res.data.data;
+  }
+
+  viewChange({ type }) {
+    console.log(type, "input");
+    if (type === "TRANSACTION") {
+      this.transactionInput.style.display = "flex";
+    } else {
+      this.transactionInput.style.display = "none";
+    }
   }
 
   getDateForm(rowDate) {

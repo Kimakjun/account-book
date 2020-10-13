@@ -10,3 +10,4 @@ export const PAYMENT_CHANGE = "paymentChange";
 export const CREATE_TRAN_VALUE = "create_newTran";
 export const DELETE_TRAN_UPDATE = "deleteTranUpdate";
 export const DELETE_TRAN = "deleteTran";
+export const NAVBAR_CHANGE = "navbarChange";

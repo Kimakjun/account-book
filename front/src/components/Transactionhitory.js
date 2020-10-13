@@ -6,6 +6,7 @@ import {
   MONEY_SELECT_BOX_CLICK,
   CREATE_TRAN_VALUE,
   DELETE_TRAN,
+  NAVBAR_CHANGE,
 } from "../util/event";
 
 class TransactionHistory {
@@ -18,6 +19,7 @@ class TransactionHistory {
 
   subscribeNavBar(model) {
     model.subscribe(MONTH_BUTTON_CLICK, this.getTrans.bind(this));
+    model.subscribe(NAVBAR_CHANGE, this.viewChange.bind(this));
   }
 
   subscribeHistory(model) {
@@ -44,7 +46,13 @@ class TransactionHistory {
     return data;
   }
 
-  // <div class="tranHistory__history">
+  viewChange({ type }) {
+    if (type === "TRANSACTION") {
+      this.transactionHistory.style.display = "flex";
+    } else {
+      this.transactionHistory.style.display = "none";
+    }
+  }
 
   drawTranHistoryHeader({ trans, type }) {
     // 수입지출 최대값 설정!.

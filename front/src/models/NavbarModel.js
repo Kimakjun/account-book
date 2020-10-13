@@ -1,7 +1,7 @@
 import { getData } from "../util/api";
 import { $el } from "../util/dom";
 import Observable from "./Observable";
-import { MONTH_BUTTON_CLICK } from "../util/event";
+import { MONTH_BUTTON_CLICK, NAVBAR_CHANGE } from "../util/event";
 class NavbarModel extends Observable {
   constructor({ state }) {
     super();
@@ -18,6 +18,7 @@ class NavbarModel extends Observable {
 
   initEvent() {
     this.monthButtonClick();
+    this.navbarChange();
   }
 
   async getTran() {
@@ -54,6 +55,17 @@ class NavbarModel extends Observable {
         month: this.month,
         trans: this.trans,
       });
+    });
+  }
+
+  navbarChange() {
+    $el(".navbar__contentSelector").addEventListener("click", (e) => {
+      if (e.target.className == "navbar__contentSelctor--history") {
+        this.notify(NAVBAR_CHANGE, { type: "TRANSACTION" });
+      }
+      if (e.target.className == "navbar__contentSelctor--analysis") {
+        this.notify(NAVBAR_CHANGE, { type: "STATISTIC" });
+      }
     });
   }
 }
