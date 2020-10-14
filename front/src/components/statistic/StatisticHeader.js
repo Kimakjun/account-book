@@ -1,6 +1,6 @@
 import { MONTH_BUTTON_CLICK } from "../../util/event";
 
-const { $new } = require("../../util/dom");
+const { $new, $el } = require("../../util/dom");
 
 class StatisticHeader {
   constructor({ root }) {
@@ -23,11 +23,8 @@ class StatisticHeader {
   }
 
   updateHeaderView({ totlaExpenditure, averageExpenditure }) {
-    console.log(totlaExpenditure, averageExpenditure);
-    this.statisticHeader.innerHTML = this.statisticHeaderTemplate(
-      this.getMoneyForm(totlaExpenditure),
-      this.getMoneyForm(averageExpenditure)
-    );
+    $el(".expenditure__total").innerText = this.getMoneyForm(totlaExpenditure);
+    $el(".expenditure__day").innerText = this.getMoneyForm(averageExpenditure);
   }
 
   statisticHeaderTemplate(totlaExpenditure, averageExpenditure) {
