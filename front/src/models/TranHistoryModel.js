@@ -37,9 +37,10 @@ class TranHistoryModel extends Observable {
 
   //TODO: 로직수정
   selectBoxClick() {
-    const historyHeader = $el(".tranHistory");
+    const historyHeader = $el("#app");
     historyHeader.addEventListener("click", (e) => {
       if (e.target.className === "tranHistory_header--income") {
+        console.log("test");
         const newSelectState = {
           ...this.slectType,
           income: !this.slectType.income,

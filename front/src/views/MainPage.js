@@ -57,6 +57,7 @@ class MainPage {
     const historyModel = new TranHistoryModel({ state });
     tranHistory.subscribeHistory(historyModel);
     tranInput.subscribeHistory(historyModel);
+    calander.subscribeHistory(historyModel);
 
     const tranInputModel = new TranInputModel({ state });
     tranInput.subscribeTranInput(tranInputModel);
