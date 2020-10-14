@@ -14,3 +14,21 @@
     display: flex;
     justify-content: space-between;
 }
+
+.statistic__header__expenditure {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.expenditure__total{
+    color:  #00bfa5;
+}
+
+.statistic__header__expenditure__total{
+    margin-bottom: 10px;
+}
+
+.statistic__header__expenditure__day{
+    color: blue;
+}
