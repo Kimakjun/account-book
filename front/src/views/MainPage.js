@@ -38,7 +38,7 @@ class MainPage {
     state.useState("trans", "");
     state.useState("selectType", { income: true, expenditure: true });
     state.useState("tranMode", "생성");
-
+    state.useState("averageExpenditure", "");
     // 구독
     const modalModal = new ModalModel({ state });
     modal.subscribeModal(modalModal);

@@ -13,6 +13,17 @@
     stroke-dasharray: 0;
     stroke-width: 1;
   }
+
+.average{
+    stroke: blue;
+    stroke-dasharray: 10 10;  
+
+    text{
+        stroke-dasharray: 0;
+        font-size: 13px;  
+    }
+}
+
   
   .labels {
     font-size: 13px;
@@ -20,14 +31,3 @@
     font-weight: 900;
   }
   
-  .label-title {
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 12px;
-    fill: black;
-  }
-  
-  .data {
-    fill: red;
-    stroke-width: 1; 
-  }

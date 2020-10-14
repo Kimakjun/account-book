@@ -23,9 +23,17 @@ class NavbarModel extends Observable {
   }
 
   initSetting() {
+    const totlaExpenditure = this.getTotalExpenditure(this.trans);
+    const averageExpenditure = this.getAaverageExpenditure(
+      totlaExpenditure,
+      this.month
+    );
+
     this.notify(MONTH_BUTTON_CLICK, {
       month: this.month,
       trans: this.trans,
+      averageExpenditure: averageExpenditure,
+      totlaExpenditure: totlaExpenditure,
     });
   }
 
@@ -60,17 +68,38 @@ class NavbarModel extends Observable {
     return null;
   }
 
+  getTotalExpenditure(trans) {
+    return trans.reduce((acc, cur) => {
+      if (!cur.isIncome) acc += cur.amount;
+      return acc;
+    }, 0);
+  }
+
+  getAaverageExpenditure(total, month) {
+    const DAYS = [0, 31, 30, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    return Math.ceil(total / DAYS[month]);
+  }
+
   async monthButtonClick() {
     const monthSelector = $el(".navbar__monthSelector");
     monthSelector.addEventListener("click", async (e) => {
       if (this.getMonthByType(e.target.classList) === null) return;
       const newTran = await this.getTran();
       const newTranDay = await this.getDayTran();
+      const totlaExpenditure = this.getTotalExpenditure(this.trans);
+      const averageExpenditure = this.getAaverageExpenditure(
+        totlaExpenditure,
+        this.month
+      );
+
       this.trans = this.state.setState("trans", newTran);
+
       this.notify(MONTH_BUTTON_CLICK, {
         month: this.month,
         trans: this.trans,
         transDay: newTranDay,
+        averageExpenditure: averageExpenditure,
+        totlaExpenditure: totlaExpenditure,
       });
     });
   }

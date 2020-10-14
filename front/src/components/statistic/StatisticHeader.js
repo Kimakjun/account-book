@@ -19,28 +19,11 @@ class StatisticHeader {
   }
 
   getMoneyForm(rowMoney) {
-    console.log(rowMoney);
     return Number(rowMoney).toLocaleString("en") + "원";
   }
 
-  getTotalExpenditure(trans) {
-    return trans.reduce((acc, cur) => {
-      if (!cur.isIncome) acc += cur.amount;
-      return acc;
-    }, 0);
-  }
-
-  getAaverageExpenditure(total, month) {
-    const DAYS = [0, 31, 30, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-    return Math.ceil(total / DAYS[month]);
-  }
-
-  updateHeaderView({ trans, month }) {
-    const totlaExpenditure = this.getTotalExpenditure(trans);
-    const averageExpenditure = this.getAaverageExpenditure(
-      totlaExpenditure,
-      month
-    );
+  updateHeaderView({ totlaExpenditure, averageExpenditure }) {
+    console.log(totlaExpenditure, averageExpenditure);
     this.statisticHeader.innerHTML = this.statisticHeaderTemplate(
       this.getMoneyForm(totlaExpenditure),
       this.getMoneyForm(averageExpenditure)

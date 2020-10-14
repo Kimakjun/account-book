@@ -14,9 +14,10 @@ class StatiticDay {
     model.subscribe(MONTH_BUTTON_CLICK, this.updateStatiticDayView.bind(this));
   }
 
-  updateStatiticDayView({ transDay, month }) {
+  updateStatiticDayView({ transDay, month, averageExpenditure }) {
     console.log(transDay);
     this.drawMonthLine(month);
+    this.drawAverageLine(averageExpenditure);
   }
 
   drawMonthLine(month) {
@@ -24,11 +25,26 @@ class StatiticDay {
       { length: 6 },
       (_, i) => 1 + i * 5
     ).reduce((acc, cur) => {
-      console.log(40 + cur * 200);
       acc += `<text x="${40 + cur * 25}" y="500">${month}.${cur}</text>
         `;
       return acc;
     }, "");
+  }
+
+  getAverageHeight(averageExpenditure) {
+    return (400 * averageExpenditure) / 400000;
+  }
+
+  drawAverageLine(averageExpenditure) {
+    const averageHeight = this.getAverageHeight(averageExpenditure);
+    $el(".average").innerHTML = `
+        <line x1="40" y1="${420 - averageHeight}" x2="1200" y2="${
+      420 - averageHeight
+    }"></line>
+        <text x="700" y="${
+          410 - averageHeight
+        }">평균${averageExpenditure}원</text>    
+    `;
   }
 
   init() {
@@ -42,6 +58,10 @@ class StatiticDay {
 
         <g class="grid y-grid" id="yGrid">
             <line x1="40" y1="460" x2="1200" y2="460"></line>
+        </g>
+
+        <g class="average">
+
         </g>
 
         <g class="labels x-labels">
