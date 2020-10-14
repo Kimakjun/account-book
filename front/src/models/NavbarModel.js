@@ -22,7 +22,8 @@ class NavbarModel extends Observable {
     this.navbarChange();
   }
 
-  initSetting() {
+  async initSetting() {
+    const newTranDay = await this.getDayTran();
     const totlaExpenditure = this.getTotalExpenditure(this.trans);
     const averageExpenditure = this.getAaverageExpenditure(
       totlaExpenditure,
@@ -34,6 +35,7 @@ class NavbarModel extends Observable {
       trans: this.trans,
       averageExpenditure: averageExpenditure,
       totlaExpenditure: totlaExpenditure,
+      transDay: newTranDay,
     });
   }
 
@@ -86,7 +88,7 @@ class NavbarModel extends Observable {
       if (this.getMonthByType(e.target.classList) === null) return;
       const newTran = await this.getTran();
       const newTranDay = await this.getDayTran();
-      const totlaExpenditure = this.getTotalExpenditure(this.trans);
+      const totlaExpenditure = this.getTotalExpenditure(newTran);
       const averageExpenditure = this.getAaverageExpenditure(
         totlaExpenditure,
         this.month

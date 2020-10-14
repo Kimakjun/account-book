@@ -18,7 +18,7 @@ class TranInputModel extends Observable {
     this.payments;
     this.init();
   }
-
+  //TODO: MONTH 상태로 관리!.
   async init() {
     this.trans = this.state.setState("trans", await this.getTran());
     this.categorys = this.state.setState("category", await this.getCategory());
