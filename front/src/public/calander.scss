@@ -5,5 +5,41 @@
     align-items: center;
     
     padding: 0 30vh;
-    padding-top: 10vh;
+    margin-top: 5vh;
+}
+
+.calanderBody{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 50px 100px 100px 100px 100px 100px;
+    margin-top: 5vh;
+    width: 100%;
+    height: 120vh;
+    //border: 1px solid black;
+}
+
+.dayString{
+    box-shadow: 3px 3px 3px rgb(138, 206, 238);
+    
+}
+
+.day{
+    height: 100px;
+    box-shadow: 3px 3px 3px #ddd;
+    font-weight: bold;
+    &:hover{
+        background-color: #ddd;
+    }
+}
+
+.preMonth {
+    color: gray;
+}
+
+.weekend{
+    color: red;
+}
+
+.today{
+    color: rgb(92, 196, 92);
 }
