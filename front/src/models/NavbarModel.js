@@ -14,11 +14,19 @@ class NavbarModel extends Observable {
   async init() {
     this.trans = this.state.setState("trans", await this.getTran());
     this.initEvent();
+    this.initSetting();
   }
 
   initEvent() {
     this.monthButtonClick();
     this.navbarChange();
+  }
+
+  initSetting() {
+    this.notify(MONTH_BUTTON_CLICK, {
+      month: this.month,
+      trans: this.trans,
+    });
   }
 
   async getTran() {
