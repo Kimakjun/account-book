@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import Modal from "../components/Modal";
 import NabVar from "../components/Navbar";
-import StatisticHeader from "../components/statistic/StatisticHeader";
+import Statistic from "../components/statistic/Statistic";
 import TranInput from "../components/TransactionFrom";
 import TranHistory from "../components/Transactionhitory";
 import ModalModel from "../models/modalModel";
@@ -27,9 +27,9 @@ class MainPage {
     const tranHistory = new TranHistory({ root: this.root });
 
     // 통계화면.
-    const statistic = new StatisticHeader({ root: this.root });
+    const statistic = new Statistic({ root: this.root });
 
-    // 달력화면.
+    //달력화면.
 
     // 상태공유.
     const state = new States();
