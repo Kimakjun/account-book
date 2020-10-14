@@ -1,0 +1,56 @@
+
+.statistic {
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    
+    padding: 0 30vh;
+    padding-top: 10vh;
+}
+
+.statistic__header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.statistic__header__expenditure {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.expenditure__total{
+    color:  #00bfa5;
+}
+
+.statistic__header__expenditure__total{
+    margin-bottom: 10px;
+}
+
+.statistic__header__expenditure__day{
+    display: show;
+    color: blue;
+}
+
+
+
+
+.statisticCategory, .StatiticDay{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.statisticCategory{
+    display: flex;
+}
+
+.StatiticDay{
+    display: none;
+}
+
