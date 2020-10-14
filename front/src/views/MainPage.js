@@ -1,3 +1,4 @@
+import Calander from "../components/calander/calander";
 import Header from "../components/Header";
 import Modal from "../components/Modal";
 import NabVar from "../components/Navbar";
@@ -30,6 +31,7 @@ class MainPage {
     const statistic = new Statistic({ root: this.root });
 
     //달력화면.
+    const calander = new Calander({ root: this.root });
 
     // 상태공유.
     const state = new States();
@@ -39,6 +41,7 @@ class MainPage {
     state.useState("selectType", { income: true, expenditure: true });
     state.useState("tranMode", "생성");
     state.useState("averageExpenditure", "");
+
     // 구독
     const modalModal = new ModalModel({ state });
     modal.subscribeModal(modalModal);
@@ -49,6 +52,7 @@ class MainPage {
     tranHistory.subscribeNavBar(navbarModel);
     statistic.subscribeNavBar(navbarModel);
     tranInput.subscribeNavBar(navbarModel);
+    calander.subscribeNavBar(navbarModel);
 
     const historyModel = new TranHistoryModel({ state });
     tranHistory.subscribeHistory(historyModel);

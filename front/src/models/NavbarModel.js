@@ -114,6 +114,9 @@ class NavbarModel extends Observable {
       if (e.target.className == "navbar__contentSelctor--analysis") {
         this.notify(NAVBAR_CHANGE, { type: "STATISTIC" });
       }
+      if (e.target.className == "navbar__contentSelctor--clander") {
+        this.notify(NAVBAR_CHANGE, { type: "CALANDER" });
+      }
     });
   }
 }

@@ -24,7 +24,9 @@ class StatisticHeader {
 
   updateHeaderView({ totlaExpenditure, averageExpenditure }) {
     $el(".expenditure__total").innerText = this.getMoneyForm(totlaExpenditure);
-    $el(".expenditure__day").innerText = this.getMoneyForm(averageExpenditure);
+    $el(".expenditure__day").innerText = `이번달 일 평균 ${this.getMoneyForm(
+      averageExpenditure
+    )}`;
   }
 
   statisticHeaderTemplate(totlaExpenditure, averageExpenditure) {
@@ -38,7 +40,7 @@ class StatisticHeader {
                     이번달 지출금액 <span class="expenditure__total">${totlaExpenditure}</span>
                 </div>
                 <div class="statistic__header__expenditure__day">
-                    <span class="expenditure__day">이번달 일 평균 ${averageExpenditure}</span>
+                    <span class="expenditure__day"${averageExpenditure}</span>
                 </div>
             </div>
         `;
