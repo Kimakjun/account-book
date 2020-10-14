@@ -63,10 +63,12 @@ class NavbarModel extends Observable {
   getMonthByType(classList) {
     if (classList.contains("right")) {
       this.month = this.month + 1 == 13 ? 1 : this.month + 1;
+      this.state.setState("month", this.month);
       return this.month;
     }
     if (classList.contains("left")) {
       this.month = this.month - 1 === 0 ? 12 : this.month - 1;
+      this.state.setState("month", this.month);
       return this.month;
     }
     return null;

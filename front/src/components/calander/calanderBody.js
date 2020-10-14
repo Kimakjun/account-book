@@ -1,5 +1,5 @@
 import { $el, $new } from "../../util/dom";
-import { MONTH_BUTTON_CLICK } from "../../util/event";
+import { MONEY_SELECT_BOX_CLICK, MONTH_BUTTON_CLICK } from "../../util/event";
 const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const DAYNAME = ["일", "월", "화", "수", "목", "금", "토"];
 
@@ -13,6 +13,10 @@ class CalanderBody {
 
   subscribeNavBar(model) {
     model.subscribe(MONTH_BUTTON_CLICK, this.updateView.bind(this));
+  }
+
+  subscribeHistory(model) {
+    model.subscribe(MONEY_SELECT_BOX_CLICK, this.updateView.bind(this));
   }
 
   isWeekend(month, day) {

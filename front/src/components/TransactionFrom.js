@@ -57,7 +57,6 @@ class TransactionForm {
   }
 
   viewChange({ type }) {
-    console.log(type, "input");
     if (type === "TRANSACTION") {
       this.transactionInput.style.display = "flex";
     } else {
@@ -81,6 +80,7 @@ class TransactionForm {
   }
 
   updateTranInput({ amount }) {
+    console.log(amount, this.getMoneyForm(amount));
     $el(".tranInput__firstSection__money--input").value = this.getMoneyForm(
       amount
     );

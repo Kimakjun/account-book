@@ -20,6 +20,7 @@ class Calander {
 
   subscribeHistory(model) {
     this.CalanderHeader.subscribeHistory(model);
+    this.CalanderBody.subscribeHistory(model);
   }
 
   show({ type }) {

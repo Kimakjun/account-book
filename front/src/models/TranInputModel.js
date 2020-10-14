@@ -90,7 +90,9 @@ class TranInputModel extends Observable {
     tranInput.addEventListener("input", (e) => {
       const { name } = e.target;
       if (name === "amount") {
-        const newValue = e.target.value.replace(/[,||원]+/gi, "");
+        console.log(e.target.value, "start");
+        const newValue = e.target.value.replace(/[,원]/gi, ""); //TODO 수정...
+        console.log(newValue, "end");
         if (isNaN(newValue)) {
           e.target.value = "";
           return alert("금액은 숫자만 입력하세요!");
