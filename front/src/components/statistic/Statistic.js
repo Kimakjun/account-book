@@ -1,8 +1,10 @@
-import { $new, setStyle } from "../../util/dom";
+import { $el, $new, setStyle } from "../../util/dom";
 import "../../public/statistic.scss";
 import { NAVBAR_CHANGE } from "../../util/event";
 
 import StatisticHeader from "./StatisticHeader";
+import StatisticCategory from "./StatisticCategory";
+import StatisticDay from "./StatisticDay";
 
 class Statistic {
   constructor({ root }) {
@@ -10,9 +12,10 @@ class Statistic {
     this.statistic = $new("div", "statistic");
 
     this.StatisticHeader = new StatisticHeader({ root: this.statistic });
-    //this.statisticCategory = new StatiticCategory({root: this.statistic});
-    //this.statisticDay = new StatiticDay({root: this.statistic});
+    this.statisticCategory = new StatisticCategory({ root: this.statistic });
+    this.statisticDay = new StatisticDay({ root: this.statistic });
 
+    this.addEvent();
     this.render();
   }
 
@@ -20,6 +23,21 @@ class Statistic {
     model.subscribe(NAVBAR_CHANGE, this.show.bind(this));
 
     this.StatisticHeader.subscribeNavBar(model);
+  }
+
+  addEvent() {
+    this.statistic.addEventListener("click", this.changeStatisticView);
+  }
+
+  changeStatisticView(e) {
+    if (e.target.className === "statistic__header__classify--category") {
+      setStyle($el(".statisticCategory"), { display: "flex" });
+      setStyle($el(".StatiticDay"), { display: "none" });
+    }
+    if (e.target.className === "statistic__header__classify--day") {
+      setStyle($el(".statisticCategory"), { display: "none" });
+      setStyle($el(".StatiticDay"), { display: "flex" });
+    }
   }
 
   show({ type }) {

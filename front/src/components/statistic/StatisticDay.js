@@ -5,6 +5,7 @@ class StatiticDay {
     this.root = root;
     this.StatiticDay = $new("div", "StatiticDay");
     this.init();
+    this.render();
   }
 
   init() {
@@ -15,8 +16,8 @@ class StatiticDay {
     `;
   }
 
-  getNode() {
-    return this.StatiticDay;
+  render() {
+    this.root.appendChild(this.StatiticDay);
   }
 }
 
