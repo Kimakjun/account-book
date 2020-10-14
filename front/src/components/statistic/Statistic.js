@@ -23,6 +23,8 @@ class Statistic {
     model.subscribe(NAVBAR_CHANGE, this.show.bind(this));
 
     this.StatisticHeader.subscribeNavBar(model);
+    this.statisticCategory.subscribeNavBar(model);
+    this.statisticDay.subscribeNavBar(model);
   }
 
   addEvent() {

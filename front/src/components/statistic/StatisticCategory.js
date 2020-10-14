@@ -1,4 +1,5 @@
 import { $new } from "../../util/dom";
+import { MONTH_BUTTON_CLICK } from "../../util/event";
 
 class StatiticCategory {
   constructor({ root }) {
@@ -8,9 +9,14 @@ class StatiticCategory {
     this.render();
   }
 
-  //   subscribeNavBar(model) {
-  //     model.subscribe(MONTH_BUTTON_CLICK, this.test.bind(this));
-  //   }
+  subscribeNavBar(model) {
+    model.subscribe(
+      MONTH_BUTTON_CLICK,
+      this.updateStatisticCategoryView.bind(this)
+    );
+  }
+
+  updateStatisticCategoryView() {}
 
   init() {
     this.statisticCategory.innerHTML = `

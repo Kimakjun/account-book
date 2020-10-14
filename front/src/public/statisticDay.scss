@@ -1,0 +1,33 @@
+
+  svg{
+      width: 100%;
+  }
+
+  .graph {
+    height: 500px;
+    width: 100%;
+  }
+  
+  .graph .grid {
+    stroke: #ccc;
+    stroke-dasharray: 0;
+    stroke-width: 1;
+  }
+  
+  .labels {
+    font-size: 13px;
+    color: black;
+    font-weight: 900;
+  }
+  
+  .label-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    fill: black;
+  }
+  
+  .data {
+    fill: red;
+    stroke-width: 1; 
+  }

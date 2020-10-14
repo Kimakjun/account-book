@@ -97,7 +97,8 @@ exports.getTransactionByCategory = async(req, res, next) => {
 exports.getTransactionByExpenditure = async(req, res, next) => {
     
     const {date} = req.params;
-    const {type} = req.body;
+    const {type} = req.params;
+    
     const min = new Date(date);
     const max = new Date(date);
     max.setMonth(min.getMonth() + 1);

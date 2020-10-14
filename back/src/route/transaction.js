@@ -14,7 +14,7 @@ const router = express.Router();
 // TODO: UPDATE, CREATE 유효성 검증
 router.get('/:date', asyncErrorHandler(getTransaction));
 router.get('/:date/category', asyncErrorHandler(getTransactionByCategory));
-router.get('/:date/expenditure', asyncErrorHandler(getTransactionByExpenditure));
+router.get('/:date/expenditure/:type', asyncErrorHandler(getTransactionByExpenditure));
 router.post('/', asyncErrorHandler(addTransaction));
 router.put('/:id', asyncErrorHandler(updateTransaction));
 router.delete('/:id', asyncErrorHandler(deleteTransaction));

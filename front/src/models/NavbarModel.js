@@ -34,6 +34,13 @@ class NavbarModel extends Observable {
     return datas.data.data;
   }
 
+  async getDayTran() {
+    const datas = await getData(
+      `/transaction/${this.getYear()}-${this.month}/expenditure/0`
+    );
+    return datas.data.data;
+  }
+
   getYear() {
     return new Date().getFullYear();
   }
@@ -58,10 +65,12 @@ class NavbarModel extends Observable {
     monthSelector.addEventListener("click", async (e) => {
       if (this.getMonthByType(e.target.classList) === null) return;
       const newTran = await this.getTran();
+      const newTranDay = await this.getDayTran();
       this.trans = this.state.setState("trans", newTran);
       this.notify(MONTH_BUTTON_CLICK, {
         month: this.month,
         trans: this.trans,
+        transDay: newTranDay,
       });
     });
   }
