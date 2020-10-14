@@ -1,4 +1,4 @@
-import { $new } from "../../util/dom";
+import { $el, $new } from "../../util/dom";
 import { MONTH_BUTTON_CLICK } from "../../util/event";
 const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const DAYNAME = ["일", "월", "화", "수", "목", "금", "토"];
@@ -23,9 +23,31 @@ class CalanderBody {
     return new Date().getMonth() + 1 === month && new Date().getDate() === day;
   }
 
-  updateView({ month }) {
+  updateView({ month, transDayCalander }) {
     this.calanderbody.innerHTML = "";
     this.drawCalander(month);
+    this.drawTran(transDayCalander);
+  }
+
+  getDayElement(isIncome, day) {
+    if (isIncome) return $el(`.day-income-${day}`);
+    else return $el(`.day-expenditure-${day}`);
+  }
+
+  getDate(rowDate) {
+    return new Date(rowDate).getDate();
+  }
+
+  drawTran(transDayCalander) {
+    console.log(transDayCalander);
+    transDayCalander.forEach((tran) => {
+      const targetEl = this.getDayElement(
+        tran.isIncome,
+        this.getDate(tran.createdAt)
+      );
+      targetEl.innerText =
+        (tran.isIncome ? "+" : "-") + `${tran.total_amount}원`;
+    });
   }
 
   drawCalander(month) {
@@ -72,7 +94,20 @@ class CalanderBody {
                                 ? "today"
                                 : ""
                             }
-                ">${cur.day}</div>
+                "><div>
+                ${cur.day}
+                  </div>
+                  ${
+                    cur.isCurMonth
+                      ? `
+                    <div class="day-income-${cur.day} income">
+                    </div>
+                    <div class="day-expenditure-${cur.day} expenditure">
+                    </div> 
+                  `
+                      : ""
+                  }
+                </div>
         `;
       return acc;
     }, "");

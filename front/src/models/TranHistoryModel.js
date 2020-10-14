@@ -30,6 +30,13 @@ class TranHistoryModel extends Observable {
     this.HistoryClick();
   }
 
+  async getDayTran(type) {
+    const datas = await getData(
+      `/transaction/${this.getYear()}-${this.month}/expenditure/${type}`
+    );
+    return datas.data.data;
+  }
+
   async getTran() {
     const datas = await getData(`/transaction/${this.getYear()}-${this.month}`);
     return datas.data.data;
@@ -40,7 +47,6 @@ class TranHistoryModel extends Observable {
     const historyHeader = $el("#app");
     historyHeader.addEventListener("click", (e) => {
       if (e.target.className === "tranHistory_header--income") {
-        console.log("test");
         const newSelectState = {
           ...this.slectType,
           income: !this.slectType.income,
@@ -56,6 +62,7 @@ class TranHistoryModel extends Observable {
       }
       this.trans = this.state.getState("trans");
       let returnedTrans = this.trans;
+      let dayTran = this.trans;
       if (this.slectType.income && !this.slectType.expenditure) {
         returnedTrans = this.trans.filter((tran) => tran.isIncome);
       }
@@ -68,6 +75,7 @@ class TranHistoryModel extends Observable {
       this.notify(MONEY_SELECT_BOX_CLICK, {
         trans: returnedTrans,
         type: this.slectType,
+        dayTran: dayTran,
       });
     });
   }
