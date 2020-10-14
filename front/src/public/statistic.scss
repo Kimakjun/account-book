@@ -37,7 +37,7 @@
 
 
 
-.statisticCategory, .StatiticDay{
+.StatiticDay{
     width: 100%;
     height: 80vh;
     display: flex;
@@ -48,9 +48,44 @@
 
 .statisticCategory{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .StatiticDay{
     display: none;
 }
+
+
+
+
+.chart{
+    border: 1px solid black;
+    width: 100%;
+    height: 100vh;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bar__chart{
+    fill:  #00bfa5;
+    transition: 0.3s;
+    text{
+        fill: black;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .percent{
+        fill: green;
+    }
+    
+    line{
+        stroke: gray;
+        stroke-width: 0.5;
+    }
+}
+
 

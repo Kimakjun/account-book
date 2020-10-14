@@ -43,7 +43,6 @@ class CalanderBody {
   }
 
   drawTran(transDayCalander) {
-    console.log(transDayCalander);
     transDayCalander.forEach((tran) => {
       const targetEl = this.getDayElement(
         tran.isIncome,

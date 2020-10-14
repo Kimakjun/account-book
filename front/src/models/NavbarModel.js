@@ -25,6 +25,7 @@ class NavbarModel extends Observable {
   async initSetting() {
     const newTranDay = await this.getDayTran(0);
     const newTranDay_income = await this.getDayTran(1);
+    const transCategory = await this.getTranCategory();
     const totlaExpenditure = this.getTotalExpenditure(this.trans);
     const averageExpenditure = this.getAaverageExpenditure(
       totlaExpenditure,
@@ -38,6 +39,7 @@ class NavbarModel extends Observable {
       totlaExpenditure: totlaExpenditure,
       transDay: newTranDay,
       transDayCalander: [...newTranDay, ...newTranDay_income],
+      transCategory,
     });
   }
 
@@ -49,6 +51,13 @@ class NavbarModel extends Observable {
   async getDayTran(type) {
     const datas = await getData(
       `/transaction/${this.getYear()}-${this.month}/expenditure/${type}`
+    );
+    return datas.data.data;
+  }
+
+  async getTranCategory() {
+    const datas = await getData(
+      `/transaction/${this.getYear()}-${this.month}/category`
     );
     return datas.data.data;
   }
@@ -93,6 +102,7 @@ class NavbarModel extends Observable {
       const newTran = await this.getTran();
       const newTranDay = await this.getDayTran(0);
       const newTranDay_income = await this.getDayTran(1);
+      const transCategory = await this.getTranCategory();
       const totlaExpenditure = this.getTotalExpenditure(newTran);
       const averageExpenditure = this.getAaverageExpenditure(
         totlaExpenditure,
@@ -108,6 +118,7 @@ class NavbarModel extends Observable {
         averageExpenditure: averageExpenditure,
         totlaExpenditure: totlaExpenditure,
         transDayCalander: [...newTranDay, ...newTranDay_income],
+        transCategory,
       });
     });
   }

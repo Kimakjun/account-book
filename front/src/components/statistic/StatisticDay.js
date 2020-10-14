@@ -15,7 +15,6 @@ class StatiticDay {
   }
 
   updateStatiticDayView({ transDay, month, averageExpenditure }) {
-    console.log(transDay);
     this.drawMonthLine(month);
     this.drawAverageLine(averageExpenditure);
     this.drawDailyexpenses(transDay, month);
