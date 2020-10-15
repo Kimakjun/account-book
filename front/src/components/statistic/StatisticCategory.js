@@ -5,6 +5,7 @@ class StatiticCategory {
   constructor({ root }) {
     this.root = root;
     this.statisticCategory = $new("div", "statisticCategory");
+    this.isData = true;
     this.init();
     this.render();
     this.addEvent();
@@ -14,6 +15,45 @@ class StatiticCategory {
     model.subscribe(
       MONTH_BUTTON_CLICK,
       this.updateStatisticCategoryView.bind(this)
+    );
+  }
+
+  showEachInfo(e) {
+    if (e.target.getAttribute("class") === "svgPie--path") {
+      $el(".chart__info__total").style.display = "none";
+      const targetData = JSON.parse(e.target.getAttribute("data"));
+      const infoTag = $el(".chart__info__each");
+      if (this.isData === false) {
+        infoTag.innerHTML = " 이번달 데이터는 없네요 ";
+        return;
+      }
+      infoTag.innerHTML = `
+          <div >Category : ${targetData.content}</div>
+          <div>percent(%) : ${targetData.percent}%</div>
+          <div>total_amount: ${targetData.total_amount}</dic>
+      `;
+    }
+  }
+
+  hiddenEachInfo(e) {
+    if (this.idData === false) return;
+    if (e.target.getAttribute("class") === "svgPie--path") {
+      // if(!this.idData) return;
+      $el(".chart__info__each").innerHTML = ``;
+      $el(".chart__info__total").style.display = "block";
+    }
+  }
+
+  addEvent() {
+    //svgPie--path
+
+    this.statisticCategory.addEventListener(
+      "mouseover",
+      this.showEachInfo.bind(this)
+    );
+    this.statisticCategory.addEventListener(
+      "mouseout",
+      this.hiddenEachInfo.bind(this)
     );
   }
 
@@ -28,6 +68,11 @@ class StatiticCategory {
   }
 
   updateStatisticCategoryView({ transCategory, totlaExpenditure }) {
+    this.isData = true;
+    if (transCategory.length === 0) {
+      this.isData = false;
+    }
+
     const processedData = transCategory.map((tran, index) => {
       const percent = this.getPercent(totlaExpenditure, tran.total_amount);
       const width = 6 * percent;
@@ -40,13 +85,23 @@ class StatiticCategory {
       };
     });
 
+    // info 렌더링
+    $el(".chart__info__total").innerHTML = processedData.reduce((acc, cur) => {
+      acc += `
+        <div>
+         <button class="chart__info__total--button" style="background-color: ${cur.color}"></button> ${cur.content}
+        </div>
+      `;
+      return acc;
+    }, "");
+
+    // pie 차트 렌더링.
     const svgEl = document.querySelector(".svgPie");
     const slices = processedData.map((data) => ({
       percent: data.percent / 100,
       color: data.color,
     }));
     let cumulativePercent = 0;
-
     slices.forEach((slice, index) => {
       const [startX, startY] = this.getCoordinatesForPercent(cumulativePercent);
       cumulativePercent += slice.percent;
@@ -67,10 +122,11 @@ class StatiticCategory {
       pathEl.setAttribute("d", pathData);
       pathEl.setAttribute("fill", slice.color);
       pathEl.setAttribute("class", `svgPie--path`);
-      pathEl.setAttribute("data-id", `svgPie--path--${index}`);
+      pathEl.setAttribute("data", `${JSON.stringify(processedData[index])}`);
       svgEl.appendChild(pathEl);
     });
 
+    // barchart 렌더링
     $el(".bar__chart").innerHTML = `
         ${processedData.reduce((acc, cur, index) => {
           if (index === 0) {
@@ -81,7 +137,9 @@ class StatiticCategory {
           acc += `
             <rect x="250" y="${80 + 50 * index}" width="${
             cur.width
-          }" height="30" style="fill: ${cur.color}"}></rect>
+          }" height="30" style="fill: ${
+            cur.color
+          }" class="bar__chart--${index}"}></rect>
             <text x="20" y="${95 + 55 * index}">${cur.content}</text>
             <text class="percent" x="120" y="${95 + 55 * index}">${
             cur.percent
@@ -98,7 +156,12 @@ class StatiticCategory {
 
   init() {
     this.statisticCategory.innerHTML = `
-    
+    <div class="chart__info">
+      <div class="chart__info__total">
+      </div>
+      <div class="chart__info__each">
+      </div>
+    </div>
     <svg class="svgPie" viewBox="-1 -1 2 2" style="transform: rotate(-90deg)">
     </svg>
     <svg class="chart">

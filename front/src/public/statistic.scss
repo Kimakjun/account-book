@@ -52,12 +52,13 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    position: relative;
 }
 
 
 .svgPie {
-    width: 400px;
-    height: 400px;
+    width: 35%;
+    height: 35%;
 
     path{
         &:hover{
@@ -71,8 +72,9 @@
     display: none;
 }
 
-
-
+.hover{
+    fill: #d04c00;
+}
 
 .chart{
     width: 100%;
@@ -99,6 +101,35 @@
         stroke: gray;
         stroke-width: 0.5;
     }
+}
+
+.chart__info{
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    font-size: 15px;
+}
+
+.chart__info__total--button{
+    width: 18px;
+    height: 18px;
+    border: 0;
+    outline: 0;
+    border-radius: 50%;
+    margin-right: 5px;
+
+    box-shadow: 2px 2px 2px green;
+
+    &:hover{
+        box-shadow: none;
+    }
+
+}
+
+.chart__info__each{
+    font-size: 15px;
+    font-weight: bold;
+    color: #00add0;
 }
 
 
