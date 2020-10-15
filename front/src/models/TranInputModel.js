@@ -18,7 +18,7 @@ class TranInputModel extends Observable {
     this.payments;
     this.init();
   }
-
+  //TODO: MONTH 상태로 관리!.
   async init() {
     this.trans = this.state.setState("trans", await this.getTran());
     this.categorys = this.state.setState("category", await this.getCategory());
@@ -42,13 +42,12 @@ class TranInputModel extends Observable {
 
   async getPayments() {
     const res = await getData(`/payment`);
-    console.log(res.data.data);
     return res.data.data;
   }
 
   async getTran() {
     const datas = await getData(
-      `/transaction/${this.getYear()}-${this.getMonth()}`
+      `/transaction/${this.getYear()}-${this.state.getState("month")}`
     );
     return datas.data.data;
   }
@@ -90,7 +89,7 @@ class TranInputModel extends Observable {
     tranInput.addEventListener("input", (e) => {
       const { name } = e.target;
       if (name === "amount") {
-        const newValue = e.target.value.replace(/[,||원]+/gi, "");
+        const newValue = e.target.value.replace(/[,원]/gi, ""); //TODO 수정...
         if (isNaN(newValue)) {
           e.target.value = "";
           return alert("금액은 숫자만 입력하세요!");

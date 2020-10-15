@@ -11,3 +11,4 @@ export const CREATE_TRAN_VALUE = "create_newTran";
 export const DELETE_TRAN_UPDATE = "deleteTranUpdate";
 export const DELETE_TRAN = "deleteTran";
 export const NAVBAR_CHANGE = "navbarChange";
+export const MONEY_SELECT_BOX_CLICK__HISTORY = "monneySelectBoxClickhISTORY";
