@@ -57,7 +57,6 @@ class TransactionForm {
   }
 
   viewChange({ type }) {
-    console.log(type, "input");
     if (type === "TRANSACTION") {
       this.transactionInput.style.display = "flex";
     } else {

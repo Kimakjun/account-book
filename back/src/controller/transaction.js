@@ -106,6 +106,7 @@ exports.getTransactionByExpenditure = async(req, res, next) => {
     const result = await Transaction.findAll({
         attributes: [
             'createdAt',
+            'isIncome',
             [sequelize.fn('sum', sequelize.col('amount')), 'total_amount'],
         ],
         group: [sequelize.fn('DAY', sequelize.col('createdAt')),
@@ -117,6 +118,7 @@ exports.getTransactionByExpenditure = async(req, res, next) => {
         }
         
     })
+
     res.json({success: true, data: result});
 
 }

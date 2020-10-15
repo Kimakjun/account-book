@@ -22,7 +22,10 @@ class NavbarModel extends Observable {
     this.navbarChange();
   }
 
-  initSetting() {
+  async initSetting() {
+    const newTranDay = await this.getDayTran(0);
+    const newTranDay_income = await this.getDayTran(1);
+    const transCategory = await this.getTranCategory();
     const totlaExpenditure = this.getTotalExpenditure(this.trans);
     const averageExpenditure = this.getAaverageExpenditure(
       totlaExpenditure,
@@ -34,6 +37,9 @@ class NavbarModel extends Observable {
       trans: this.trans,
       averageExpenditure: averageExpenditure,
       totlaExpenditure: totlaExpenditure,
+      transDay: newTranDay,
+      transDayCalander: [...newTranDay, ...newTranDay_income],
+      transCategory,
     });
   }
 
@@ -42,9 +48,16 @@ class NavbarModel extends Observable {
     return datas.data.data;
   }
 
-  async getDayTran() {
+  async getDayTran(type) {
     const datas = await getData(
-      `/transaction/${this.getYear()}-${this.month}/expenditure/0`
+      `/transaction/${this.getYear()}-${this.month}/expenditure/${type}`
+    );
+    return datas.data.data;
+  }
+
+  async getTranCategory() {
+    const datas = await getData(
+      `/transaction/${this.getYear()}-${this.month}/category`
     );
     return datas.data.data;
   }
@@ -59,10 +72,12 @@ class NavbarModel extends Observable {
   getMonthByType(classList) {
     if (classList.contains("right")) {
       this.month = this.month + 1 == 13 ? 1 : this.month + 1;
+      this.state.setState("month", this.month);
       return this.month;
     }
     if (classList.contains("left")) {
       this.month = this.month - 1 === 0 ? 12 : this.month - 1;
+      this.state.setState("month", this.month);
       return this.month;
     }
     return null;
@@ -85,8 +100,10 @@ class NavbarModel extends Observable {
     monthSelector.addEventListener("click", async (e) => {
       if (this.getMonthByType(e.target.classList) === null) return;
       const newTran = await this.getTran();
-      const newTranDay = await this.getDayTran();
-      const totlaExpenditure = this.getTotalExpenditure(this.trans);
+      const newTranDay = await this.getDayTran(0);
+      const newTranDay_income = await this.getDayTran(1);
+      const transCategory = await this.getTranCategory();
+      const totlaExpenditure = this.getTotalExpenditure(newTran);
       const averageExpenditure = this.getAaverageExpenditure(
         totlaExpenditure,
         this.month
@@ -100,6 +117,8 @@ class NavbarModel extends Observable {
         transDay: newTranDay,
         averageExpenditure: averageExpenditure,
         totlaExpenditure: totlaExpenditure,
+        transDayCalander: [...newTranDay, ...newTranDay_income],
+        transCategory,
       });
     });
   }
@@ -111,6 +130,9 @@ class NavbarModel extends Observable {
       }
       if (e.target.className == "navbar__contentSelctor--analysis") {
         this.notify(NAVBAR_CHANGE, { type: "STATISTIC" });
+      }
+      if (e.target.className == "navbar__contentSelctor--clander") {
+        this.notify(NAVBAR_CHANGE, { type: "CALANDER" });
       }
     });
   }

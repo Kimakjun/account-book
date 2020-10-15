@@ -8,6 +8,7 @@ class TranHistoryModel extends Observable {
     super();
     this.month = this.getMonth();
     this.state = state;
+    this.state.setState("month", this.month);
     this.trans;
     this.slectType = state.getState("selectType");
     this.init();
@@ -30,6 +31,15 @@ class TranHistoryModel extends Observable {
     this.HistoryClick();
   }
 
+  async getDayTran(type) {
+    const datas = await getData(
+      `/transaction/${this.getYear()}-${this.state.getState(
+        "month"
+      )}/expenditure/${type}`
+    );
+    return datas.data.data;
+  }
+
   async getTran() {
     const datas = await getData(`/transaction/${this.getYear()}-${this.month}`);
     return datas.data.data;
@@ -37,8 +47,14 @@ class TranHistoryModel extends Observable {
 
   //TODO: 로직수정
   selectBoxClick() {
-    const historyHeader = $el(".tranHistory");
-    historyHeader.addEventListener("click", (e) => {
+    const historyHeader = $el("#app");
+
+    historyHeader.addEventListener("click", async (e) => {
+      if (
+        e.target.className !== "tranHistory_header--income" &&
+        e.target.className !== "tranHistory_header--expenditure"
+      )
+        return;
       if (e.target.className === "tranHistory_header--income") {
         const newSelectState = {
           ...this.slectType,
@@ -55,18 +71,30 @@ class TranHistoryModel extends Observable {
       }
       this.trans = this.state.getState("trans");
       let returnedTrans = this.trans;
+
+      const IncomeData = await this.getDayTran(1);
+      const ExpenditureData = await this.getDayTran(0);
+      let transDayCalander = [...IncomeData, ...ExpenditureData];
+      let dayTran = this.trans;
       if (this.slectType.income && !this.slectType.expenditure) {
         returnedTrans = this.trans.filter((tran) => tran.isIncome);
+        transDayCalander = [...IncomeData];
       }
       if (!this.slectType.income && this.slectType.expenditure) {
         returnedTrans = this.trans.filter((tran) => !tran.isIncome);
+        transDayCalander = [...ExpenditureData];
       }
       if (!this.slectType.income && !this.slectType.expenditure) {
         returnedTrans = [];
+        transDayCalander = [];
       }
+
       this.notify(MONEY_SELECT_BOX_CLICK, {
         trans: returnedTrans,
         type: this.slectType,
+        dayTran: dayTran,
+        transDayCalander,
+        month: this.state.getState("month"),
       });
     });
   }
