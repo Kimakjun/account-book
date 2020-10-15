@@ -48,9 +48,23 @@
 
 .statisticCategory{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
+}
+
+
+.svgPie {
+    width: 400px;
+    height: 400px;
+
+    path{
+        &:hover{
+            fill: #00add0;
+        }
+   
+    }
 }
 
 .StatiticDay{
@@ -61,7 +75,6 @@
 
 
 .chart{
-    border: 1px solid black;
     width: 100%;
     height: 100vh;
     margin-top: 20px;
