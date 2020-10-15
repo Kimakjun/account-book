@@ -88,8 +88,7 @@ class TranHistoryModel extends Observable {
         returnedTrans = [];
         transDayCalander = [];
       }
-      console.log(transDayCalander);
-      console.log(this.state.getState("month"));
+
       this.notify(MONEY_SELECT_BOX_CLICK, {
         trans: returnedTrans,
         type: this.slectType,

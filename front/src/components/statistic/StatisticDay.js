@@ -37,6 +37,7 @@ class StatiticDay {
     const newTransDay = transDay.map((tran) => {
       return { ...tran, createdAt: new Date(tran.createdAt).getDate() };
     });
+    newTransDay.sort((a, b) => a.createdAt - b.createdAt);
     let pointDatas = "";
     $el(".daily_expense").innerHTML = initArr.reduce((acc, cur) => {
       let heigth;

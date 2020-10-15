@@ -80,7 +80,6 @@ class TransactionForm {
   }
 
   updateTranInput({ amount }) {
-    console.log(amount, this.getMoneyForm(amount));
     $el(".tranInput__firstSection__money--input").value = this.getMoneyForm(
       amount
     );

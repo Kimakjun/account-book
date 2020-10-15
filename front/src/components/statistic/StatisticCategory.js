@@ -21,10 +21,7 @@ class StatiticCategory {
   }
 
   updateStatisticCategoryView({ transCategory, totlaExpenditure }) {
-    console.log(totlaExpenditure, "총 지출 이걸로 퍼센트 구하자");
-    console.log(transCategory, "데이터");
     const processedData = transCategory.map((tran) => {
-      console.log(tran.total_amount / totlaExpenditure);
       const percent = this.getPercent(totlaExpenditure, tran.total_amount);
       const width = 6 * percent;
       return {
@@ -37,8 +34,8 @@ class StatiticCategory {
     $el(".bar__chart").innerHTML = `
         ${processedData.reduce((acc, cur, index) => {
           if (index === 0) {
-            acc += `<line x1="20" y1="${120 - 55}" x2="1050" y2="${
-              120 - 55
+            acc += `<line x1="20" y1="${120 - 50}" x2="1050" y2="${
+              120 - 50
             }"></line>`;
           }
           acc += `
@@ -50,8 +47,8 @@ class StatiticCategory {
             cur.percent
           }%</text>
             <text x="950" y="${95 + 55 * index}">${cur.total_amount} 원</text>
-            <line x1="20" y1="${120 + 55 * index}" x2="1050" y2="${
-            120 + 55 * index
+            <line x1="20" y1="${120 + 50 * index}" x2="1050" y2="${
+            120 + 50 * index
           }"></line>
             `;
           return acc;

@@ -33,7 +33,6 @@ class Calander {
 
   render() {
     this.root.appendChild(this.Calander);
-    console.log(this.root);
   }
 }
 
